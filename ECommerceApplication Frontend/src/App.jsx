@@ -57,6 +57,10 @@ function App() {
         </div>
       </section>
 
+
+
+      
+
       {/* Footer */}
       <footer className="bg-black text-white text-center py-6">
         <p>© 2025 Clothify. All rights reserved.</p>
