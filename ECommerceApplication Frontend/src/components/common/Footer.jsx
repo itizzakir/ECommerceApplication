@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer-grid">
         <div className="f-col">
           <div className="logo-box">
-            <svg width="24" height="24" viewBox="0 0 50 50" fill="none"><path d="M25 0L46.65 12.5V37.5L25 50L3.35 37.5V12.5L25 0Z" fill="#e11b23"/></svg>
+            <svg width="24" height="24" viewBox="0 0 50 50" fill="none"><path d="M25 0L46.65 12.5V37.5L25 50L3.35 37.5V12.5L25 0Z" fill="#FF69B4"/></svg>
             <span>VELORA</span>
           </div>
           <p>

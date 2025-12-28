@@ -18,7 +18,7 @@ const AdminSidebar = ({ isOpen }) => {
             <div className="sidebar-header">
                 <NavLink to="/admin" className="sidebar-brand">
                     <svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M25 0L46.65 12.5V37.5L25 50L3.35 37.5V12.5L25 0Z" fill="#e11b23"/>
+                        <path d="M25 0L46.65 12.5V37.5L25 50L3.35 37.5V12.5L25 0Z" fill="#FF69B4"/>
                         <path d="M25 10L35 25L25 40L15 25L25 10Z" fill="white"/>
                     </svg>
                     <div className="logo-text">Velora</div>
