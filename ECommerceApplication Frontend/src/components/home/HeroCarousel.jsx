@@ -6,23 +6,51 @@ const slides = [
   {
     id: 1,
     img: "/carousel/Crousel_1.jpg",
-    title: "'Tis The Season",
-    sub: "THE WINTER EDIT 2025 IS HERE",
-    btn: "Shop Collection"
+    title: "Winter Collection",
+    sub: "Stay Cozy and Stylish",
+    btn: "Shop Now"
   },
   {
     id: 2,
     img: "/carousel/image copy 2.png",
-    title: "Urban Drift",
-    sub: "OVERSIZED TEES & CARGO PANTS",
-    btn: "View Drops"
+    title: "Urban Style",
+    sub: "Elevate Your Streetwear",
+    btn: "Explore More"
   },
   {
     id: 3,
     img: "/carousel/image copy 3.png",
-    title: "Accessory Lab",
-    sub: "COMPLETE YOUR LOOK",
-    btn: "Shop Now"
+    title: "Accessories Galore",
+    sub: "Find Your Perfect Match",
+    btn: "Discover Now"
+  },
+  {
+    id: 4,
+    img: "/carousel/image copy 4.png",
+    title: "New Arrivals",
+    sub: "Fresh Styles Just Dropped",
+    btn: "View All"
+  },
+  {
+    id: 5,
+    img: "/carousel/image copy 5.png",
+    title: "Limited Edition",
+    sub: "Don't Miss Out!",
+    btn: "Get Yours"
+  },
+  {
+    id: 6,
+    img: "/carousel/image copy.png",
+    title: "Seasonal Picks",
+    sub: "Curated Just For You",
+    btn: "Shop the Look"
+  },
+  {
+    id: 7,
+    img: "/carousel/image.png",
+    title: "Exclusive Offers",
+    sub: "Unbeatable Deals Await",
+    btn: "Grab Now"
   }
 ];
 
