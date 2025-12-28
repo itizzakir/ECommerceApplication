@@ -5,21 +5,21 @@ import './HeroCarousel.css';
 const slides = [
   {
     id: 1,
-    img: "https://images.unsplash.com/photo-1544261482-15f5c6676ddc?q=80&w=1920&auto=format&fit=crop",
+    img: "/carousel/Crousel_1.jpg",
     title: "'Tis The Season",
     sub: "THE WINTER EDIT 2025 IS HERE",
     btn: "Shop Collection"
   },
   {
     id: 2,
-    img: "https://images.unsplash.com/photo-1523396870717-816a21028c71?q=80&w=1920&auto=format&fit=crop",
+    img: "/carousel/image copy 2.png",
     title: "Urban Drift",
     sub: "OVERSIZED TEES & CARGO PANTS",
     btn: "View Drops"
   },
   {
     id: 3,
-    img: "https://images.unsplash.com/photo-1485230946086-1d99dcc33d7b?q=80&w=1920&auto=format&fit=crop",
+    img: "/carousel/image copy 3.png",
     title: "Accessory Lab",
     sub: "COMPLETE YOUR LOOK",
     btn: "Shop Now"
