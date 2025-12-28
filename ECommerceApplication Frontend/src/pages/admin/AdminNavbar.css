@@ -1,0 +1,99 @@
+/*
+* Velore Admin Dashboard - Navbar Styles
+*/
+
+.admin-navbar {
+    height: var(--navbar-height);
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    flex-shrink: 0;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navbar-icon {
+    position: relative;
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.navbar-notification-count {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: var(--color-accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navbar-admin-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.navbar-admin-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.navbar-logout-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.navbar-logout-btn:hover {
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-navbar {
+        padding: 0 1rem;
+    }
+
+    .navbar-admin-name {
+        display: none;
+    }
+}

@@ -1,0 +1,96 @@
+/*
+* Velore Admin Dashboard - Sidebar Styles
+*/
+
+.admin-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-header {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.sidebar-brand svg {
+    width: 32px;
+    height: 32px;
+}
+
+.sidebar-brand .logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-accent);
+}
+
+.sidebar-nav {
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.sidebar-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav-item a {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav-icon {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.sidebar-nav-item a:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-accent);
+}
+
+.sidebar-nav-item a.active {
+    background-color: var(--color-accent);
+    color: white;
+    box-shadow: 0 4px 8px rgba(233, 30, 99, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%);
+        z-index: 1000;
+        height: 100%;
+    }
+
+    .admin-sidebar.is-open {
+        transform: translateX(0);
+    }
+}

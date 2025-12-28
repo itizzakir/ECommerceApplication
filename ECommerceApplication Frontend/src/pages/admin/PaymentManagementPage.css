@@ -1,0 +1,60 @@
+/* PaymentManagementPage.css */
+
+.payment-management-page {
+    padding: 1.5rem;
+}
+
+.payment-management-page .page-header {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.payment-management-page .card {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.payment-management-page .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.payments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.payments-table th,
+.payments-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.payments-table th {
+    font-weight: 600;
+    color: var(--text-light);
+    background-color: var(--gray-light);
+}
+
+.payments-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.status-completed { background-color: #28a745; } /* Green */
+.status-pending { background-color: #ffc107; color: #333; } /* Yellow */
+.status-failed { background-color: #dc3545; } /* Red */

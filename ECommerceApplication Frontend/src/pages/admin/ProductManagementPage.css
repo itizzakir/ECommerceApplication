@@ -1,0 +1,109 @@
+/*
+* Velore Admin Dashboard - Product Management Page Styles
+*/
+
+.product-management-page {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.page-header {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.page-subheader {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.action-bar {
+    margin-bottom: 1.5rem;
+}
+
+.add-product-btn {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 600;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.add-product-btn:hover {
+    opacity: 0.9;
+}
+
+.table-container {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.products-table thead th {
+    background-color: #fcfcfc;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.products-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.products-table tbody tr td {
+    font-size: 0.95rem;
+}
+
+.action-btn-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.action-btn.edit:hover {
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.action-btn.delete {
+    border-color: #f44336;
+    color: #f44336;
+}
+
+.action-btn.delete:hover {
+    background-color: #f44336;
+    color: white;
+}
