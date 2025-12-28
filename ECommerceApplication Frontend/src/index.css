@@ -127,3 +127,105 @@ footer { background: #fbfbfb; padding: 60px 40px 20px; margin-top: 80px; border-
   .footer-grid { grid-template-columns: 1fr; }
   .nav-container { padding: 0 20px; }
 }
+
+/* CART */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: flex-start;
+}
+.cart-items {
+  background: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+.cart-item:last-child {
+  border-bottom: none;
+}
+.cart-item-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid #eee;
+}
+.cart-item-details {
+  flex-grow: 1;
+}
+.cart-item-details h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.cart-item-details p {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cart-quantity-input {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  text-align: center;
+}
+.cart-remove-btn {
+  background: #f4f4f4;
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  transition: 0.2s;
+}
+.cart-remove-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+.cart-item-subtotal {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.cart-summary {
+  background: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.cart-summary h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.summary-row.total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 15px;
+}
+.cart-summary hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 15px 0;
+}
