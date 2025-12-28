@@ -176,6 +176,15 @@ header {
 .hamburger {
     display: none;
     cursor: pointer;
+    font-size: 28px; /* Larger icon */
+    color: var(--dark); /* Use a consistent color */
+    padding: 10px; /* Add some padding */
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+    z-index: 101; /* Ensure it's above other elements */
+}
+
+.hamburger:hover {
+    color: var(--primary); /* Change color on hover */
 }
 
 .welcome-msg {

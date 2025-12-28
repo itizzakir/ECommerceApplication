@@ -8,7 +8,7 @@ import './ProductGrid.css';
 
 const ProductGrid = ({ products }) => {
   const { addToCart } = useCart();
-  const { addToWishlist } = useWishlist();
+  const { addToWishlist, wishlistItems } = useWishlist();
   const { showNotification } = useNotification();
 
   const handleAddToCart = (e, product) => {
@@ -31,13 +31,12 @@ const ProductGrid = ({ products }) => {
         <Link to={`/product/${item.id}`} key={item.id} className="product-card">
           <div className="p-img-box">
             <span className="p-badge">{item.tag}</span>
-            <button 
-              className="p-wish" 
-              onClick={(e) => handleAddToWishlist(e, item)}
-            >
-              ♡
-            </button>
-            <img src={item.img} alt={item.title} />
+                        <button
+                          className={`p-wish ${wishlistItems.some(wishlistItem => wishlistItem.id === item.id) ? 'wishlisted' : ''}`}
+                          onClick={(e) => handleAddToWishlist(e, item)}
+                        >
+                          {wishlistItems.some(wishlistItem => wishlistItem.id === item.id) ? '❤️' : '♡'}
+                        </button>            <img src={item.img} alt={item.title} />
           </div>
           <div className="p-title">{item.title}</div>
           <div className="p-cat">{item.category}</div>

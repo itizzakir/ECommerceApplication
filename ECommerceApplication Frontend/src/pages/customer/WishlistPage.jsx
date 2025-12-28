@@ -5,7 +5,7 @@ import { useCart } from '../../context/CartContext';
 import { useNotification } from '../../context/NotificationContext';
 
 const WishlistPage = () => {
-  const { wishlist, removeFromWishlist } = useWishlist();
+  const { wishlistItems, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
   const { showNotification } = useNotification();
 
@@ -15,7 +15,7 @@ const WishlistPage = () => {
     showNotification(`${product.title} moved to cart!`);
   };
 
-  if (wishlist.length === 0) {
+  if (wishlistItems.length === 0) {
     return (
       <div className="section-container" style={{ textAlign: 'center', padding: '4rem 0' }}>
         <h2>Your Wishlist is Empty</h2>
@@ -29,10 +29,10 @@ const WishlistPage = () => {
     <div className="section-container" style={{ padding: '2rem' }}>
       <div className="section-header">
         <h2>Your Wishlist</h2>
-        <p>You have {wishlist.length} item(s) saved.</p>
+        <p>You have {wishlistItems.length} item(s) saved.</p>
       </div>
       <div className="product-grid">
-        {wishlist.map(item => (
+        {wishlistItems.map(item => (
           <div key={item.id} className="product-card">
             <Link to={`/product/${item.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
               <div className="p-img-box">
