@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CustomerDashboard.css';
+import { customers } from '../../data/customers.js';
+import { products } from '../../data/products.js';
 
 
 // --- SELF-CONTAINED SVG ICONS ---
@@ -18,13 +20,6 @@ const ICONS = {
     LogOut: <><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></>,
 };
 
-// --- MOCK DATA & STATE ---
-const mockProducts = [
-  { id: 101, name: 'Enchanted Evening Gown', price: '$249.99', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400' },
-  { id: 102, name: 'Rose Gold Chronograph', price: '$420.50', image: 'https://images.unsplash.com/photo-1610643752255-9065c63566a7?auto=format&fit=crop&q=80&w=400' },
-];
-const initialWishlist = [ { id: 103, name: 'Satin Slip Dress', price: '$129.00' } ];
-
 // --- CHILD COMPONENTS ---
 const StatCard = ({ icon, label, value, iconBg }) => (
     <div className="stat-card">
@@ -41,12 +36,12 @@ const StatCard = ({ icon, label, value, iconBg }) => (
 const OrderCard = ({ order }) => (
     <div className="order-card">
         <div className="order-card__header">
-            <span>{order.id}</span>
+            <span>#{order.id}</span>
             <span className={`order-card__status ${order.status === 'Delivered' ? 'status--delivered' : 'status--processing'}`}>
                 {order.status}
             </span>
         </div>
-        <p className="order-card__total">{order.total}</p>
+        <p className="order-card__total">${order.total}</p>
         <p className="order-card__date">{order.date}</p>
     </div>
 );
@@ -54,11 +49,11 @@ const OrderCard = ({ order }) => (
 const ProductCard = ({ product, onAddToWishlist }) => (
     <div className="product-card">
         <div className="product-card__image-wrapper">
-            <img src={product.image} alt={product.name} />
+            <img src={product.img} alt={product.title} />
         </div>
         <div className="product-card__info">
-            <h3>{product.name}</h3>
-            <p>{product.price}</p>
+            <h3>{product.title}</h3>
+            <p>${product.price}</p>
             <button onClick={() => onAddToWishlist(product)}>
                 Add to Wishlist
             </button>
@@ -66,44 +61,67 @@ const ProductCard = ({ product, onAddToWishlist }) => (
     </div>
 );
 
-const WishlistCard = ({ item }) => (
+const WishlistCard = ({ item, onRemove }) => (
     <div className="wishlist-card">
-        <div className="wishlist-card__icon-wrapper">
-            <Icon path={ICONS.Heart} size={16} className="wishlist-card__icon" />
+         <div className="product-card__image-wrapper">
+            <img src={item.image} alt={item.name} />
         </div>
         <div className="wishlist-card__info">
             <p className="wishlist-card__name">{item.name}</p>
-            <p className="wishlist-card__price">{item.price}</p>
+            <p className="wishlist-card__price">${item.price}</p>
         </div>
-        <button className="wishlist-card__remove">&times;</button>
+        <button className="wishlist-card__remove" onClick={() => onRemove(item.id)}>&times;</button>
     </div>
 );
 
 // --- MAIN DASHBOARD COMPONENT ---
 const CustomerDashboard = () => {
-    const [wishlist, setWishlist] = useState(initialWishlist);
-    
+    const [customer, setCustomer] = useState(null);
+
+    useEffect(() => {
+        const storedCustomer = localStorage.getItem('customer');
+        if (storedCustomer) {
+            setCustomer(JSON.parse(storedCustomer));
+        } else {
+            const defaultCustomer = customers[0];
+            localStorage.setItem('customer', JSON.stringify(defaultCustomer));
+            setCustomer(defaultCustomer);
+        }
+    }, []);
+
+    const updateCustomer = (updatedCustomer) => {
+        setCustomer(updatedCustomer);
+        localStorage.setItem('customer', JSON.stringify(updatedCustomer));
+    };
+
     const handleAddToWishlist = (product) => {
-        if (!wishlist.find(item => item.id === product.id)) {
-            setWishlist(prev => [...prev, { id: product.id, name: product.name, price: product.price }]);
+        if (customer && !customer.wishlist.find(item => item.id === product.id)) {
+            const newWishlist = [...customer.wishlist, { id: product.id, name: product.title, price: product.price, image: product.img }];
+            updateCustomer({ ...customer, wishlist: newWishlist });
+        }
+    };
+
+    const handleRemoveFromWishlist = (productId) => {
+        if (customer) {
+            const newWishlist = customer.wishlist.filter(item => item.id !== productId);
+            updateCustomer({ ...customer, wishlist: newWishlist });
         }
     };
     
-    const mockOrders = [
-        { id: '#VR54321', status: 'Delivered', total: '$129.99', date: 'Dec 15, 2025' },
-        { id: '#VR54320', status: 'Processing', total: '$89.99', date: 'Dec 22, 2025' },
-    ];
+    if (!customer) {
+        return <div>Loading...</div>;
+    }
+
+    const pendingOrders = customer.orders.filter(order => order.status !== 'Delivered').length;
 
     return (
         <div className="dashboard">
-
-
             <main className="dashboard__main">
                 <h2 className="dashboard__title">My Dashboard</h2>
 
                 <section className="dashboard__stats-grid">
-                    <StatCard icon={<Icon path={ICONS.Package} />} label="Pending Orders" value="2" iconBg="#FFF4E5" />
-                    <StatCard icon={<Icon path={ICONS.Heart} className="icon--heart-filled" />} label="Wishlist Items" value={wishlist.length} iconBg="#FFEBEE" />
+                    <StatCard icon={<Icon path={ICONS.Package} />} label="Pending Orders" value={pendingOrders} iconBg="#FFF4E5" />
+                    <StatCard icon={<Icon path={ICONS.Heart} className="icon--heart-filled" />} label="Wishlist Items" value={customer.wishlist.length} iconBg="#FFEBEE" />
                     <StatCard icon={<Icon path={ICONS.Star} className="icon--star-filled" />} label="Reward Points" value="1,250" iconBg="#FFF8E1" />
                     <StatCard icon={<Icon path={ICONS.Wallet} />} label="Account Balance" value="$50.00" iconBg="#E8F5E9" />
                 </section>
@@ -113,13 +131,13 @@ const CustomerDashboard = () => {
                         <section>
                             <h3>Recent Orders</h3>
                             <div className="dashboard__orders-grid">
-                                {mockOrders.map(order => <OrderCard key={order.id} order={order} />)}
+                                {customer.orders.map(order => <OrderCard key={order.id} order={order} />)}
                             </div>
                         </section>
                         <section>
                             <h3>Discover New Items</h3>
                             <div className="dashboard__products-grid">
-                                {mockProducts.map(product => <ProductCard key={product.id} product={product} onAddToWishlist={handleAddToWishlist} />)}
+                                {products.slice(0, 2).map(product => <ProductCard key={product.id} product={product} onAddToWishlist={handleAddToWishlist} />)}
                             </div>
                         </section>
                     </div>
@@ -128,8 +146,8 @@ const CustomerDashboard = () => {
                         <div className="sidebar-widget">
                              <h3>My Wishlist</h3>
                             <div className="sidebar-widget__content--wishlist">
-                                {wishlist.length > 0 ? (
-                                    wishlist.map(item => <WishlistCard key={item.id} item={item} />)
+                                {customer.wishlist.length > 0 ? (
+                                    customer.wishlist.map(item => <WishlistCard key={item.id} item={item} onRemove={handleRemoveFromWishlist} />)
                                 ) : (
                                     <p>Your wishlist is empty.</p>
                                 )}
