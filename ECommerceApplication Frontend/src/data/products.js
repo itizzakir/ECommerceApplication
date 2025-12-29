@@ -30,7 +30,7 @@ export const products = [
     stock: 80,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1294103821/photo/black-corduroy-jeans-front-view-on-white-background.jpg?s=1024x1024&w=is&k=20&c=_AbJ43zIykDzZ88pDKs9Xqdh44i2s-ZCMfHeuHC6Ncg="
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const products = [
     stock: 100,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2226037815/photo/woman-holding-hanger-with-beautiful-t-shirt-on-white-background-closeup.jpg?s=1024x1024&w=is&k=20&c=j7tVvQFSvXwYnCpoQMvU1IdcyDd0vEosSgzQVJkKumY="
   },
   {
     id: 6,
@@ -74,7 +74,7 @@ export const products = [
     stock: 25,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1551028919-ac76c9085918?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2208342238/photo/man-in-jacket-and-sneakers-sitting-on-white-background.jpg?s=1024x1024&w=is&k=20&c=lj36OZF2V_xtPLs2lUh0EBbDDzxlkPxhvF4o75Wm-zQ="
   },
   {
     id: 8,
@@ -85,7 +85,7 @@ export const products = [
     stock: 55,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1620799140408-ed5341cd2431?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/623943380/photo/teenage-boy-in-gray-sweater-and-scarf-studio-shot-isolated.jpg?s=1024x1024&w=is&k=20&c=mRGWetrryGvsZMvCqQBvqJISPqkHE4Ozjmz9_6yOC_w="
   },
   {
     id: 9,
@@ -129,7 +129,7 @@ export const products = [
     stock: 120,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1617953644310-e690da9be982?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     id: 13,
@@ -140,7 +140,7 @@ export const products = [
     stock: 80,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2216256274/photo/young-smiling-woman-in-black-crop-top-and-high-waisted-leggings-long-brown-hair-full-body.jpg?s=1024x1024&w=is&k=20&c=ucL9niAVZSJoau_sQ2hUyH5Kfc5NrL4VQDbuI96r0YM="
   },
   {
     id: 14,
@@ -162,7 +162,7 @@ export const products = [
     stock: 65,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1620799140408-ed5341cd2431?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1189246995/photo/beautiful-luxurious-knitted-cardigan-in-brown-autumn-winter-warm.jpg?s=1024x1024&w=is&k=20&c=8k7roWL8F38LEvNQXX6f9HsnwG6HxyiOvXQI7OGOhYI="
   },
   {
     id: 16,
@@ -173,7 +173,7 @@ export const products = [
     stock: 50,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1435827167/photo/brown-herringbone-texture-waistcoat-isolated-on-white-background.jpg?s=1024x1024&w=is&k=20&c=2W9djK_wQG2qxrIPf-B4M9uN_nl5gyn8ZtcTZ1gp74w="
   },
   {
     id: 17,
@@ -195,7 +195,7 @@ export const products = [
     stock: 15,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1593032465175-d81f0f53d35b?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/907865186/photo/handsome-man.jpg?s=1024x1024&w=is&k=20&c=2MkK4OvKoiGHFBn-n_mXx01jo-V0u4z_nMW3HSOfrFM="
   },
   {
     id: 19,
@@ -206,7 +206,7 @@ export const products = [
     stock: 70,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1582639510494-c80b5de9f548?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2245962018/photo/ready-for-vacation.jpg?s=1024x1024&w=is&k=20&c=q6DFJ2TWtDDA7syEfi6rBLL1B_dR0FXOXRjxpSyFT1Y="
   },
   {
     id: 20,
@@ -217,7 +217,7 @@ export const products = [
     stock: 60,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1545959962-d4b97d266dfc?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2135105309/photo/sunscreen-bottle-on-striped-towel-next-to-straw-hat-and-sunglasses-on-sandy-beach-with-ocean.jpg?s=1024x1024&w=is&k=20&c=tBWBVynzNPlosZMCeE4IfCG6LAqS8cpQrmTO-nsW2YI="
   },
   {
     id: 21,
@@ -228,7 +228,7 @@ export const products = [
     stock: 200,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1583209814683-c023dd293cc6?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/538700919/photo/blue-boxer-underwear-on-grunge-wall.jpg?s=1024x1024&w=is&k=20&c=IGqJEDdSl17Ih6dGftx9epZJ5QnplGn473IuvzrBXdk="
   },
   {
     id: 22,
@@ -250,7 +250,7 @@ export const products = [
     stock: 80,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1562125197-03310464f15d?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/868606808/photo/pajamas-isolated-on-the-white-background.jpg?s=1024x1024&w=is&k=20&c=-sokmAcJJ6gk8kiBvSOBVFHYIbM34eren5BdmvemJUQ="
   },
   {
     id: 24,
@@ -283,7 +283,7 @@ export const products = [
     stock: 30,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1550572614/photo/young-dark-haired-man-in-a-black-tracksuit-gray-t-shirt-and-running-shoes.jpg?s=1024x1024&w=is&k=20&c=XJDvm95KK-jv_AgjYd5Tr8rHEC3GCNsQkK8nd3A2u80="
   },
   {
     id: 27,
@@ -316,7 +316,7 @@ export const products = [
     stock: 90,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1603487742131-4160d698725e?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1250160187/photo/female-legs-with-white-pedicure-in-summer-brown-sandals-on-background-copy-space.jpg?s=1024x1024&w=is&k=20&c=MMK-6XI9Ui9rbNMTeXRTisaW5wsguPJFpjilRUXrDTs="
   },
   {
     id: 30,
@@ -382,7 +382,7 @@ export const products = [
     stock: 150,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1627123424574-1800390cb1d5?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1073589496/photo/senior-unrecognizable-woman-picking-up-a-red-wallet-from-a-rack-in-a-bags-and-wallets-store.jpg?s=1024x1024&w=is&k=20&c=cESqByOIXCuikTff63Dlow2wrcy2EM86OiH3THw7dh4="
   },
   {
     id: 36,
@@ -646,7 +646,7 @@ export const products = [
     stock: 200,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1627123424574-1800390cb1d5?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/907837850/photo/leather-wallet-isolated-white-background.jpg?s=1024x1024&w=is&k=20&c=fa7UIUHtMuAEkGJjKlJwjMmHuiZRK4tr6KnJxVosV2E="
   },
   {
     id: 60,
@@ -657,7 +657,7 @@ export const products = [
     stock: 150,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1601342630314-b17b629b0151?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/467768600/photo/sixties-style-girl.jpg?s=1024x1024&w=is&k=20&c=YB-5hi0P9WgaxYapKxrIrEzvn9o_vZyyvU6878Hfgro="
   },
   {
     id: 61,
@@ -723,7 +723,7 @@ export const products = [
     stock: 90,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1517940310602-2653583d3bbb?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/500161322/photo/traditional-and-ethnic-indian-blouse-for-women-to-be-worn.jpg?s=1024x1024&w=is&k=20&c=_I2t-2GCpTveNvF4e0wOKvG4pnGclhiGM0L6sblS_fg="
   },
   {
     id: 67,
@@ -745,7 +745,7 @@ export const products = [
     stock: 80,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1582142327262-3c8164bb82a8?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/507904690/photo/beautiful-woman-smiling.jpg?s=1024x1024&w=is&k=20&c=Ulrm8hChpaRa2rG5gVPgVkzm4P8BPrFqDUkCGzBCjO4="
   },
   {
     id: 69,
@@ -767,7 +767,7 @@ export const products = [
     stock: 30,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1539533018447-63fcce567b59?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/637408510/photo/beautiful-elegant-woman.jpg?s=1024x1024&w=is&k=20&c=_mduNJ1WiNvr9pZo7_9-otFQfCFD0Si6bHJhbcSqx2k="
   },
   {
     id: 71,
@@ -800,7 +800,7 @@ export const products = [
     stock: 100,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/854409814/photo/smiling-dude-in-pink.jpg?s=1024x1024&w=is&k=20&c=p4vtsYD8lMhxaXOeoc4qHrg4epxqrmR2yrfi3f23mdM="
   },
   {
     id: 74,
@@ -811,7 +811,7 @@ export const products = [
     stock: 90,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1548883354-94bcfe321cbb?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80"
   },
   {
     id: 75,
@@ -822,7 +822,7 @@ export const products = [
     stock: 80,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1616353071689-56b285f29910?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/638770700/photo/shorts-guy-on-beach.jpg?s=1024x1024&w=is&k=20&c=taCNgGA9kaAagrIN7lR8S9ylP8yxJ1yCmaX5fsZEP00="
   },
   {
     id: 76,
@@ -833,7 +833,7 @@ export const products = [
     stock: 60,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1564858882062-8e682eb758a6?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1028814956/photo/summer-fashion-flatay.jpg?s=1024x1024&w=is&k=20&c=dIAkdpddCK72dpNbfchriYXaPNHoASrAN60XP6_bW-I="
   },
   {
     id: 77,
@@ -844,7 +844,7 @@ export const products = [
     stock: 120,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1629853359048-2b810842ce68?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/637314404/photo/brown-chino-pants.jpg?s=1024x1024&w=is&k=20&c=FuLSfvbXQY-HTuF1Pd-IG8LGePygGM6pwIL-9T9AW3o="
   },
   {
     id: 78,
@@ -855,7 +855,7 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1596483758348-73599b457343?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2211561351/photo/bridesmaids-maid-of-honnor-colorful-dresses-laces-gorgeous-gowns-in-pastel-colors.jpg?s=1024x1024&w=is&k=20&c=tgQLKUqla0GrBsWr62bsqT9NT7uwgHMhvFR5nA27rJA="
   },
   {
     id: 79,
@@ -866,7 +866,7 @@ export const products = [
     stock: 200,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1582966772652-13a48e895ee5?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2191457682/photo/mid-adult-chinese-woman-pulling-up-her-socks-before-jogging-near-the-sydney-harbor-bridge-in.jpg?s=1024x1024&w=is&k=20&c=lqLG9o4SMopQ5cu2-NnCMT8Ca4MTlT9PZzlGA9JqgnU="
   },
   {
     id: 80,
@@ -877,7 +877,7 @@ export const products = [
     stock: 180,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1595956550974-2795c64379fa?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/916661810/photo/three-sets-of-new-socks-with-packaging.jpg?s=1024x1024&w=is&k=20&c=hhrARYycomtSWxL9w57Eypq8y2nsP90OHLTlSe6r51g="
   },
   {
     id: 81,
@@ -888,7 +888,7 @@ export const products = [
     stock: 70,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1616428256333-e7a60d5c073a?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/2246518446/photo/top-view-of-folded-mint-green-striped-pajama-set-on-white-bed-minimal-style-cozy-comfort.jpg?s=1024x1024&w=is&k=20&c=T8ZrjpZSIUBa4bMNQ4ybShOYvaaKGYN3ZUUjGY03040="
   },
   {
     id: 82,
@@ -899,7 +899,7 @@ export const products = [
     stock: 60,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1584809375498-8e6d23479421?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1201270350/vector/realistic-sleeptime-set.jpg?s=1024x1024&w=is&k=20&c=Q2NyIvz2OTVfK8F4Npeffc4sD2jEoq8-xVgyL1ZG3Uo="
   },
   {
     id: 83,
@@ -910,7 +910,7 @@ export const products = [
     stock: 40,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1584288863649-6f5d8869c362?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/958566336/photo/optimistic-guy-is-leaning-on-wall-in-white-housecoat.jpg?s=1024x1024&w=is&k=20&c=Colne-yS6h9iN4tw2R9xNscdxm1-1a24LSB7D3Ndhus="
   },
   {
     id: 84,
@@ -921,7 +921,7 @@ export const products = [
     stock: 30,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1552559554-1560934988e0?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1314530179/photo/blank-white-hotel-bathrobe-mockup-front-and-back-view.jpg?s=1024x1024&w=is&k=20&c=4FR0hus2IzI_g5SxPyF4F4pYbIrftOMvmhvAsdKMsuQ="
   },
   {
     id: 85,
@@ -954,7 +954,7 @@ export const products = [
     stock: 100,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1587391782780-e794358693cc?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/155601795/photo/mannequin-at-fashion-store.jpg?s=1024x1024&w=is&k=20&c=7_uOci7R8S0iFM4Ru9ULjhCe23Kk-F1lClRHZiql-0g="
   },
   {
     id: 88,
@@ -987,7 +987,7 @@ export const products = [
     stock: 40,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1339440288/photo/white-sneakers-shoes-and-girl%C3%A2s-legs-on-nude-background-casual-footwear.jpg?s=1024x1024&w=is&k=20&c=qqJFrexJo_FsDRWeOh5p32Mz3smlExg5JZnIKOhl4QY="
   },
   {
     id: 91,
@@ -998,7 +998,7 @@ export const products = [
     stock: 120,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1603487742131-4160d698725e?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1406216741/photo/vacation-on-summer-ocean-beach-concept-male-feet-in-sandals-on-sea-sand-with-bubble-float.jpg?s=1024x1024&w=is&k=20&c=XHMdGQK12ActS_RcRQD7_gyX2wtEs6mRYx6eDw7pEQs="
   },
   {
     id: 92,
@@ -1020,7 +1020,7 @@ export const products = [
     stock: 60,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1533867617858-e7b97e0605df?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1029069276/photo/relaxation-a-gentlemans-legs-crossed-in-the-desert-sand.jpg?s=1024x1024&w=is&k=20&c=m0UcJ-ynreqXsrwzYS4KQ8tMcVzM9unG4HcpDE482iA="
   },
   {
     id: 94,
@@ -1042,7 +1042,7 @@ export const products = [
     stock: 40,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1605218427368-35b0199057bd?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1191174327/photo/fashion-model-wearing-jeans-and-brown-boots-with-zipper.jpg?s=1024x1024&w=is&k=20&c=7IovSHLGiHh1Kd5TfH4ilPPjCrc_DQshYcts-7RtnBk="
   },
   {
     id: 96,
@@ -1053,7 +1053,7 @@ export const products = [
     stock: 30,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1520006403909-838d6b92c22e?auto=format&fit=crop&w=500&q=80"
+    img: "https://media.istockphoto.com/id/1346409058/photo/womans-legs-in-black-leather-knee-high-stiletto-high-heels-boots-isolated-on-pink-background.jpg?s=1024x1024&w=is&k=20&c=GdO2LdUOmjq9i4QyW11YESQeqJQ6uTZPpB8g8NJYCXY="
   },
   {
     id: 97,
