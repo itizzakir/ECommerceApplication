@@ -5,6 +5,7 @@ import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useNotification } from '../../context/NotificationContext';
 import ProductGrid from '../../components/home/ProductGrid';
+import IconStar from '../../components/icons/IconStar';
 import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
@@ -55,22 +56,39 @@ const ProductDetailPage = () => {
         <div className="product-detail-info">
           <p className="product-detail-info__category">{product.category}</p>
           <h1>{product.title}</h1>
+          <div className="product-detail-rating">
+              <IconStar />
+              <span>{product.rating} ({product.ratingCount} reviews)</span>
+          </div>
           <p className="product-detail-info__price">
             ₹{product.price} 
             <s>₹{product.price + 500}</s>
           </p>
           <p className="product-detail-info__description">{product.description}</p>
+
+          <div className="product-detail-info__stock">
+             Status: 
+             <span className={product.stock > 0 ? 'in-stock' : 'out-of-stock'}>
+                {product.stock > 0 ? `In Stock (${product.stock} items)` : 'Out of Stock'}
+             </span>
+          </div>
           
           <div className="product-detail-actions">
             <div className="quantity-control">
-                <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>-</button>
+                <button onClick={() => setQuantity(q => Math.max(1, q - 1))} disabled={product.stock === 0}>-</button>
                 <span>{quantity}</span>
-                <button onClick={() => setQuantity(q => q + 1)}>+</button>
+                <button onClick={() => setQuantity(q => q + 1)} disabled={product.stock === 0}>+</button>
             </div>
           </div>
 
           <div className="product-detail-buttons">
-            <button onClick={handleAddToCart} className="add-to-cart-btn">Add to Cart</button>
+            <button 
+                onClick={handleAddToCart} 
+                className="add-to-cart-btn"
+                disabled={product.stock === 0}
+            >
+                {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
+            </button>
             <button onClick={handleAddToWishlist} className="add-to-wishlist-btn">
                 {wishlistItems.some(item => item.id === product.id) ? 'Already in Wishlist' : 'Add to Wishlist'}
             </button>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useNotification } from '../../context/NotificationContext';
+import IconStar from '../icons/IconStar';
 import './ProductGrid.css';
 
 const ProductGrid = ({ products }) => {
@@ -41,6 +42,10 @@ const ProductGrid = ({ products }) => {
           <div className="product-info">
             <div className="p-cat">{item.category}</div>
             <div className="p-title">{item.title}</div>
+            <div className="p-rating">
+                <IconStar />
+                <span>{item.rating} ({item.ratingCount})</span>
+            </div>
             <div className="p-price">
                 ₹ {item.price}
                 <s>₹ {item.price + 500}</s>

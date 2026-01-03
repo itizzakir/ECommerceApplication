@@ -8,7 +8,9 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 120
   },
   {
     id: 2,
@@ -19,7 +21,9 @@ export const products = [
     stock: 30,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=500&q=80",
+    rating: 4.2,
+    ratingCount: 85
   },
   {
     id: 3,
@@ -30,7 +34,9 @@ export const products = [
     stock: 80,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1294103821/photo/black-corduroy-jeans-front-view-on-white-background.jpg?s=1024x1024&w=is&k=20&c=_AbJ43zIykDzZ88pDKs9Xqdh44i2s-ZCMfHeuHC6Ncg="
+    img: "https://media.istockphoto.com/id/1294103821/photo/black-corduroy-jeans-front-view-on-white-background.jpg?s=1024x1024&w=is&k=20&c=_AbJ43zIykDzZ88pDKs9Xqdh44i2s-ZCMfHeuHC6Ncg=",
+    rating: 4.8,
+    ratingCount: 200
   },
   {
     id: 4,
@@ -41,7 +47,9 @@ export const products = [
     stock: 60,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=500&q=80",
+    rating: 4.0,
+    ratingCount: 150
   },
   {
     id: 5,
@@ -52,7 +60,9 @@ export const products = [
     stock: 100,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2226037815/photo/woman-holding-hanger-with-beautiful-t-shirt-on-white-background-closeup.jpg?s=1024x1024&w=is&k=20&c=j7tVvQFSvXwYnCpoQMvU1IdcyDd0vEosSgzQVJkKumY="
+    img: "https://media.istockphoto.com/id/2226037815/photo/woman-holding-hanger-with-beautiful-t-shirt-on-white-background-closeup.jpg?s=1024x1024&w=is&k=20&c=j7tVvQFSvXwYnCpoQMvU1IdcyDd0vEosSgzQVJkKumY=",
+    rating: 4.6,
+    ratingCount: 90
   },
   {
     id: 6,
@@ -63,7 +73,9 @@ export const products = [
     stock: 45,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=500&q=80",
+    rating: 4.3,
+    ratingCount: 110
   },
   {
     id: 7,
@@ -74,7 +86,9 @@ export const products = [
     stock: 25,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2208342238/photo/man-in-jacket-and-sneakers-sitting-on-white-background.jpg?s=1024x1024&w=is&k=20&c=lj36OZF2V_xtPLs2lUh0EBbDDzxlkPxhvF4o75Wm-zQ="
+    img: "https://media.istockphoto.com/id/2208342238/photo/man-in-jacket-and-sneakers-sitting-on-white-background.jpg?s=1024x1024&w=is&k=20&c=lj36OZF2V_xtPLs2lUh0EBbDDzxlkPxhvF4o75Wm-zQ=",
+    rating: 4.9,
+    ratingCount: 300
   },
   {
     id: 8,
@@ -85,7 +99,9 @@ export const products = [
     stock: 55,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/623943380/photo/teenage-boy-in-gray-sweater-and-scarf-studio-shot-isolated.jpg?s=1024x1024&w=is&k=20&c=mRGWetrryGvsZMvCqQBvqJISPqkHE4Ozjmz9_6yOC_w="
+    img: "https://media.istockphoto.com/id/623943380/photo/teenage-boy-in-gray-sweater-and-scarf-studio-shot-isolated.jpg?s=1024x1024&w=is&k=20&c=mRGWetrryGvsZMvCqQBvqJISPqkHE4Ozjmz9_6yOC_w=",
+    rating: 4.4,
+    ratingCount: 130
   },
   {
     id: 9,
@@ -96,7 +112,9 @@ export const products = [
     stock: 40,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1564257631407-ed5b5886a0aaaa?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1564257631407-ed5b5886a0aaaa?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 180
   },
   {
     id: 10,
@@ -107,7 +125,9 @@ export const products = [
     stock: 70,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 220
   },
   {
     id: 11,
@@ -118,7 +138,9 @@ export const products = [
     stock: 90,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=500&q=80",
+    rating: 4.1,
+    ratingCount: 95
   },
   {
     id: 12,
@@ -129,7 +151,9 @@ export const products = [
     stock: 120,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1617953644310-e690da9be982?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    img: "https://images.unsplash.com/photo-1617953644310-e690da9be982?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    rating: 4.6,
+    ratingCount: 160
   },
   {
     id: 13,
@@ -140,7 +164,9 @@ export const products = [
     stock: 80,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2216256274/photo/young-smiling-woman-in-black-crop-top-and-high-waisted-leggings-long-brown-hair-full-body.jpg?s=1024x1024&w=is&k=20&c=ucL9niAVZSJoau_sQ2hUyH5Kfc5NrL4VQDbuI96r0YM="
+    img: "https://media.istockphoto.com/id/2216256274/photo/young-smiling-woman-in-black-crop-top-and-high-waisted-leggings-long-brown-hair-full-body.jpg?s=1024x1024&w=is&k=20&c=ucL9niAVZSJoau_sQ2hUyH5Kfc5NrL4VQDbuI96r0YM=",
+    rating: 4.8,
+    ratingCount: 210
   },
   {
     id: 14,
@@ -151,7 +177,9 @@ export const products = [
     stock: 35,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80",
+    rating: 4.4,
+    ratingCount: 140
   },
   {
     id: 15,
@@ -162,7 +190,9 @@ export const products = [
     stock: 65,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1189246995/photo/beautiful-luxurious-knitted-cardigan-in-brown-autumn-winter-warm.jpg?s=1024x1024&w=is&k=20&c=8k7roWL8F38LEvNQXX6f9HsnwG6HxyiOvXQI7OGOhYI="
+    img: "https://media.istockphoto.com/id/1189246995/photo/beautiful-luxurious-knitted-cardigan-in-brown-autumn-winter-warm.jpg?s=1024x1024&w=is&k=20&c=8k7roWL8F38LEvNQXX6f9HsnwG6HxyiOvXQI7OGOhYI=",
+    rating: 4.7,
+    ratingCount: 190
   },
   {
     id: 16,
@@ -173,7 +203,9 @@ export const products = [
     stock: 50,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1435827167/photo/brown-herringbone-texture-waistcoat-isolated-on-white-background.jpg?s=1024x1024&w=is&k=20&c=2W9djK_wQG2qxrIPf-B4M9uN_nl5gyn8ZtcTZ1gp74w="
+    img: "https://media.istockphoto.com/id/1435827167/photo/brown-herringbone-texture-waistcoat-isolated-on-white-background.jpg?s=1024x1024&w=is&k=20&c=2W9djK_wQG2qxrIPf-B4M9uN_nl5gyn8ZtcTZ1gp74w=",
+    rating: 4.3,
+    ratingCount: 110
   },
   {
     id: 17,
@@ -184,7 +216,9 @@ export const products = [
     stock: 20,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 250
   },
   {
     id: 18,
@@ -195,7 +229,9 @@ export const products = [
     stock: 15,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/907865186/photo/handsome-man.jpg?s=1024x1024&w=is&k=20&c=2MkK4OvKoiGHFBn-n_mXx01jo-V0u4z_nMW3HSOfrFM="
+    img: "https://media.istockphoto.com/id/907865186/photo/handsome-man.jpg?s=1024x1024&w=is&k=20&c=2MkK4OvKoiGHFBn-n_mXx01jo-V0u4z_nMW3HSOfrFM=",
+    rating: 5.0,
+    ratingCount: 100
   },
   {
     id: 19,
@@ -206,7 +242,9 @@ export const products = [
     stock: 70,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2245962018/photo/ready-for-vacation.jpg?s=1024x1024&w=is&k=20&c=q6DFJ2TWtDDA7syEfi6rBLL1B_dR0FXOXRjxpSyFT1Y="
+    img: "https://media.istockphoto.com/id/2245962018/photo/ready-for-vacation.jpg?s=1024x1024&w=is&k=20&c=q6DFJ2TWtDDA7syEfi6rBLL1B_dR0FXOXRjxpSyFT1Y=",
+    rating: 4.5,
+    ratingCount: 200
   },
   {
     id: 20,
@@ -217,7 +255,9 @@ export const products = [
     stock: 60,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2135105309/photo/sunscreen-bottle-on-striped-towel-next-to-straw-hat-and-sunglasses-on-sandy-beach-with-ocean.jpg?s=1024x1024&w=is&k=20&c=tBWBVynzNPlosZMCeE4IfCG6LAqS8cpQrmTO-nsW2YI="
+    img: "https://media.istockphoto.com/id/2135105309/photo/sunscreen-bottle-on-striped-towel-next-to-straw-hat-and-sunglasses-on-sandy-beach-with-ocean.jpg?s=1024x1024&w=is&k=20&c=tBWBVynzNPlosZMCeE4IfCG6LAqS8cpQrmTO-nsW2YI=",
+    rating: 4.6,
+    ratingCount: 180
   },
   {
     id: 21,
@@ -228,7 +268,9 @@ export const products = [
     stock: 200,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/538700919/photo/blue-boxer-underwear-on-grunge-wall.jpg?s=1024x1024&w=is&k=20&c=IGqJEDdSl17Ih6dGftx9epZJ5QnplGn473IuvzrBXdk="
+    img: "https://media.istockphoto.com/id/538700919/photo/blue-boxer-underwear-on-grunge-wall.jpg?s=1024x1024&w=is&k=20&c=IGqJEDdSl17Ih6dGftx9epZJ5QnplGn473IuvzrBXdk=",
+    rating: 4.7,
+    ratingCount: 300
   },
   {
     id: 22,
@@ -239,7 +281,9 @@ export const products = [
     stock: 300,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 400
   },
   {
     id: 23,
@@ -250,7 +294,9 @@ export const products = [
     stock: 80,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/868606808/photo/pajamas-isolated-on-the-white-background.jpg?s=1024x1024&w=is&k=20&c=-sokmAcJJ6gk8kiBvSOBVFHYIbM34eren5BdmvemJUQ="
+    img: "https://media.istockphoto.com/id/868606808/photo/pajamas-isolated-on-the-white-background.jpg?s=1024x1024&w=is&k=20&c=-sokmAcJJ6gk8kiBvSOBVFHYIbM34eren5BdmvemJUQ=",
+    rating: 4.5,
+    ratingCount: 220
   },
   {
     id: 24,
@@ -261,7 +307,9 @@ export const products = [
     stock: 40,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 150
   },
   {
     id: 25,
@@ -272,7 +320,9 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 130
   },
   {
     id: 26,
@@ -283,7 +333,9 @@ export const products = [
     stock: 30,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1550572614/photo/young-dark-haired-man-in-a-black-tracksuit-gray-t-shirt-and-running-shoes.jpg?s=1024x1024&w=is&k=20&c=XJDvm95KK-jv_AgjYd5Tr8rHEC3GCNsQkK8nd3A2u80="
+    img: "https://media.istockphoto.com/id/1550572614/photo/young-dark-haired-man-in-a-black-tracksuit-gray-t-shirt-and-running-shoes.jpg?s=1024x1024&w=is&k=20&c=XJDvm95KK-jv_AgjYd5Tr8rHEC3GCNsQkK8nd3A2u80=",
+    rating: 4.4,
+    ratingCount: 100
   },
   {
     id: 27,
@@ -294,7 +346,9 @@ export const products = [
     stock: 60,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 280
   },
   {
     id: 28,
@@ -305,7 +359,9 @@ export const products = [
     stock: 40,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 170
   },
   {
     id: 29,
@@ -316,7 +372,9 @@ export const products = [
     stock: 90,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1250160187/photo/female-legs-with-white-pedicure-in-summer-brown-sandals-on-background-copy-space.jpg?s=1024x1024&w=is&k=20&c=MMK-6XI9Ui9rbNMTeXRTisaW5wsguPJFpjilRUXrDTs="
+    img: "https://media.istockphoto.com/id/1250160187/photo/female-legs-with-white-pedicure-in-summer-brown-sandals-on-background-copy-space.jpg?s=1024x1024&w=is&k=20&c=MMK-6XI9Ui9rbNMTeXRTisaW5wsguPJFpjilRUXrDTs=",
+    rating: 4.3,
+    ratingCount: 140
   },
   {
     id: 30,
@@ -327,7 +385,9 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 200
   },
   {
     id: 31,
@@ -338,7 +398,9 @@ export const products = [
     stock: 120,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=500&q=80",
+    rating: 4.4,
+    ratingCount: 190
   },
   {
     id: 32,
@@ -349,7 +411,9 @@ export const products = [
     stock: 70,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1590874103328-3275f6993142?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1590874103328-3275f6993142?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 230
   },
   {
     id: 33,
@@ -360,7 +424,9 @@ export const products = [
     stock: 40,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 150
   },
   {
     id: 34,
@@ -371,7 +437,9 @@ export const products = [
     stock: 30,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 210
   },
   {
     id: 35,
@@ -382,7 +450,9 @@ export const products = [
     stock: 150,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1073589496/photo/senior-unrecognizable-woman-picking-up-a-red-wallet-from-a-rack-in-a-bags-and-wallets-store.jpg?s=1024x1024&w=is&k=20&c=cESqByOIXCuikTff63Dlow2wrcy2EM86OiH3THw7dh4="
+    img: "https://media.istockphoto.com/id/1073589496/photo/senior-unrecognizable-woman-picking-up-a-red-wallet-from-a-rack-in-a-bags-and-wallets-store.jpg?s=1024x1024&w=is&k=20&c=cESqByOIXCuikTff63Dlow2wrcy2EM86OiH3THw7dh4=",
+    rating: 4.5,
+    ratingCount: 300
   },
   {
     id: 36,
@@ -393,7 +463,9 @@ export const products = [
     stock: 180,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1624223030152-ce71fcc9ade8?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1624223030152-ce71fcc9ade8?auto=format&fit=crop&w=500&q=80",
+    rating: 4.2,
+    ratingCount: 180
   },
   {
     id: 37,
@@ -404,7 +476,9 @@ export const products = [
     stock: 100,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1520975661595-6453be3f7070?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1520975661595-6453be3f7070?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 150
   },
   {
     id: 38,
@@ -415,7 +489,9 @@ export const products = [
     stock: 120,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1576053139778-7e32f2ae3cfd?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1576053139778-7e32f2ae3cfd?auto=format&fit=crop&w=500&q=80",
+    rating: 4.4,
+    ratingCount: 200
   },
   {
     id: 39,
@@ -426,7 +502,9 @@ export const products = [
     stock: 200,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 350
   },
   {
     id: 40,
@@ -437,7 +515,9 @@ export const products = [
     stock: 80,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1545899997-6c2fa23165b4?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1545899997-6c2fa23165b4?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 120
   },
   {
     id: 41,
@@ -448,7 +528,9 @@ export const products = [
     stock: 60,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 220
   },
   {
     id: 42,
@@ -459,7 +541,9 @@ export const products = [
     stock: 40,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=500&q=80",
+    rating: 5.0,
+    ratingCount: 150
   },
   {
     id: 43,
@@ -470,7 +554,9 @@ export const products = [
     stock: 20,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80",
+    rating: 5.0,
+    ratingCount: 100
   },
   {
     id: 44,
@@ -481,7 +567,9 @@ export const products = [
     stock: 15,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 80
   },
   {
     id: 45,
@@ -492,7 +580,9 @@ export const products = [
     stock: 100,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 250
   },
   {
     id: 46,
@@ -503,7 +593,9 @@ export const products = [
     stock: 80,
     category: "Accessories",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=500&q=80",
+    rating: 4.4,
+    ratingCount: 120
   },
   {
     id: 47,
@@ -514,7 +606,9 @@ export const products = [
     stock: 150,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1519238807195-4e3b9a97fcb5?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1519238807195-4e3b9a97fcb5?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 300
   },
   {
     id: 48,
@@ -525,7 +619,9 @@ export const products = [
     stock: 100,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 200
   },
   {
     id: 49,
@@ -536,7 +632,9 @@ export const products = [
     stock: 70,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 150
   },
   {
     id: 50,
@@ -547,7 +645,9 @@ export const products = [
     stock: 50,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1611428813653-aa606c998586?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1611428813653-aa606c998586?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 100
   },
   {
     id: 51,
@@ -558,7 +658,9 @@ export const products = [
     stock: 120,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1515347619252-60a6bf4fffce?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1515347619252-60a6bf4fffce?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 220
   },
   {
     id: 52,
@@ -569,7 +671,9 @@ export const products = [
     stock: 180,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1588645258679-b695e128182b?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1588645258679-b695e128182b?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 300
   },
   {
     id: 53,
@@ -580,7 +684,9 @@ export const products = [
     stock: 250,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1566454825413-886f7762a406?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1566454825413-886f7762a406?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 400
   },
   {
     id: 54,
@@ -591,7 +697,9 @@ export const products = [
     stock: 400,
     category: "Kids",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1596700517596-f94943f5509e?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1596700517596-f94943f5509e?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 500
   },
   {
     id: 55,
@@ -602,7 +710,9 @@ export const products = [
     stock: 90,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80",
+    rating: 4.2,
+    ratingCount: 150
   },
   {
     id: 56,
@@ -613,7 +723,9 @@ export const products = [
     stock: 40,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 200
   },
   {
     id: 57,
@@ -624,7 +736,9 @@ export const products = [
     stock: 30,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 120
   },
   {
     id: 58,
@@ -635,7 +749,9 @@ export const products = [
     stock: 70,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 250
   },
   {
     id: 59,
@@ -646,7 +762,9 @@ export const products = [
     stock: 200,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/907837850/photo/leather-wallet-isolated-white-background.jpg?s=1024x1024&w=is&k=20&c=fa7UIUHtMuAEkGJjKlJwjMmHuiZRK4tr6KnJxVosV2E="
+    img: "https://media.istockphoto.com/id/907837850/photo/leather-wallet-isolated-white-background.jpg?s=1024x1024&w=is&k=20&c=fa7UIUHtMuAEkGJjKlJwjMmHuiZRK4tr6KnJxVosV2E=",
+    rating: 4.5,
+    ratingCount: 350
   },
   {
     id: 60,
@@ -657,7 +775,9 @@ export const products = [
     stock: 150,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/467768600/photo/sixties-style-girl.jpg?s=1024x1024&w=is&k=20&c=YB-5hi0P9WgaxYapKxrIrEzvn9o_vZyyvU6878Hfgro="
+    img: "https://media.istockphoto.com/id/467768600/photo/sixties-style-girl.jpg?s=1024x1024&w=is&k=20&c=YB-5hi0P9WgaxYapKxrIrEzvn9o_vZyyvU6878Hfgro=",
+    rating: 4.6,
+    ratingCount: 200
   },
   {
     id: 61,
@@ -668,7 +788,9 @@ export const products = [
     stock: 25,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=500&q=80",
+    rating: 4.9,
+    ratingCount: 150
   },
   {
     id: 62,
@@ -679,7 +801,9 @@ export const products = [
     stock: 120,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 180
   },
   {
     id: 63,
@@ -690,7 +814,9 @@ export const products = [
     stock: 80,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80",
+    rating: 4.4,
+    ratingCount: 200
   },
   {
     id: 64,
@@ -701,7 +827,9 @@ export const products = [
     stock: 60,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1582418702059-97ebafb35d09?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1582418702059-97ebafb35d09?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 160
   },
   {
     id: 65,
@@ -712,7 +840,9 @@ export const products = [
     stock: 50,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=500&q=80",
+    rating: 4.3,
+    ratingCount: 140
   },
   {
     id: 66,
@@ -723,7 +853,9 @@ export const products = [
     stock: 90,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/500161322/photo/traditional-and-ethnic-indian-blouse-for-women-to-be-worn.jpg?s=1024x1024&w=is&k=20&c=_I2t-2GCpTveNvF4e0wOKvG4pnGclhiGM0L6sblS_fg="
+    img: "https://media.istockphoto.com/id/500161322/photo/traditional-and-ethnic-indian-blouse-for-women-to-be-worn.jpg?s=1024x1024&w=is&k=20&c=_I2t-2GCpTveNvF4e0wOKvG4pnGclhiGM0L6sblS_fg=",
+    rating: 4.6,
+    ratingCount: 110
   },
   {
     id: 67,
@@ -734,7 +866,9 @@ export const products = [
     stock: 70,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 220
   },
   {
     id: 68,
@@ -745,7 +879,9 @@ export const products = [
     stock: 80,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/507904690/photo/beautiful-woman-smiling.jpg?s=1024x1024&w=is&k=20&c=Ulrm8hChpaRa2rG5gVPgVkzm4P8BPrFqDUkCGzBCjO4="
+    img: "https://media.istockphoto.com/id/507904690/photo/beautiful-woman-smiling.jpg?s=1024x1024&w=is&k=20&c=Ulrm8hChpaRa2rG5gVPgVkzm4P8BPrFqDUkCGzBCjO4=",
+    rating: 4.5,
+    ratingCount: 130
   },
   {
     id: 69,
@@ -756,7 +892,9 @@ export const products = [
     stock: 40,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 190
   },
   {
     id: 70,
@@ -767,7 +905,9 @@ export const products = [
     stock: 30,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/637408510/photo/beautiful-elegant-woman.jpg?s=1024x1024&w=is&k=20&c=_mduNJ1WiNvr9pZo7_9-otFQfCFD0Si6bHJbBcSqx2k="
+    img: "https://media.istockphoto.com/id/637408510/photo/beautiful-elegant-woman.jpg?s=1024x1024&w=is&k=20&c=_mduNJ1WiNvr9pZo7_9-otFQfCFD0Si6bHJbBcSqx2k=",
+    rating: 4.9,
+    ratingCount: 150
   },
   {
     id: 71,
@@ -778,7 +918,9 @@ export const products = [
     stock: 60,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?auto=format&fit=crop&w=500&q=80",
+    rating: 4.4,
+    ratingCount: 100
   },
   {
     id: 72,
@@ -789,7 +931,9 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 120
   },
   {
     id: 73,
@@ -800,7 +944,9 @@ export const products = [
     stock: 100,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/854409814/photo/smiling-dude-in-pink.jpg?s=1024x1024&w=is&k=20&c=p4vtsYD8lMhxaXOeoc4qHrg4epxqrmR2yrfi3f23mdM="
+    img: "https://media.istockphoto.com/id/854409814/photo/smiling-dude-in-pink.jpg?s=1024x1024&w=is&k=20&c=p4vtsYD8lMhxaXOeoc4qHrg4epxqrmR2yrfi3f23mdM=",
+    rating: 4.5,
+    ratingCount: 180
   },
   {
     id: 74,
@@ -811,7 +957,9 @@ export const products = [
     stock: 90,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80",
+    rating: 4.3,
+    ratingCount: 160
   },
   {
     id: 75,
@@ -822,7 +970,9 @@ export const products = [
     stock: 80,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/638770700/photo/shorts-guy-on-beach.jpg?s=1024x1024&w=is&k=20&c=taCNgGA9kaAagrIN7lR8S9ylP8yxJ1yCmaX5fsZEP00="
+    img: "https://media.istockphoto.com/id/638770700/photo/shorts-guy-on-beach.jpg?s=1024x1024&w=is&k=20&c=taCNgGA9kaAagrIN7lR8S9ylP8yxJ1yCmaX5fsZEP00=",
+    rating: 4.6,
+    ratingCount: 140
   },
   {
     id: 76,
@@ -833,7 +983,9 @@ export const products = [
     stock: 60,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1028814956/photo/summer-fashion-flatay.jpg?s=1024x1024&w=is&k=20&c=dIAkdpddCK72dpNbfchriYXaPNHoASrAN60XP6_bW-I="
+    img: "https://media.istockphoto.com/id/1028814956/photo/summer-fashion-flatay.jpg?s=1024x1024&w=is&k=20&c=dIAkdpddCK72dpNbfchriYXaPNHoASrAN60XP6_bW-I=",
+    rating: 4.7,
+    ratingCount: 200
   },
   {
     id: 77,
@@ -844,7 +996,9 @@ export const products = [
     stock: 120,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/637314404/photo/brown-chino-pants.jpg?s=1024x1024&w=is&k=20&c=FuLSfvbXQY-HTuF1Pd-IG8LGePygGM6pwIL-9T9AW3o="
+    img: "https://media.istockphoto.com/id/637314404/photo/brown-chino-pants.jpg?s=1024x1024&w=is&k=20&c=FuLSfvbXQY-HTuF1Pd-IG8LGePygGM6pwIL-9T9AW3o=",
+    rating: 4.5,
+    ratingCount: 250
   },
   {
     id: 78,
@@ -855,7 +1009,9 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2211561351/photo/bridesmaids-maid-of-honnor-colorful-dresses-laces-gorgeous-gowns-in-pastel-colors.jpg?s=1024x1024&w=is&k=20&c=tgQLKUqla0GrBsWr62bsqT9NT7uwgHMhvFR5nA27rJA="
+    img: "https://media.istockphoto.com/id/2211561351/photo/bridesmaids-maid-of-honnor-colorful-dresses-laces-gorgeous-gowns-in-pastel-colors.jpg?s=1024x1024&w=is&k=20&c=tgQLKUqla0GrBsWr62bsqT9NT7uwgHMhvFR5nA27rJA=",
+    rating: 4.8,
+    ratingCount: 120
   },
   {
     id: 79,
@@ -866,7 +1022,9 @@ export const products = [
     stock: 200,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2191457682/photo/mid-adult-chinese-woman-pulling-up-her-socks-before-jogging-near-the-sydney-harbor-bridge-in.jpg?s=1024x1024&w=is&k=20&c=lqLG9o4SMopQ5cu2-NnCMT8Ca4MTlT9PZzlGA9JqgnU="
+    img: "https://media.istockphoto.com/id/2191457682/photo/mid-adult-chinese-woman-pulling-up-her-socks-before-jogging-near-the-sydney-harbor-bridge-in.jpg?s=1024x1024&w=is&k=20&c=lqLG9o4SMopQ5cu2-NnCMT8Ca4MTlT9PZzlGA9JqgnU=",
+    rating: 4.6,
+    ratingCount: 300
   },
   {
     id: 80,
@@ -877,7 +1035,9 @@ export const products = [
     stock: 180,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/916661810/photo/three-sets-of-new-socks-with-packaging.jpg?s=1024x1024&w=is&k=20&c=hhrARYycomtSWxL9w57Eypq8y2nsP90OHLTlSe6r51g="
+    img: "https://media.istockphoto.com/id/916661810/photo/three-sets-of-new-socks-with-packaging.jpg?s=1024x1024&w=is&k=20&c=hhrARYycomtSWxL9w57Eypq8y2nsP90OHLTlSe6r51g=",
+    rating: 4.7,
+    ratingCount: 280
   },
   {
     id: 81,
@@ -888,7 +1048,9 @@ export const products = [
     stock: 70,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2246518446/photo/top-view-of-folded-mint-green-striped-pajama-set-on-white-bed-minimal-style-cozy-comfort.jpg?s=1024x1024&w=is&k=20&c=T8ZrjpZSIUBa4bMNQ4ybShOYvaaKGYN3ZUUjGY03040="
+    img: "https://media.istockphoto.com/id/2246518446/photo/top-view-of-folded-mint-green-striped-pajama-set-on-white-bed-minimal-style-cozy-comfort.jpg?s=1024x1024&w=is&k=20&c=T8ZrjpZSIUBa4bMNQ4ybShOYvaaKGYN3ZUUjGY03040=",
+    rating: 4.5,
+    ratingCount: 110
   },
   {
     id: 82,
@@ -899,7 +1061,9 @@ export const products = [
     stock: 60,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1201270350/vector/realistic-sleeptime-set.jpg?s=1024x1024&w=is&k=20&c=Q2NyIvz2OTVfK8F4Npeffc4sD2jEoq8-xVgyL1ZG3Uo="
+    img: "https://media.istockphoto.com/id/1201270350/vector/realistic-sleeptime-set.jpg?s=1024x1024&w=is&k=20&c=Q2NyIvz2OTVfK8F4Npeffc4sD2jEoq8-xVgyL1ZG3Uo=",
+    rating: 4.6,
+    ratingCount: 130
   },
   {
     id: 83,
@@ -910,7 +1074,9 @@ export const products = [
     stock: 40,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/958566336/photo/optimistic-guy-is-leaning-on-wall-in-white-housecoat.jpg?s=1024x1024&w=is&k=20&c=Colne-yS6h9iN4tw2R9xNscdxm1-1a24LSB7D3Ndhus="
+    img: "https://media.istockphoto.com/id/958566336/photo/optimistic-guy-is-leaning-on-wall-in-white-housecoat.jpg?s=1024x1024&w=is&k=20&c=Colne-yS6h9iN4tw2R9xNscdxm1-1a24LSB7D3Ndhus=",
+    rating: 4.8,
+    ratingCount: 90
   },
   {
     id: 84,
@@ -921,7 +1087,9 @@ export const products = [
     stock: 30,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1314530179/photo/blank-white-hotel-bathrobe-mockup-front-and-back-view.jpg?s=1024x1024&w=is&k=20&c=4FR0hus2IzI_g5SxPyF4F4pYbIrftOMvmhvAsdKMsuQ="
+    img: "https://media.istockphoto.com/id/1314530179/photo/blank-white-hotel-bathrobe-mockup-front-and-back-view.jpg?s=1024x1024&w=is&k=20&c=4FR0hus2IzI_g5SxPyF4F4pYbIrftOMvmhvAsdKMsuQ=",
+    rating: 4.9,
+    ratingCount: 110
   },
   {
     id: 85,
@@ -932,7 +1100,9 @@ export const products = [
     stock: 90,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 140
   },
   {
     id: 86,
@@ -943,7 +1113,9 @@ export const products = [
     stock: 80,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 160
   },
   {
     id: 87,
@@ -954,7 +1126,9 @@ export const products = [
     stock: 100,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/155601795/photo/mannequin-at-fashion-store.jpg?s=1024x1024&w=is&k=20&c=7_uOci7R8S0iFM4Ru9ULjhCe23Kk-F1lClRHZiql-0g="
+    img: "https://media.istockphoto.com/id/155601795/photo/mannequin-at-fashion-store.jpg?s=1024x1024&w=is&k=20&c=7_uOci7R8S0iFM4Ru9ULjhCe23Kk-F1lClRHZiql-0g=",
+    rating: 4.4,
+    ratingCount: 120
   },
   {
     id: 88,
@@ -965,7 +1139,9 @@ export const products = [
     stock: 70,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 130
   },
   {
     id: 89,
@@ -976,7 +1152,9 @@ export const products = [
     stock: 50,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 200
   },
   {
     id: 90,
@@ -987,7 +1165,9 @@ export const products = [
     stock: 40,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1339440288/photo/white-sneakers-shoes-and-girl%C3%A2s-legs-on-nude-background-casual-footwear.jpg?s=1024x1024&w=is&k=20&c=qqJFrexJo_FsDRWeOh5p32Mz3smlExg5JZnIKOhl4QY="
+    img: "https://media.istockphoto.com/id/1339440288/photo/white-sneakers-shoes-and-girl%C3%A2s-legs-on-nude-background-casual-footwear.jpg?s=1024x1024&w=is&k=20&c=qqJFrexJo_FsDRWeOh5p32Mz3smlExg5JZnIKOhl4QY=",
+    rating: 4.9,
+    ratingCount: 180
   },
   {
     id: 91,
@@ -998,7 +1178,9 @@ export const products = [
     stock: 120,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1406216741/photo/vacation-on-summer-ocean-beach-concept-male-feet-in-sandals-on-sea-sand-with-bubble-float.jpg?s=1024x1024&w=is&k=20&c=XHMdGQK12ActS_RcRQD7_gyX2wtEs6mRYx6eDw7pEQs="
+    img: "https://media.istockphoto.com/id/1406216741/photo/vacation-on-summer-ocean-beach-concept-male-feet-in-sandals-on-sea-sand-with-bubble-float.jpg?s=1024x1024&w=is&k=20&c=XHMdGQK12ActS_RcRQD7_gyX2wtEs6mRYx6eDw7pEQs=",
+    rating: 4.3,
+    ratingCount: 150
   },
   {
     id: 92,
@@ -1009,7 +1191,9 @@ export const products = [
     stock: 100,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 160
   },
   {
     id: 93,
@@ -1020,7 +1204,9 @@ export const products = [
     stock: 60,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1029069276/photo/relaxation-a-gentlemans-legs-crossed-in-the-desert-sand.jpg?s=1024x1024&w=is&k=20&c=m0UcJ-ynreqXsrwzYS4KQ8tMcVzM9unG4HcpDE482iA="
+    img: "https://media.istockphoto.com/id/1029069276/photo/relaxation-a-gentlemans-legs-crossed-in-the-desert-sand.jpg?s=1024x1024&w=is&k=20&c=m0UcJ-ynreqXsrwzYS4KQ8tMcVzM9unG4HcpDE482iA=",
+    rating: 4.7,
+    ratingCount: 110
   },
   {
     id: 94,
@@ -1031,7 +1217,9 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80",
+    rating: 4.6,
+    ratingCount: 140
   },
   {
     id: 95,
@@ -1042,7 +1230,9 @@ export const products = [
     stock: 40,
     category: "Men",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1191174327/photo/fashion-model-wearing-jeans-and-brown-boots-with-zipper.jpg?s=1024x1024&w=is&k=20&c=7IovSHLGiHh1Kd5TfH4ilPPjCrc_DQshYcts-7RtnBk="
+    img: "https://media.istockphoto.com/id/1191174327/photo/fashion-model-wearing-jeans-and-brown-boots-with-zipper.jpg?s=1024x1024&w=is&k=20&c=7IovSHLGiHh1Kd5TfH4ilPPjCrc_DQshYcts-7RtnBk=",
+    rating: 4.8,
+    ratingCount: 190
   },
   {
     id: 96,
@@ -1053,7 +1243,9 @@ export const products = [
     stock: 30,
     category: "Women",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1346409058/photo/womans-legs-in-black-leather-knee-high-stiletto-high-heels-boots-isolated-on-pink-background.jpg?s=1024x1024&w=is&k=20&c=GdO2LdUOmjq9i4QyW11YESQeqJQ6uTZPpB8g8NJYCXY="
+    img: "https://media.istockphoto.com/id/1346409058/photo/womans-legs-in-black-leather-knee-high-stiletto-high-heels-boots-isolated-on-pink-background.jpg?s=1024x1024&w=is&k=20&c=GdO2LdUOmjq9i4QyW11YESQeqJQ6uTZPpB8g8NJYCXY=",
+    rating: 4.9,
+    ratingCount: 170
   },
   {
     id: 97,
@@ -1064,7 +1256,9 @@ export const products = [
     stock: 60,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80",
+    rating: 4.7,
+    ratingCount: 220
   },
   {
     id: 98,
@@ -1075,7 +1269,9 @@ export const products = [
     stock: 50,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=500&q=80",
+    rating: 4.8,
+    ratingCount: 180
   },
   {
     id: 99,
@@ -1086,7 +1282,9 @@ export const products = [
     stock: 150,
     category: "Men",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=500&q=80",
+    rating: 4.4,
+    ratingCount: 260
   },
   {
     id: 100,
@@ -1097,7 +1295,9 @@ export const products = [
     stock: 100,
     category: "Women",
     brand: "Velore",
-    img: "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?auto=format&fit=crop&w=500&q=80"
+    img: "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?auto=format&fit=crop&w=500&q=80",
+    rating: 4.5,
+    ratingCount: 200
   },
   {
     id: 101,
@@ -1108,7 +1308,9 @@ export const products = [
     stock: 100,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1029383076/photo/collection-of-leather-belts-on-a-wooden-table.jpg?s=612x612&w=0&k=20&c=wmTnklWIPJyRxpiooEVlwCewGGBq9LdxYbE8ijdxCkc="
+    img: "https://media.istockphoto.com/id/1029383076/photo/collection-of-leather-belts-on-a-wooden-table.jpg?s=612x612&w=0&k=20&c=wmTnklWIPJyRxpiooEVlwCewGGBq9LdxYbE8ijdxCkc=",
+    rating: 4.6,
+    ratingCount: 150
   },
   {
     id: 102,
@@ -1119,7 +1321,9 @@ export const products = [
     stock: 80,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1083868870/photo/silk-scarf.jpg?s=612x612&w=0&k=20&c=1JpxHkp-jI8c_SuKCSyqpIpjSVI7dJIm4XqqLDGsQ5A="
+    img: "https://media.istockphoto.com/id/1083868870/photo/silk-scarf.jpg?s=612x612&w=0&k=20&c=1JpxHkp-jI8c_SuKCSyqpIpjSVI7dJIm4XqqLDGsQ5A=",
+    rating: 4.8,
+    ratingCount: 120
   },
   {
     id: 103,
@@ -1130,7 +1334,9 @@ export const products = [
     stock: 120,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1087614924/photo/hat-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=dw1PzC6S-woCKByrkv0T_KCTHpOZleGdotvbf-fbeBw="
+    img: "https://media.istockphoto.com/id/1087614924/photo/hat-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=dw1PzC6S-woCKByrkv0T_KCTHpOZleGdotvbf-fbeBw=",
+    rating: 4.5,
+    ratingCount: 180
   },
   {
     id: 104,
@@ -1141,7 +1347,9 @@ export const products = [
     stock: 60,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/874114444/photo/leather-work-glove.jpg?s=612x612&w=0&k=20&c=ILN72rOcjMyJ4hqotixzLyhgPE2oOA64N2EBcCNghiE="
+    img: "https://media.istockphoto.com/id/874114444/photo/leather-work-glove.jpg?s=612x612&w=0&k=20&c=ILN72rOcjMyJ4hqotixzLyhgPE2oOA64N2EBcCNghiE=",
+    rating: 4.7,
+    ratingCount: 100
   },
   {
     id: 105,
@@ -1152,7 +1360,9 @@ export const products = [
     stock: 40,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2232473357/photo/minimalist-diamond-jewelry-necklace-with-square-cut-stones.jpg?s=612x612&w=0&k=20&c=wWn0OyZMpzlCbEMn45FKrhZOsCNdhjKFI4b6RYqW7kU="
+    img: "https://media.istockphoto.com/id/2232473357/photo/minimalist-diamond-jewelry-necklace-with-square-cut-stones.jpg?s=612x612&w=0&k=20&c=wWn0OyZMpzlCbEMn45FKrhZOsCNdhjKFI4b6RYqW7kU=",
+    rating: 4.9,
+    ratingCount: 90
   },
   {
     id: 106,
@@ -1163,7 +1373,9 @@ export const products = [
     stock: 20,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1313436116/photo/woman-wearing-luxury-wristwatch-near-mirror-closeup.jpg?s=612x612&w=0&k=20&c=4J3dQWBsG6Dim5W52VIFLBQ5iakcnvx6odPvkbsR72I="
+    img: "https://media.istockphoto.com/id/1313436116/photo/woman-wearing-luxury-wristwatch-near-mirror-closeup.jpg?s=612x612&w=0&k=20&c=4J3dQWBsG6Dim5W52VIFLBQ5iakcnvx6odPvkbsR72I=",
+    rating: 5.0,
+    ratingCount: 60
   },
   {
     id: 107,
@@ -1174,7 +1386,9 @@ export const products = [
     stock: 90,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/538338399/vector/aviator-sunglasses-vector-illustration-background.jpg?s=612x612&w=0&k=20&c=Vqhy8NrRFB2y6thJVcSuILDjQXp-9cu3uJbOIJjKQzA="
+    img: "https://media.istockphoto.com/id/538338399/vector/aviator-sunglasses-vector-illustration-background.jpg?s=612x612&w=0&k=20&c=Vqhy8NrRFB2y6thJVcSuILDjQXp-9cu3uJbOIJjKQzA=",
+    rating: 4.6,
+    ratingCount: 220
   },
   {
     id: 108,
@@ -1185,7 +1399,9 @@ export const products = [
     stock: 70,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2248806847/photo/woven-black-and-pink-crossbody-bag-isolated-white.jpg?s=612x612&w=0&k=20&c=eanMOyEFrYcP7WtM5SWacmkBuLF4Gof9en6eLoBmnyQ="
+    img: "https://media.istockphoto.com/id/2248806847/photo/woven-black-and-pink-crossbody-bag-isolated-white.jpg?s=612x612&w=0&k=20&c=eanMOyEFrYcP7WtM5SWacmkBuLF4Gof9en6eLoBmnyQ=",
+    rating: 4.7,
+    ratingCount: 160
   },
   {
     id: 109,
@@ -1196,7 +1412,9 @@ export const products = [
     stock: 50,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/153721019/photo/a-gray-fedora-hat-with-feathers-on-a-white-background.jpg?s=612x612&w=0&k=20&c=tPq5f6G4236OKQdL3ZM0u0likYFyyjpwl88B37WRM84="
+    img: "https://media.istockphoto.com/id/153721019/photo/a-gray-fedora-hat-with-feathers-on-a-white-background.jpg?s=612x612&w=0&k=20&c=tPq5f6G4236OKQdL3ZM0u0likYFyyjpwl88B37WRM84=",
+    rating: 4.5,
+    ratingCount: 110
   },
   {
     id: 110,
@@ -1207,7 +1425,9 @@ export const products = [
     stock: 60,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2238248856/photo/elegant-butterfly-pearl-tassel-earrings-on-a-mossy-stone-background.jpg?s=612x612&w=0&k=20&c=pvaJ0FAAlB17k6fFVD7aCDGSgSsBuK6E8MWJBm1KKio="
+    img: "https://media.istockphoto.com/id/2238248856/photo/elegant-butterfly-pearl-tassel-earrings-on-a-mossy-stone-background.jpg?s=612x612&w=0&k=20&c=pvaJ0FAAlB17k6fFVD7aCDGSgSsBuK6E8MWJBm1KKio=",
+    rating: 4.8,
+    ratingCount: 140
   },
   {
     id: 111,
@@ -1218,7 +1438,9 @@ export const products = [
     stock: 40,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1289815582/photo/unrecognizable-businessman-putting-a-digital-tablet-into-his-bag-at-work.jpg?s=612x612&w=0&k=20&c=Z_DV62ywIgCmg3Vz960eIXGO17Yi14QBKf5SWj6FXBQ="
+    img: "https://media.istockphoto.com/id/1289815582/photo/unrecognizable-businessman-putting-a-digital-tablet-into-his-bag-at-work.jpg?s=612x612&w=0&k=20&c=Z_DV62ywIgCmg3Vz960eIXGO17Yi14QBKf5SWj6FXBQ=",
+    rating: 4.8,
+    ratingCount: 130
   },
   {
     id: 112,
@@ -1229,7 +1451,9 @@ export const products = [
     stock: 110,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1053168776/photo/red-scarf-isolated.jpg?s=612x612&w=0&k=20&c=tLJKRfQgt-FgAy_th5BEBgkJ1TVgWCwBOW_CXAeKxts="
+    img: "https://media.istockphoto.com/id/1053168776/photo/red-scarf-isolated.jpg?s=612x612&w=0&k=20&c=tLJKRfQgt-FgAy_th5BEBgkJ1TVgWCwBOW_CXAeKxts=",
+    rating: 4.6,
+    ratingCount: 190
   },
   {
     id: 113,
@@ -1240,7 +1464,9 @@ export const products = [
     stock: 80,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1049029506/photo/the-groom-straightens-cufflinks-on-his-shirt-fees-groom-wedding-and-honeymoon-in-the-tropics.jpg?s=612x612&w=0&k=20&c=VVOLTVKLTTHKrcwp2JsIuZBTgQ5mFJnqXe-Z8ppJhvs="
+    img: "https://media.istockphoto.com/id/1049029506/photo/the-groom-straightens-cufflinks-on-his-shirt-fees-groom-wedding-and-honeymoon-in-the-tropics.jpg?s=612x612&w=0&k=20&c=VVOLTVKLTTHKrcwp2JsIuZBTgQ5mFJnqXe-Z8ppJhvs=",
+    rating: 4.7,
+    ratingCount: 100
   },
   {
     id: 114,
@@ -1251,7 +1477,9 @@ export const products = [
     stock: 150,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/696800014/photo/bow-tie-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=zbpIIDtNxOhh19jToynjD9UOwXupRTJiKlRB3sjsB4E="
+    img: "https://media.istockphoto.com/id/696800014/photo/bow-tie-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=zbpIIDtNxOhh19jToynjD9UOwXupRTJiKlRB3sjsB4E=",
+    rating: 4.5,
+    ratingCount: 200
   },
   {
     id: 115,
@@ -1262,7 +1490,9 @@ export const products = [
     stock: 50,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2199516173/photo/a-closeup-of-a-sophisticated-womens-ring-featuring-a-large-brilliant-yellow-stone-accented.jpg?s=612x612&w=0&k=20&c=w-n_HMAGduhnLZI0q4D1sKUetMGMpm4G1PKeQOQanOI="
+    img: "https://media.istockphoto.com/id/2199516173/photo/a-closeup-of-a-sophisticated-womens-ring-featuring-a-large-brilliant-yellow-stone-accented.jpg?s=612x612&w=0&k=20&c=w-n_HMAGduhnLZI0q4D1sKUetMGMpm4G1PKeQOQanOI=",
+    rating: 4.8,
+    ratingCount: 80
   },
   {
     id: 116,
@@ -1273,7 +1503,9 @@ export const products = [
     stock: 30,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1343606631/photo/a-man-in-jeans-and-a-shirt-fastens-his-leather-belt.jpg?s=612x612&w=0&k=20&c=SL4fp8IxWWh9YrUmwxeaoLgxmAUJoQKeX4nxknnmKwQ="
+    img: "https://media.istockphoto.com/id/1343606631/photo/a-man-in-jeans-and-a-shirt-fastens-his-leather-belt.jpg?s=612x612&w=0&k=20&c=SL4fp8IxWWh9YrUmwxeaoLgxmAUJoQKeX4nxknnmKwQ=",
+    rating: 4.9,
+    ratingCount: 110
   },
   {
     id: 117,
@@ -1284,7 +1516,9 @@ export const products = [
     stock: 100,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1153194666/photo/womens-black-sunglasses-called-cats-eyes.jpg?s=612x612&w=0&k=20&c=rcAOJ24iwcHdHhQ545MWoXbMhjsLXNRj8zsz2eFnItk="
+    img: "https://media.istockphoto.com/id/1153194666/photo/womens-black-sunglasses-called-cats-eyes.jpg?s=612x612&w=0&k=20&c=rcAOJ24iwcHdHhQ545MWoXbMhjsLXNRj8zsz2eFnItk=",
+    rating: 4.6,
+    ratingCount: 240
   },
   {
     id: 118,
@@ -1295,7 +1529,9 @@ export const products = [
     stock: 80,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1464392622/photo/perspective-view-on-blank-black-paper-shopping-bags-with-place-for-your-brand-name-or-text-on.jpg?s=612x612&w=0&k=20&c=D1NFPRKmXhlUxamRWSNc2zYLZ_95bu_ZAvw2sLAc1CA="
+    img: "https://media.istockphoto.com/id/1464392622/photo/perspective-view-on-blank-black-paper-shopping-bags-with-place-for-your-brand-name-or-text-on.jpg?s=612x612&w=0&k=20&c=D1NFPRKmXhlUxamRWSNc2zYLZ_95bu_ZAvw2sLAc1CA=",
+    rating: 4.7,
+    ratingCount: 160
   },
   {
     id: 119,
@@ -1306,7 +1542,9 @@ export const products = [
     stock: 60,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1144414297/photo/panama-hat-in-cuenca-ecuador.jpg?s=612x612&w=0&k=20&c=Ju-Wijx8sYsx4VtZTAAe1mqOIF42UnhEcoZ2xQidYA8="
+    img: "https://media.istockphoto.com/id/1144414297/photo/panama-hat-in-cuenca-ecuador.jpg?s=612x612&w=0&k=20&c=Ju-Wijx8sYsx4VtZTAAe1mqOIF42UnhEcoZ2xQidYA8=",
+    rating: 4.5,
+    ratingCount: 130
   },
   {
     id: 120,
@@ -1317,7 +1555,9 @@ export const products = [
     stock: 40,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/515380192/photo/beautiful-diamond-stud-earrings.jpg?s=612x612&w=0&k=20&c=IaR9im4WG0lnZTA1txxM4p5TltYO8ojukAoSoAOwfxA="
+    img: "https://media.istockphoto.com/id/515380192/photo/beautiful-diamond-stud-earrings.jpg?s=612x612&w=0&k=20&c=IaR9im4WG0lnZTA1txxM4p5TltYO8ojukAoSoAOwfxA=",
+    rating: 4.9,
+    ratingCount: 150
   },
   {
     id: 121,
@@ -1328,7 +1568,9 @@ export const products = [
     stock: 50,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/981871354/photo/young-student-girl-with-backpack.jpg?s=612x612&w=0&k=20&c=6nH0SfBJQRioVoN5zVDUXxqfT-7de3ARX9uGh5tZGBs="
+    img: "https://media.istockphoto.com/id/981871354/photo/young-student-girl-with-backpack.jpg?s=612x612&w=0&k=20&c=6nH0SfBJQRioVoN5zVDUXxqfT-7de3ARX9uGh5tZGBs=",
+    rating: 4.7,
+    ratingCount: 180
   },
   {
     id: 122,
@@ -1339,7 +1581,9 @@ export const products = [
     stock: 30,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1276777852/photo/happy-elegant-woman-in-sweater-against-brown-background.jpg?s=612x612&w=0&k=20&c=lwTH-lWj_ygEQYMkaBaxprbiLdFuXDG3oWLnjmJzLK0="
+    img: "https://media.istockphoto.com/id/1276777852/photo/happy-elegant-woman-in-sweater-against-brown-background.jpg?s=612x612&w=0&k=20&c=lwTH-lWj_ygEQYMkaBaxprbiLdFuXDG3oWLnjmJzLK0=",
+    rating: 4.9,
+    ratingCount: 90
   },
   {
     id: 123,
@@ -1350,7 +1594,9 @@ export const products = [
     stock: 90,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/157180004/photo/red-necktie-on-white.jpg?s=612x612&w=0&k=20&c=-D7UAyWrPJsF1rZCglp_UQ0DXMyDWsCtwrTp2YhP8HE="
+    img: "https://media.istockphoto.com/id/157180004/photo/red-necktie-on-white.jpg?s=612x612&w=0&k=20&c=-D7UAyWrPJsF1rZCglp_UQ0DXMyDWsCtwrTp2YhP8HE=",
+    rating: 4.5,
+    ratingCount: 140
   },
   {
     id: 124,
@@ -1361,7 +1607,9 @@ export const products = [
     stock: 120,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/671299704/photo/close-up-of-well-dressed-mans-torso-guy-wearing-jacket-shirt-and-colorful-handkerchief-and-bow.jpg?s=612x612&w=0&k=20&c=TOSMzniJn4Kg1HmqtG73ofdf2a3JLAjpTPK-b14U2os="
+    img: "https://media.istockphoto.com/id/671299704/photo/close-up-of-well-dressed-mans-torso-guy-wearing-jacket-shirt-and-colorful-handkerchief-and-bow.jpg?s=612x612&w=0&k=20&c=TOSMzniJn4Kg1HmqtG73ofdf2a3JLAjpTPK-b14U2os=",
+    rating: 4.6,
+    ratingCount: 110
   },
   {
     id: 125,
@@ -1372,7 +1620,9 @@ export const products = [
     stock: 70,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2231787128/photo/elegant-beaded-bracelet-with-crystal-charms-on-the-hand.jpg?s=612x612&w=0&k=20&c=c7tjg0kKzypjGyi-NleYrcByie9bVMNzE1lCr4MG8Oo="
+    img: "https://media.istockphoto.com/id/2231787128/photo/elegant-beaded-bracelet-with-crystal-charms-on-the-hand.jpg?s=612x612&w=0&k=20&c=c7tjg0kKzypjGyi-NleYrcByie9bVMNzE1lCr4MG8Oo=",
+    rating: 4.8,
+    ratingCount: 130
   },
   {
     id: 126,
@@ -1383,7 +1633,9 @@ export const products = [
     stock: 100,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/491329217/photo/strap-braid-belt.jpg?s=612x612&w=0&k=20&c=YLV4Cgk2gmC_0tJsuzirddW0xbCTGrVUB5yMyKxoq-w="
+    img: "https://media.istockphoto.com/id/491329217/photo/strap-braid-belt.jpg?s=612x612&w=0&k=20&c=YLV4Cgk2gmC_0tJsuzirddW0xbCTGrVUB5yMyKxoq-w=",
+    rating: 4.4,
+    ratingCount: 100
   },
   {
     id: 127,
@@ -1394,7 +1646,9 @@ export const products = [
     stock: 80,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2148813640/vector/white-sunglasses-for-women-isolated-on-blue.jpg?s=612x612&w=0&k=20&c=qYNf2dMSqmLPESAv5WYfJe1Jt1wSXR2wpdoVx_VekGA="
+    img: "https://media.istockphoto.com/id/2148813640/vector/white-sunglasses-for-women-isolated-on-blue.jpg?s=612x612&w=0&k=20&c=qYNf2dMSqmLPESAv5WYfJe1Jt1wSXR2wpdoVx_VekGA=",
+    rating: 4.6,
+    ratingCount: 150
   },
   {
     id: 128,
@@ -1405,7 +1659,9 @@ export const products = [
     stock: 60,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1439571746/photo/gold-purse-on-a-red-plinth-with-a-red-background-for-copy-space.jpg?s=612x612&w=0&k=20&c=Bnqsf586czhH2Z67vyG1RsdF9RkRnEDqCv43k3FS08U="
+    img: "https://media.istockphoto.com/id/1439571746/photo/gold-purse-on-a-red-plinth-with-a-red-background-for-copy-space.jpg?s=612x612&w=0&k=20&c=Bnqsf586czhH2Z67vyG1RsdF9RkRnEDqCv43k3FS08U=",
+    rating: 4.7,
+    ratingCount: 120
   },
   {
     id: 129,
@@ -1416,7 +1672,9 @@ export const products = [
     stock: 90,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2193520882/video/happy-asian-traveler-woman-walking-with-suitcase-on-city-street.avif?s=640x640&k=20&c=d1ubCfaaFi-fmG0XXgsITFGQYd6I7xpkVjh7TI1MrJs="
+    img: "https://media.istockphoto.com/id/2193520882/video/happy-asian-traveler-woman-walking-with-suitcase-on-city-street.avif?s=640x640&k=20&c=d1ubCfaaFi-fmG0XXgsITFGQYd6I7xpkVjh7TI1MrJs=",
+    rating: 4.5,
+    ratingCount: 140
   },
   {
     id: 130,
@@ -1427,7 +1685,9 @@ export const products = [
     stock: 70,
     category: "Accessories",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/186867284/photo/semi-precious-pink-kunzite-with-zircon-earrings.jpg?s=612x612&w=0&k=20&c=MSWYqtu8ai6GJ_ydX7d2VyCycanri5gUWNUgRDy4vGI="
+    img: "https://media.istockphoto.com/id/186867284/photo/semi-precious-pink-kunzite-with-zircon-earrings.jpg?s=612x612&w=0&k=20&c=MSWYqtu8ai6GJ_ydX7d2VyCycanri5gUWNUgRDy4vGI=",
+    rating: 4.6,
+    ratingCount: 110
   },
   {
     id: 131,
@@ -1438,7 +1698,9 @@ export const products = [
     stock: 100,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/477663679/photo/every-woman-has-a-favourite-shade.jpg?s=612x612&w=0&k=20&c=NGbtzP0bMTb23jPDdbF1I_X-3C6FYexUb_BKV4bRZU8="
+    img: "https://media.istockphoto.com/id/477663679/photo/every-woman-has-a-favourite-shade.jpg?s=612x612&w=0&k=20&c=NGbtzP0bMTb23jPDdbF1I_X-3C6FYexUb_BKV4bRZU8=",
+    rating: 4.5,
+    ratingCount: 200
   },
   {
     id: 132,
@@ -1449,7 +1711,9 @@ export const products = [
     stock: 80,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1081853966/photo/close-up-of-flat-makeup-brush-with-liquid-foundation-tube-isolated-on-white.jpg?s=612x612&w=0&k=20&c=VbEU4KCA2ZdpbVhl5sW0Wd4PtWFwQbmIym--UGWIp40="
+    img: "https://media.istockphoto.com/id/1081853966/photo/close-up-of-flat-makeup-brush-with-liquid-foundation-tube-isolated-on-white.jpg?s=612x612&w=0&k=20&c=VbEU4KCA2ZdpbVhl5sW0Wd4PtWFwQbmIym--UGWIp40=",
+    rating: 4.6,
+    ratingCount: 180
   },
   {
     id: 133,
@@ -1460,7 +1724,9 @@ export const products = [
     stock: 120,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1209043417/photo/mascara-brush-on-yellow-background.jpg?s=612x612&w=0&k=20&c=hJdgytscop2n5jTXp9HjeX_CwS4Yw14lDf4-nVILmzM="
+    img: "https://media.istockphoto.com/id/1209043417/photo/mascara-brush-on-yellow-background.jpg?s=612x612&w=0&k=20&c=hJdgytscop2n5jTXp9HjeX_CwS4Yw14lDf4-nVILmzM=",
+    rating: 4.4,
+    ratingCount: 150
   },
   {
     id: 134,
@@ -1471,7 +1737,9 @@ export const products = [
     stock: 100,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1203139462/photo/liquid-black-eyeliner.jpg?s=612x612&w=0&k=20&c=RU4JOQT_DZQN9fhWWtj0euDHR1cLj_9A9rzus2UsdgY="
+    img: "https://media.istockphoto.com/id/1203139462/photo/liquid-black-eyeliner.jpg?s=612x612&w=0&k=20&c=RU4JOQT_DZQN9fhWWtj0euDHR1cLj_9A9rzus2UsdgY=",
+    rating: 4.5,
+    ratingCount: 170
   },
   {
     id: 135,
@@ -1482,7 +1750,9 @@ export const products = [
     stock: 60,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2247597026/photo/overhead-view-of-makeup-products-including-bronzer-lipstick-and-eyeshadow-palette.jpg?s=612x612&w=0&k=20&c=6tdFbWuu6kEOAXrTh02_ZvG6k-NY82rVHCgdFf6m6fA="
+    img: "https://media.istockphoto.com/id/2247597026/photo/overhead-view-of-makeup-products-including-bronzer-lipstick-and-eyeshadow-palette.jpg?s=612x612&w=0&k=20&c=6tdFbWuu6kEOAXrTh02_ZvG6k-NY82rVHCgdFf6m6fA=",
+    rating: 4.8,
+    ratingCount: 130
   },
   {
     id: 136,
@@ -1493,7 +1763,9 @@ export const products = [
     stock: 90,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/803317966/photo/applying-blush.jpg?s=612x612&w=0&k=20&c=GP3ZXxVctEFqUXa4FvEHzttslGxM07_r3_2zyycK1E4="
+    img: "https://media.istockphoto.com/id/803317966/photo/applying-blush.jpg?s=612x612&w=0&k=20&c=GP3ZXxVctEFqUXa4FvEHzttslGxM07_r3_2zyycK1E4=",
+    rating: 4.6,
+    ratingCount: 140
   },
   {
     id: 137,
@@ -1504,7 +1776,9 @@ export const products = [
     stock: 70,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1077206846/photo/make-up-palette-and-brushes-on-beige-background.jpg?s=612x612&w=0&k=20&c=-bHwdHD3pKi7ea1kCaX47JAoaW0GV94tOLItKDsClmw="
+    img: "https://media.istockphoto.com/id/1077206846/photo/make-up-palette-and-brushes-on-beige-background.jpg?s=612x612&w=0&k=20&c=-bHwdHD3pKi7ea1kCaX47JAoaW0GV94tOLItKDsClmw=",
+    rating: 4.7,
+    ratingCount: 120
   },
   {
     id: 138,
@@ -1515,7 +1789,9 @@ export const products = [
     stock: 80,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1262872690/photo/female-hand-showing-bottle-of-cosmetic-foundation-on-pink-background-closeup.jpg?s=612x612&w=0&k=20&c=SBhM8SESEftFs_uVoyEd8fuNKLmk_3uC2_P478l-wbc="
+    img: "https://media.istockphoto.com/id/1262872690/photo/female-hand-showing-bottle-of-cosmetic-foundation-on-pink-background-closeup.jpg?s=612x612&w=0&k=20&c=SBhM8SESEftFs_uVoyEd8fuNKLmk_3uC2_P478l-wbc=",
+    rating: 4.5,
+    ratingCount: 110
   },
   {
     id: 139,
@@ -1526,7 +1802,9 @@ export const products = [
     stock: 110,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/2224086772/photo/3d-silver-cosmetic-cream-tubes-mock-up-standing-on-product-podium-white-background-3d.jpg?s=612x612&w=0&k=20&c=GPZ6Tm3DgIgUHCePFrWqxpr0h2d4sz2ld1cpwzvNZN0="
+    img: "https://media.istockphoto.com/id/2224086772/photo/3d-silver-cosmetic-cream-tubes-mock-up-standing-on-product-podium-white-background-3d.jpg?s=612x612&w=0&k=20&c=GPZ6Tm3DgIgUHCePFrWqxpr0h2d4sz2ld1cpwzvNZN0=",
+    rating: 4.4,
+    ratingCount: 160
   },
   {
     id: 140,
@@ -1537,7 +1815,9 @@ export const products = [
     stock: 90,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1492386589/photo/blank-cosmetic-ten-colors-professional-foundation-concealer-contour-palette-for-branding-and.jpg?s=612x612&w=0&k=20&c=Jfbd7M8jODVdMASsY9Ce4D-vk161icbYEQ9Ft5iFQoQ="
+    img: "https://media.istockphoto.com/id/1492386589/photo/blank-cosmetic-ten-colors-professional-foundation-concealer-contour-palette-for-branding-and.jpg?s=612x612&w=0&k=20&c=Jfbd7M8jODVdMASsY9Ce4D-vk161icbYEQ9Ft5iFQoQ=",
+    rating: 4.7,
+    ratingCount: 130
   },
   {
     id: 141,
@@ -1548,7 +1828,9 @@ export const products = [
     stock: 100,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/172209041/photo/perfume.jpg?s=612x612&w=0&k=20&c=m0hSR2E2bniYQ2C57a6h-60mcEYo3KBvuJcDFGIi_UM="
+    img: "https://media.istockphoto.com/id/172209041/photo/perfume.jpg?s=612x612&w=0&k=20&c=m0hSR2E2bniYQ2C57a6h-60mcEYo3KBvuJcDFGIi_UM=",
+    rating: 4.6,
+    ratingCount: 150
   },
   {
     id: 142,
@@ -1559,7 +1841,9 @@ export const products = [
     stock: 50,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1250544414/photo/make-up-kit-with-all-types-of-brushes.jpg?s=612x612&w=0&k=20&c=RxY1secKFC9FZz4EmLmbnQkso1XwdqCSsJY5u-c0zLs="
+    img: "https://media.istockphoto.com/id/1250544414/photo/make-up-kit-with-all-types-of-brushes.jpg?s=612x612&w=0&k=20&c=RxY1secKFC9FZz4EmLmbnQkso1XwdqCSsJY5u-c0zLs=",
+    rating: 4.9,
+    ratingCount: 100
   },
   {
     id: 143,
@@ -1570,7 +1854,9 @@ export const products = [
     stock: 200,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1302329273/photo/foundation-sponges-and-mirror.jpg?s=612x612&w=0&k=20&c=XgFxp6D0emCOcUQvHCULLRD01MOCUlwpfVsTLZTfxnY="
+    img: "https://media.istockphoto.com/id/1302329273/photo/foundation-sponges-and-mirror.jpg?s=612x612&w=0&k=20&c=XgFxp6D0emCOcUQvHCULLRD01MOCUlwpfVsTLZTfxnY=",
+    rating: 4.5,
+    ratingCount: 250
   },
   {
     id: 144,
@@ -1581,7 +1867,9 @@ export const products = [
     stock: 150,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1285263712/photo/unrecognizable-woman-applying-beauty-product-on-cotton-pad.jpg?s=612x612&w=0&k=20&c=RwWabRGDUCYxt35dZH7WlZP_H-qIqMRQqIAw73uKSFQ="
+    img: "https://media.istockphoto.com/id/1285263712/photo/unrecognizable-woman-applying-beauty-product-on-cotton-pad.jpg?s=612x612&w=0&k=20&c=RwWabRGDUCYxt35dZH7WlZP_H-qIqMRQqIAw73uKSFQ=",
+    rating: 4.6,
+    ratingCount: 180
   },
   {
     id: 145,
@@ -1592,7 +1880,9 @@ export const products = [
     stock: 100,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1745821272/photo/bottle-of-serum-and-stone-on-sand-against-beige-background.jpg?s=612x612&w=0&k=20&c=qdPnjOkwq2zYOPfmt6PKKNypwM9GoPdr0N1X6ZrJz9c="
+    img: "https://media.istockphoto.com/id/1745821272/photo/bottle-of-serum-and-stone-on-sand-against-beige-background.jpg?s=612x612&w=0&k=20&c=qdPnjOkwq2zYOPfmt6PKKNypwM9GoPdr0N1X6ZrJz9c=",
+    rating: 4.7,
+    ratingCount: 140
   },
   {
     id: 146,
@@ -1603,7 +1893,9 @@ export const products = [
     stock: 80,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/172215294/photo/spiling-gel.jpg?s=612x612&w=0&k=20&c=RzBJLabCcW8iM5xfur4JxDBdiuksqvQjz1m4kzxnR3g="
+    img: "https://media.istockphoto.com/id/172215294/photo/spiling-gel.jpg?s=612x612&w=0&k=20&c=RzBJLabCcW8iM5xfur4JxDBdiuksqvQjz1m4kzxnR3g=",
+    rating: 4.8,
+    ratingCount: 130
   },
   {
     id: 147,
@@ -1614,7 +1906,9 @@ export const products = [
     stock: 60,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://media.istockphoto.com/id/1389146537/photo/push-dispenser-liquid-facial-fluid-gel-squeezed-out-to-hand.jpg?s=612x612&w=0&k=20&c=VrpRFFQrpnqLFBmgut77ymZDFmIx7A79yr53IyHaf4I="
+    img: "https://media.istockphoto.com/id/1389146537/photo/push-dispenser-liquid-facial-fluid-gel-squeezed-out-to-hand.jpg?s=612x612&w=0&k=20&c=VrpRFFQrpnqLFBmgut77ymZDFmIx7A79yr53IyHaf4I=",
+    rating: 4.9,
+    ratingCount: 110
   },
   {
     id: 148,
@@ -1625,7 +1919,9 @@ export const products = [
     stock: 150,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://picsum.photos/id/148/300/300"
+    img: "https://picsum.photos/id/148/300/300",
+    rating: 4.5,
+    ratingCount: 200
   },
   {
     id: 149,
@@ -1636,7 +1932,9 @@ export const products = [
     stock: 200,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://picsum.photos/id/149/300/300"
+    img: "https://picsum.photos/id/149/300/300",
+    rating: 4.4,
+    ratingCount: 250
   },
   {
     id: 150,
@@ -1647,6 +1945,8 @@ export const products = [
     stock: 180,
     category: "Cosmetics",
     brand: "Velore",
-    img: "https://picsum.photos/id/150/300/300"
+    img: "https://picsum.photos/id/150/300/300",
+    rating: 4.6,
+    ratingCount: 170
   }
 ];

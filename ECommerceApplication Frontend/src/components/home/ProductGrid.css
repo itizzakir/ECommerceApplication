@@ -101,7 +101,24 @@
 .p-cat {
     font-size: 13px;
     color: #888;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+}
+
+.p-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.p-rating svg {
+    width: 16px;
+    height: 16px;
+    color: #ffb400;
+}
+.p-rating span {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
 }
 
 .p-price {
@@ -137,4 +154,3 @@
     background: var(--primary);
     transform: scale(1.03);
 }
-
