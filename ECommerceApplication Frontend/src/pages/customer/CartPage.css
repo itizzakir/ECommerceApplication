@@ -1,0 +1,232 @@
+.cart-page {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+.cart-page__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cart-page__header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cart-page__header p {
+    font-size: 16px;
+    color: #666;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.cart-items {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+}
+
+.cart-item {
+    padding: 25px;
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    border-bottom: 1px solid #eee;
+}
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item__img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.cart-item__details {
+    flex-grow: 1;
+}
+
+.cart-item__details h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.cart-item__details p {
+    font-size: 16px;
+    color: #555;
+}
+.cart-item__price {
+    font-weight: 700;
+}
+
+
+.cart-item__actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.quantity-control button {
+    background: #f5f5f5;
+    border: none;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #555;
+    transition: background-color 0.2s;
+}
+.quantity-control button:hover {
+    background: #eee;
+}
+.quantity-control button:first-child {
+    border-right: 1px solid #ddd;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.quantity-control button:last-child {
+    border-left: 1px solid #ddd;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.quantity-control span {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.cart-item__remove-btn {
+    color: #e53e3e;
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left:auto;
+    transition: color 0.2s;
+}
+.cart-item__remove-btn:hover {
+    color: #c53030;
+}
+
+
+.cart-item__subtotal {
+    font-size: 18px;
+    font-weight: 700;
+    width: 120px;
+    text-align: right;
+}
+
+
+.cart-summary {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 30px;
+    position: sticky;
+    top: 40px;
+}
+
+.cart-summary h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.summary-row span:first-child {
+    color: #666;
+}
+.summary-row span:last-child {
+    font-weight: 600;
+}
+.summary-row.total {
+    font-size: 20px;
+    font-weight: 700;
+}
+.summary-row.total span {
+    color: #111;
+}
+
+.cart-summary hr {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 20px 0;
+}
+
+.checkout-btn {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.checkout-btn:hover {
+    background: #333;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 80px 40px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.cart-empty h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.cart-empty p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.cart-empty .hero-btn {
+    background: var(--primary);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+.cart-empty .hero-btn:hover {
+    background: #333;
+}

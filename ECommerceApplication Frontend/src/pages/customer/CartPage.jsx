@@ -1,18 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { useNotification } from '../../context/NotificationContext';
+import './CartPage.css';
 
 const CartPage = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
+  const { showNotification } = useNotification();
 
   const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
+  const handleRemoveFromCart = (productId, productName) => {
+    if (window.confirm(`Are you sure you want to remove ${productName} from your cart?`)) {
+      removeFromCart(productId);
+      showNotification(`${productName} removed from cart!`);
+    }
+  };
+
   if (cartItems.length === 0) {
     return (
-      <div className="section-container" style={{ textAlign: 'center', padding: '4rem 0' }}>
+      <div className="cart-empty">
         <h2>Your Cart is Empty</h2>
         <p>Looks like you haven't added anything to your cart yet.</p>
-        <Link to="/" className="hero-btn" style={{ marginTop: '20px', display: 'inline-block' }}>Continue Shopping</Link>
+        <Link to="/" className="hero-btn">Continue Shopping</Link>
       </div>
     );
   }
@@ -21,8 +31,8 @@ const CartPage = () => {
   const total = cartTotal + shippingCost;
 
   return (
-    <div className="section-container" style={{ padding: '2rem' }}>
-      <div className="section-header">
+    <div className="cart-page">
+      <div className="cart-page__header">
         <h2>Your Cart</h2>
         <p>You have {cartItems.length} item(s) in your cart.</p>
       </div>
@@ -30,24 +40,21 @@ const CartPage = () => {
         <div className="cart-items">
           {cartItems.map(item => (
             <div key={item.id} className="cart-item">
-              <img src={item.img} alt={item.title} className="cart-item-img" />
-              <div className="cart-item-details">
+              <img src={item.img} alt={item.title} className="cart-item__img" />
+              <div className="cart-item__details">
                 <h3>{item.title}</h3>
-                <p>Price: ₹{item.price}</p>
-                <div className="cart-item-actions">
-                  <label>Qty:</label>
-                  <input 
-                    type="number" 
-                    value={item.quantity} 
-                    onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
-                    min="1"
-                    className="cart-quantity-input"
-                  />
-                  <button onClick={() => removeFromCart(item.id)} className="cart-remove-btn">Remove</button>
+                <p className="cart-item__price">₹{item.price}</p>
+                <div className="cart-item__actions">
+                    <div className="quantity-control">
+                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
+                        <span>{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+                    </div>
+                   <button onClick={() => handleRemoveFromCart(item.id, item.title)} className="cart-item__remove-btn">Remove</button>
                 </div>
               </div>
-              <div className="cart-item-subtotal">
-                <p>Subtotal: ₹{item.price * item.quantity}</p>
+              <div className="cart-item__subtotal">
+                <p>₹{(item.price * item.quantity).toFixed(2)}</p>
               </div>
             </div>
           ))}
@@ -68,7 +75,7 @@ const CartPage = () => {
             <span>₹{total.toFixed(2)}</span>
           </div>
           <Link to="/checkout">
-            <button className="submit-btn" style={{ width: '100%', marginTop: '20px' }}>
+            <button className="checkout-btn">
               Proceed to Checkout
             </button>
           </Link>

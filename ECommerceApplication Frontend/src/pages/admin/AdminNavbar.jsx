@@ -12,6 +12,8 @@ const AdminNavbar = ({ toggleSidebar }) => {
         navigate('/'); // Redirect to homepage after logout
     };
 
+    const displayName = user?.name || user?.email?.split('@')[0] || 'Admin';
+
     return (
         <nav className="admin-navbar">
             <div className="navbar-left">
@@ -24,8 +26,8 @@ const AdminNavbar = ({ toggleSidebar }) => {
                     <span className="navbar-notification-count">3</span>
                 </div>
                 <div className="navbar-admin-profile">
-                    <div className="navbar-admin-avatar">{user ? user.name[0].toUpperCase() : 'A'}</div>
-                    <span className="navbar-admin-name">{user ? user.name : 'Admin'}</span>
+                    <div className="navbar-admin-avatar">{displayName[0].toUpperCase()}</div>
+                    <span className="navbar-admin-name">{displayName}</span>
                 </div>
                 <button className="navbar-logout-btn" onClick={handleLogout}>Logout</button>
             </div>

@@ -33,7 +33,7 @@ const AppRouter = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/orders" element={<OrderHistoryPage />} />
+          <Route path="/order-history" element={<OrderHistoryPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/customer-dashboard" element={<CustomerDashboard />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />

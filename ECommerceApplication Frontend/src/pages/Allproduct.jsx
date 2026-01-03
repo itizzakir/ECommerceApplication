@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import ProductGrid from '../components/home/ProductGrid';
+import { products as allProducts } from '../data/products';
+import './Allproduct.css';
 
-const Allproduct = ({ products }) => {
+const Allproduct = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [filterCategory, setFilterCategory] = useState('all');
+  const [sortOrder, setSortOrder] = useState('default');
   const productsPerPage = 8;
+
+  const categories = useMemo(() => ['all', ...new Set(allProducts.map(p => p.category))], []);
+
+  const filteredProducts = useMemo(() => {
+    return allProducts.filter(product => {
+      if (filterCategory === 'all') return true;
+      return product.category === filterCategory;
+    });
+  }, [filterCategory]);
+
+  const sortedProducts = useMemo(() => {
+    const sorted = [...filteredProducts];
+    if (sortOrder === 'price-asc') {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === 'price-desc') {
+      sorted.sort((a, b) => b.price - a.price);
+    }
+    return sorted;
+  }, [filteredProducts, sortOrder]);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
   const handlePrevPage = () => {
     setCurrentPage(prev => (prev > 1 ? prev - 1 : prev));
@@ -18,41 +41,64 @@ const Allproduct = ({ products }) => {
   const handleNextPage = () => {
     setCurrentPage(prev => (prev < totalPages ? prev + 1 : prev));
   };
+  
+  const handleCategoryChange = (e) => {
+    setFilterCategory(e.target.value);
+    setCurrentPage(1);
+  }
+  
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+    setCurrentPage(1);
+  }
 
   return (
-    <div>
+    <div className="all-products-page">
+        <div className="all-products-page__header">
+            <h2>Our Collection</h2>
+            <p>Browse through our curated collection of high-quality products.</p>
+        </div>
+
+        <div className="product-filters-container">
+            <div className="filter-group">
+                <label htmlFor="category-filter">Filter by Category:</label>
+                <select id="category-filter" value={filterCategory} onChange={handleCategoryChange}>
+                    {categories.map(category => (
+                        <option key={category} value={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</option>
+                    ))}
+                </select>
+            </div>
+            <div className="sort-group">
+                <label htmlFor="sort-order">Sort by:</label>
+                <select id="sort-order" value={sortOrder} onChange={handleSortChange}>
+                    <option value="default">Default</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
       <ProductGrid products={currentProducts} />
-      <div className="pagination-controls" style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px'}}>
-        <button 
-          onClick={handlePrevPage} 
-          disabled={currentPage === 1}
-          style={{
-            padding: '10px 20px',
-            margin: '0 10px',
-            border: '1px solid #ddd',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            backgroundColor: currentPage === 1 ? '#f0f0f0' : '#fff'
-          }}
-        >
-          Previous
-        </button>
-        <span>Page {currentPage} of {totalPages}</span>
-        <button 
-          onClick={handleNextPage} 
-          disabled={currentPage === totalPages}
-          style={{
-            padding: '10px 20px',
-            margin: '0 10px',
-            border: '1px solid #ddd',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            backgroundColor: currentPage === totalPages ? '#f0f0f0' : '#fff'
-          }}
-        >
-          Next
-        </button>
-      </div>
+
+      {totalPages > 1 && (
+        <div className="pagination-controls">
+            <button 
+            onClick={handlePrevPage} 
+            disabled={currentPage === 1}
+            className="pagination-btn"
+            >
+            Previous
+            </button>
+            <span className="pagination-indicator">Page {currentPage} of {totalPages}</span>
+            <button 
+            onClick={handleNextPage} 
+            disabled={currentPage === totalPages}
+            className="pagination-btn"
+            >
+            Next
+            </button>
+        </div>
+      )}
     </div>
   );
 };

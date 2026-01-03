@@ -9,8 +9,6 @@ const CheckoutPage = () => {
   const { showNotification } = useNotification();
   const navigate = useNavigate();
 
-  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-
   const [formData, setFormData] = useState({
     name: '',
     address: '',
@@ -18,7 +16,11 @@ const CheckoutPage = () => {
     cardNumber: '',
     expiry: '',
     cvc: '',
+    paymentMethod: 'card', // 'card' or 'upi'
+    upiId: '',
   });
+  
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (cartItems.length === 0) {
@@ -26,76 +28,150 @@ const CheckoutPage = () => {
     }
   }, [cartItems, navigate]);
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name) newErrors.name = 'Full Name is required';
+    if (!formData.address) newErrors.address = 'Shipping Address is required';
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Email is not valid';
+
+    if (formData.paymentMethod === 'card') {
+      if (!/^\d{16}$/.test(formData.cardNumber.replace(/\s/g, ''))) newErrors.cardNumber = 'Card Number must be 16 digits';
+      if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(formData.expiry)) newErrors.expiry = 'Expiry Date must be in MM/YY format';
+      if (!/^\d{3}$/.test(formData.cvc)) newErrors.cvc = 'CVC must be 3 digits';
+    } else if (formData.paymentMethod === 'upi') {
+      if (!formData.upiId) newErrors.upiId = 'UPI ID is required';
+      // Basic UPI ID validation (can be more robust if needed)
+      if (!/^[\w.-]+@[\w.-]+$/.test(formData.upiId)) newErrors.upiId = 'UPI ID is not valid (e.g., example@bank)';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handlePaymentMethodChange = (method) => {
+    setFormData(prev => ({ ...prev, paymentMethod: method }));
+    setErrors({}); // Clear errors when payment method changes
+  };
+
   const handlePlaceOrder = (e) => {
     e.preventDefault();
-    showNotification('Order placed successfully! Thank you for shopping with us.', 'success');
-    setTimeout(() => {
-      clearCart();
-      navigate('/');
-    }, 2000);
+    if (validateForm()) {
+      showNotification('Order placed successfully! Thank you for shopping with us.', 'success');
+      setTimeout(() => {
+        clearCart();
+        navigate('/');
+      }, 2000);
+    } else {
+        showNotification('Please fix the errors in the form.', 'error');
+    }
   };
   
+  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   const shippingCost = 50;
   const total = cartTotal + shippingCost;
+  
+  const isFormValid = validateForm;
 
   return (
-    <div className="section-container" style={{padding: '2rem'}}>
-      <div className="section-header">
+    <div className="checkout-page">
+      <div className="checkout-page__header">
         <h2>Checkout</h2>
-        <p>Complete your purchase.</p>
+        <p>Complete your purchase by filling out the form below.</p>
       </div>
       <div className="checkout-layout">
         <div className="checkout-form">
-          <form onSubmit={handlePlaceOrder}>
+          <form onSubmit={handlePlaceOrder} noValidate>
             <h3>Shipping Information</h3>
-            <div className="inp-grp">
-              <label>Full Name</label>
-              <input type="text" name="name" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
+            <div className="form-group">
+              <label htmlFor="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
+              {errors.name && <p className="error-text">{errors.name}</p>}
             </div>
-            <div className="inp-grp">
-              <label>Shipping Address</label>
-              <input type="text" name="address" placeholder="123 Main St, Anytown, USA" value={formData.address} onChange={handleInputChange} required />
+            <div className="form-group">
+              <label htmlFor="address">Shipping Address</label>
+              <input type="text" id="address" name="address" placeholder="123 Main St, Anytown, USA" value={formData.address} onChange={handleInputChange} required />
+              {errors.address && <p className="error-text">{errors.address}</p>}
             </div>
-            <div className="inp-grp">
-              <label>Email Address</label>
-              <input type="email" name="email" placeholder="name@example.com" value={formData.email} onChange={handleInputChange} required />
+            <div className="form-group">
+              <label htmlFor="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="name@example.com" value={formData.email} onChange={handleInputChange} required />
+              {errors.email && <p className="error-text">{errors.email}</p>}
             </div>
 
-            <h3 style={{marginTop: '30px'}}>Payment Details</h3>
-            <div className="inp-grp">
-              <label>Card Number</label>
-              <input type="text" name="cardNumber" placeholder="•••• •••• •••• ••••" value={formData.cardNumber} onChange={handleInputChange} required />
+            <h3 style={{marginTop: '40px'}}>Payment Details</h3>
+            <div className="payment-method-selection">
+              <label>
+                <input 
+                  type="radio" 
+                  name="paymentMethod" 
+                  value="card" 
+                  checked={formData.paymentMethod === 'card'} 
+                  onChange={() => handlePaymentMethodChange('card')} 
+                />
+                Credit Card
+              </label>
+              <label>
+                <input 
+                  type="radio" 
+                  name="paymentMethod" 
+                  value="upi" 
+                  checked={formData.paymentMethod === 'upi'} 
+                  onChange={() => handlePaymentMethodChange('upi')} 
+                />
+                UPI
+              </label>
             </div>
-            <div style={{display: 'flex', gap: '20px'}}>
-              <div className="inp-grp" style={{flex: 1}}>
-                <label>Expiry Date</label>
-                <input type="text" name="expiry" placeholder="MM/YY" value={formData.expiry} onChange={handleInputChange} required />
+
+            {formData.paymentMethod === 'card' ? (
+              <>
+                <div className="form-group">
+                  <label htmlFor="cardNumber">Card Number</label>
+                  <input type="text" id="cardNumber" name="cardNumber" placeholder="•••• •••• •••• ••••" value={formData.cardNumber} onChange={handleInputChange} required />
+                  {errors.cardNumber && <p className="error-text">{errors.cardNumber}</p>}
+                </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="expiry">Expiry Date</label>
+                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY" value={formData.expiry} onChange={handleInputChange} required />
+                    {errors.expiry && <p className="error-text">{errors.expiry}</p>}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="cvc">CVC</label>
+                    <input type="text" id="cvc" name="cvc" placeholder="•••" value={formData.cvc} onChange={handleInputChange} required />
+                    {errors.cvc && <p className="error-text">{errors.cvc}</p>}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="form-group">
+                <label htmlFor="upiId">UPI ID</label>
+                <input type="text" id="upiId" name="upiId" placeholder="example@bank" value={formData.upiId} onChange={handleInputChange} required />
+                {errors.upiId && <p className="error-text">{errors.upiId}</p>}
               </div>
-              <div className="inp-grp" style={{flex: 1}}>
-                <label>CVC</label>
-                <input type="text" name="cvc" placeholder="•••" value={formData.cvc} onChange={handleInputChange} required />
-              </div>
-            </div>
-            <button type="submit" className="submit-btn" style={{ marginTop: '20px', width: '100%' }}>Place Order</button>
+            )}
+
+            <button type="submit" className="place-order-btn">Place Order</button>
           </form>
         </div>
         <div className="checkout-summary">
           <h3>Your Order</h3>
-          {cartItems.map(item => (
-            <div key={item.id} className="summary-item">
-              <img src={item.img} alt={item.title}/>
-              <div>
-                <p>{item.title}</p>
-                <p>Qty: {item.quantity}</p>
-              </div>
-              <span>₹{(item.price * item.quantity).toFixed(2)}</span>
-            </div>
-          ))}
+          <div className="summary-item-list">
+            {cartItems.map(item => (
+                <div key={item.id} className="summary-item">
+                <img src={item.img} alt={item.title} className="summary-item__img"/>
+                <div className="summary-item__details">
+                    <p>{item.title}</p>
+                    <p>Qty: {item.quantity}</p>
+                </div>
+                <span className="summary-item__price">₹{(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+            ))}
+          </div>
           <hr />
           <div className="summary-row">
             <span>Subtotal</span>

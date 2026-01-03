@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useMemo } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { products } from '../../data/products';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useNotification } from '../../context/NotificationContext';
+import ProductGrid from '../../components/home/ProductGrid';
+import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -11,11 +13,22 @@ const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
 
   const { addToCart } = useCart();
-  const { addToWishlist } = useWishlist();
+  const { addToWishlist, wishlistItems } = useWishlist();
   const { showNotification } = useNotification();
 
+  const relatedProducts = useMemo(() => {
+    if (!product) return [];
+    return products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+  }, [product]);
+
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+        <div className="not-found-page">
+            <h2>Product Not Found</h2>
+            <p>Sorry, we couldn't find the product you're looking for.</p>
+            <Link to="/all-products" className="hero-btn">Back to All Products</Link>
+        </div>
+    );
   }
 
   const handleAddToCart = () => {
@@ -25,39 +38,52 @@ const ProductDetailPage = () => {
 
   const handleAddToWishlist = () => {
     addToWishlist(product);
-    showNotification(`${product.title} added to wishlist!`);
+    const isWishlisted = wishlistItems.some(item => item.id === product.id);
+    if(isWishlisted){
+        showNotification(`${product.title} is already in wishlist!`);
+    } else {
+        showNotification(`${product.title} added to wishlist!`);
+    }
   };
 
   return (
-    <div className="section-container" style={{padding: '2rem'}}>
-      <div className="product-detail" style={{ display: 'flex', gap: '50px' }}>
-        <div className="product-detail-img" style={{ flex: 1 }}>
-          <img src={product.img} alt={product.title} style={{ borderRadius: '8px' }} />
+    <div className="product-detail-page">
+      <div className="product-detail-layout">
+        <div className="product-detail-img">
+          <img src={product.img} alt={product.title} />
         </div>
-        <div className="product-detail-info" style={{ flex: 1 }}>
-          <h1 style={{ fontSize: '32px', fontWeight: 'bold' }}>{product.title}</h1>
-          <p style={{ fontSize: '18px', color: '#666', margin: '10px 0' }}>{product.category}</p>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', color: 'var(--primary)' }}>
+        <div className="product-detail-info">
+          <p className="product-detail-info__category">{product.category}</p>
+          <h1>{product.title}</h1>
+          <p className="product-detail-info__price">
             ₹{product.price} 
-            <s style={{ color: '#999', marginLeft: '10px', fontSize: '18px' }}>₹{product.price + 500}</s>
+            <s>₹{product.price + 500}</s>
           </p>
-          <p style={{ margin: '20px 0', lineHeight: '1.6' }}>{product.description}</p>
-          <div className="inp-grp" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <label>Quantity:</label>
-            <input 
-              type="number" 
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-              min="1" 
-              style={{ width: '80px', padding: '10px' }} 
-            />
+          <p className="product-detail-info__description">{product.description}</p>
+          
+          <div className="product-detail-actions">
+            <div className="quantity-control">
+                <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>-</button>
+                <span>{quantity}</span>
+                <button onClick={() => setQuantity(q => q + 1)}>+</button>
+            </div>
           </div>
-          <div style={{ marginTop: '30px' }}>
-            <button onClick={handleAddToCart} className="submit-btn" style={{ width: 'auto', padding: '14px 30px' }}>Add to Cart</button>
-            <button onClick={handleAddToWishlist} className="auth-btn" style={{ marginLeft: '10px', padding: '14px 30px' }}>Add to Wishlist</button>
+
+          <div className="product-detail-buttons">
+            <button onClick={handleAddToCart} className="add-to-cart-btn">Add to Cart</button>
+            <button onClick={handleAddToWishlist} className="add-to-wishlist-btn">
+                {wishlistItems.some(item => item.id === product.id) ? 'Already in Wishlist' : 'Add to Wishlist'}
+            </button>
           </div>
         </div>
       </div>
+
+      {relatedProducts.length > 0 && (
+        <div className="related-products-section">
+            <h2>Related Products</h2>
+            <ProductGrid products={relatedProducts} />
+        </div>
+      )}
     </div>
   );
 };

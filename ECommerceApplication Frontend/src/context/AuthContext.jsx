@@ -14,9 +14,29 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (userData) => {
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
+  const login = async (email, password) => {
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('user', JSON.stringify(data));
+        setUser(data);
+        return data;
+      } else {
+        throw new Error(data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      throw error;
+    }
   };
 
   const logout = () => {
@@ -24,11 +44,28 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const signup = (userData) => {
-    // In a real app, you'd save the user to a database
-    // For now, we'll just log them in directly
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
+  const signup = async (email, password, role) => {
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, role }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Automatically login after successful signup
+        return await login(email, password);
+      } else {
+        throw new Error(data.message || "Signup failed");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      throw error;
+    }
   };
 
   return (

@@ -1,0 +1,121 @@
+.order-history-page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+.order-history-page__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.order-history-page__header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.order-history-page__header p {
+    font-size: 16px;
+    color: #666;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.order-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    transition: box-shadow 0.2s;
+}
+.order-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.order-card__info {
+    font-size: 15px;
+}
+
+.order-card__info span {
+    display: block;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+.order-card__info p {
+    font-weight: 600;
+}
+.order-card__id {
+    color: var(--primary);
+    font-weight: 700 !important;
+}
+
+.order-card__status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    width: fit-content;
+}
+
+.order-card__actions {
+    justify-self: flex-end;
+}
+
+.order-card__details-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.order-card__details-btn:hover {
+    background: var(--primary);
+}
+
+
+.access-denied, .no-orders {
+    text-align: center;
+    padding: 80px 40px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.access-denied h2, .no-orders h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.access-denied p, .no-orders p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.access-denied .hero-btn, .no-orders .hero-btn {
+    background: var(--primary);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    display:inline-block;
+}
+.access-denied .hero-btn:hover, .no-orders .hero-btn:hover {
+    background: #333;
+}

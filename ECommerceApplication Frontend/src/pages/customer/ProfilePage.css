@@ -1,0 +1,140 @@
+.profile-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+.profile-page__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-page__header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.profile-page__header p {
+    font-size: 16px;
+    color: #666;
+}
+
+.profile-form-container {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 50px;
+}
+
+.profile-form h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 5, 0.1);
+}
+
+.form-group input:disabled {
+    background-color: #f5f5f5;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.update-profile-btn {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.update-profile-btn:hover {
+    background: #333;
+}
+
+.profile-page__actions {
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px dashed #ccc;
+    padding-top: 30px;
+}
+
+.view-orders-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    font-size: 14px;
+}
+.view-orders-btn:hover {
+    background: var(--primary);
+}
+
+.access-denied {
+    text-align: center;
+    padding: 80px 40px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.access-denied h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.access-denied p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.access-denied .hero-btn {
+    background: var(--primary);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    display:inline-block;
+}
+.access-denied .hero-btn:hover {
+    background: #333;
+}

@@ -1,71 +1,192 @@
+.checkout-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 40px;
+}
+
+.checkout-page__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.checkout-page__header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.checkout-page__header p {
+    font-size: 16px;
+    color: #666;
+}
+
 .checkout-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.checkout-form {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 40px;
+}
+
+.checkout-form h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 5, 0.1);
+}
+
+.form-row {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .checkout-form {
+    gap: 20px;
+}
+
+.form-row .form-group {
     flex: 1;
-  }
-  
-  .checkout-summary {
-    width: 300px;
-    border-left: 1px solid #ddd;
-    padding-left: 2rem;
-  }
-  
-  .summary-item {
+}
+
+.place-order-btn {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.place-order-btn:hover {
+    background: #333;
+}
+.place-order-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+.checkout-summary {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 30px;
+    position: sticky;
+    top: 40px;
+}
+
+.checkout-summary h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+.summary-item-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 15px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .summary-item img {
-    width: 80px;
-    height: 80px;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.summary-item__img {
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 8px;
-  }
-  
-  .summary-row {
+    border: 1px solid #eee;
+}
+
+.summary-item__details {
+    flex-grow: 1;
+}
+
+.summary-item__details p {
+    margin: 0;
+    font-size: 15px;
+}
+.summary-item__details p:first-child {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.summary-item__details p:last-child {
+    font-size: 13px;
+    color: #666;
+}
+.summary-item__price {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+
+.summary-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
-  }
-  
-  .summary-row.total {
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  
-  .inp-grp {
-    margin-bottom: 1rem;
-  }
-  
-  .inp-grp label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .inp-grp input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .submit-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 0.75rem;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+.summary-row span:first-child {
+    color: #666;
+}
+.summary-row span:last-child {
+    font-weight: 600;
+}
+
+.summary-row.total {
+    font-size: 20px;
+    font-weight: 700;
+}
+.summary-row.total span {
+    color: #111;
+}
+
+.checkout-summary hr {
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
+    border-top: 1px dashed #ccc;
+    margin: 20px 0;
+}
+
+.error-text {
+    color: #e53e3e;
+    font-size: 13px;
+    margin-top: 5px;
+}

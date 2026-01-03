@@ -8,28 +8,36 @@ const AuthModal = ({ type, closeModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('Customer'); // Default role
+  const [error, setError] = useState('');
   const { login, signup } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simplified user object, in a real app, you'd have more details
-    const userData = { name: email.split('@')[0], email, role };
+    setError('');
     
-    if (type === 'login') {
-      login(userData);
-    } else {
-      signup(userData);
-    }
+    try {
+      let data;
+      if (type === 'login') {
+        data = await login(email, password);
+      } else {
+        data = await signup(email, password, role);
+      }
 
-    // Redirect based on role
-    if (role === 'Admin') {
-      navigate('/admin');
-    } else {
-      navigate('/');
-    }
+      // Redirect based on role
+      // Backend returns roles like "ROLE_ADMIN" or "ROLE_CUSTOMER"
+      const userRole = data.role || '';
+      
+      if (userRole.includes('ADMIN') || userRole.includes('Admin')) {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
 
-    closeModal();
+      closeModal();
+    } catch (err) {
+      setError(err.message || 'Authentication failed');
+    }
   };
 
   return (
@@ -41,6 +49,8 @@ const AuthModal = ({ type, closeModal }) => {
           Enter your details below.
         </p>
         
+        {error && <p className="error-msg" style={{color: 'red', textAlign: 'center', marginBottom: '10px'}}>{error}</p>}
+
         <form onSubmit={handleSubmit}>
           <div className="inp-grp">
             <label>Email Address</label>
@@ -62,22 +72,24 @@ const AuthModal = ({ type, closeModal }) => {
               required 
             />
           </div>
-          <div className="inp-grp">
-            <label>Role</label>
-            <select value={role} onChange={(e) => setRole(e.target.value)} required>
-              <option value="Customer">Customer</option>
-              <option value="Admin">Admin</option>
-            </select>
-          </div>
+          {type === 'signup' && (
+            <div className="inp-grp">
+              <label>Role</label>
+              <select value={role} onChange={(e) => setRole(e.target.value)} required>
+                <option value="Customer">Customer</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
+          )}
+           {/* Even for login, we might want role if the API required it, but usually login just needs email/pass. 
+               The original code had role selector for login too. I'll hide it for login unless the user wants to specify it, 
+               but usually role is determined by the account. My backend LoginRequest doesn't take role. 
+               So I will ONLY show role select for signup. */}
+          
           <button type="submit" className="submit-btn">
             {type === 'login' ? 'Login' : 'Create Account'}
           </button>
         </form>
-
-        <div className="demo-credentials">
-          <p><strong>Admin Demo:</strong> admin@velore.com / admin123</p>
-          <p><strong>Customer Demo:</strong> customer@velore.com / customer123</p>
-        </div>
         
         <p className="terms-text">
           By continuing, you agree to our Terms.

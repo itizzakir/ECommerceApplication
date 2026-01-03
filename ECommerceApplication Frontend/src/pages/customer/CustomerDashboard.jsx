@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './CustomerDashboard.css';
 import { customers } from '../../data/customers.js';
 import { products } from '../../data/products.js';
+import { fetchOrderHistory } from '../../services/orderService';
 
 
 // --- SELF-CONTAINED SVG ICONS ---
@@ -37,11 +39,11 @@ const OrderCard = ({ order }) => (
     <div className="order-card">
         <div className="order-card__header">
             <span>#{order.id}</span>
-            <span className={`order-card__status ${order.status === 'Delivered' ? 'status--delivered' : 'status--processing'}`}>
+            <span className={`order-card__status ${order.status === 'Delivered' ? 'status--delivered' : order.status === 'Shipped' ? 'status--shipped' : 'status--processing'}`}>
                 {order.status}
             </span>
         </div>
-        <p className="order-card__total">${order.total}</p>
+        <p className="order-card__total">₹{order.total.toFixed(2)}</p>
         <p className="order-card__date">{order.date}</p>
     </div>
 );
@@ -53,8 +55,8 @@ const ProductCard = ({ product, onAddToWishlist }) => (
         </div>
         <div className="product-card__info">
             <h3>{product.title}</h3>
-            <p>${product.price}</p>
-            <button onClick={() => onAddToWishlist(product)}>
+            <p>₹{product.price.toFixed(2)}</p>
+            <button className="product-card__wishlist-btn" onClick={() => onAddToWishlist(product)}>
                 Add to Wishlist
             </button>
         </div>
@@ -68,7 +70,7 @@ const WishlistCard = ({ item, onRemove }) => (
         </div>
         <div className="wishlist-card__info">
             <p className="wishlist-card__name">{item.name}</p>
-            <p className="wishlist-card__price">${item.price}</p>
+            <p className="wishlist-card__price">₹{item.price.toFixed(2)}</p>
         </div>
         <button className="wishlist-card__remove" onClick={() => onRemove(item.id)}>&times;</button>
     </div>
@@ -77,6 +79,9 @@ const WishlistCard = ({ item, onRemove }) => (
 // --- MAIN DASHBOARD COMPONENT ---
 const CustomerDashboard = () => {
     const [customer, setCustomer] = useState(null);
+    const [recentOrders, setRecentOrders] = useState([]);
+    const [loadingOrders, setLoadingOrders] = useState(true);
+    const [ordersError, setOrdersError] = useState(null);
 
     useEffect(() => {
         const storedCustomer = localStorage.getItem('customer');
@@ -88,6 +93,24 @@ const CustomerDashboard = () => {
             setCustomer(defaultCustomer);
         }
     }, []);
+
+    useEffect(() => {
+        const getRecentOrders = async () => {
+            try {
+                const allOrders = await fetchOrderHistory();
+                // Sort by date and take the last 2 orders
+                const sortedOrders = allOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+                setRecentOrders(sortedOrders.slice(0, 2));
+            } catch (err) {
+                setOrdersError('Failed to fetch recent orders.');
+                console.error(err);
+            } finally {
+                setLoadingOrders(false);
+            }
+        };
+        getRecentOrders();
+    }, []);
+
 
     const updateCustomer = (updatedCustomer) => {
         setCustomer(updatedCustomer);
@@ -112,7 +135,7 @@ const CustomerDashboard = () => {
         return <div>Loading...</div>;
     }
 
-    const pendingOrders = customer.orders.filter(order => order.status !== 'Delivered').length;
+    const pendingOrdersCount = recentOrders.filter(order => order.status !== 'Delivered').length;
 
     return (
         <div className="dashboard">
@@ -120,10 +143,18 @@ const CustomerDashboard = () => {
                 <h2 className="dashboard__title">My Dashboard</h2>
 
                 <section className="dashboard__stats-grid">
-                    <StatCard icon={<Icon path={ICONS.Package} />} label="Pending Orders" value={pendingOrders} iconBg="#FFF4E5" />
-                    <StatCard icon={<Icon path={ICONS.Heart} className="icon--heart-filled" />} label="Wishlist Items" value={customer.wishlist.length} iconBg="#FFEBEE" />
-                    <StatCard icon={<Icon path={ICONS.Star} className="icon--star-filled" />} label="Reward Points" value="1,250" iconBg="#FFF8E1" />
-                    <StatCard icon={<Icon path={ICONS.Wallet} />} label="Account Balance" value="$50.00" iconBg="#E8F5E9" />
+                    <Link to="/order-history" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <StatCard icon={<Icon path={ICONS.Package} />} label="Pending Orders" value={pendingOrdersCount} iconBg="#FFF4E5" />
+                    </Link>
+                    <Link to="/wishlist" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <StatCard icon={<Icon path={ICONS.Heart} className="icon--heart-filled" />} label="Wishlist Items" value={customer.wishlist.length} iconBg="#FFEBEE" />
+                    </Link>
+                    <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <StatCard icon={<Icon path={ICONS.Star} className="icon--star-filled" />} label="Reward Points" value="1,250" iconBg="#FFF8E1" />
+                    </Link>
+                    <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <StatCard icon={<Icon path={ICONS.Wallet} />} label="Account Balance" value="₹50.00" iconBg="#E8F5E9" />
+                    </Link>
                 </section>
                 
                 <div className="dashboard__content-area">
@@ -131,7 +162,15 @@ const CustomerDashboard = () => {
                         <section>
                             <h3>Recent Orders</h3>
                             <div className="dashboard__orders-grid">
-                                {customer.orders.map(order => <OrderCard key={order.id} order={order} />)}
+                                {loadingOrders ? (
+                                    <div>Loading recent orders...</div>
+                                ) : ordersError ? (
+                                    <div className="error-message">{ordersError}</div>
+                                ) : recentOrders.length === 0 ? (
+                                    <p>No recent orders found.</p>
+                                ) : (
+                                    recentOrders.map(order => <OrderCard key={order.id} order={order} />)
+                                )}
                             </div>
                         </section>
                         <section>

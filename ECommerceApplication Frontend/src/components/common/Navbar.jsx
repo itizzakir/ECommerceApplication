@@ -57,7 +57,7 @@ const Navbar = () => {
           <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
             <li className="nav-item active"><Link to="/category/women">Women</Link></li>
             <li className="nav-item"><Link to="/category/men">Men</Link></li>
-            <li className="nav-item"><Link to="/category/sneakers">Sneakers</Link></li>
+            <li className="nav-item"><Link to="/category/cosmetics">Cosmetics</Link></li>
             <li className="nav-item"><Link to="/">New Drops</Link></li>
             {user && user.role !== 'Admin' && (
               <li className="nav-item"><Link to="/customer-dashboard">Customer Dashboard</Link></li>
@@ -72,10 +72,7 @@ const Navbar = () => {
 
             {user ? (
               <>
-                <span className="welcome-msg">Hi, {user.name}</span>
-                {user.role === 'Admin' && (
-                  <Link to="/admin" className="auth-btn">Admin</Link>
-                )}
+                <span className="welcome-msg">Hi, {user.email?.split('@')[0]}</span>
                 <button onClick={handleLogout} className="auth-btn">Logout</button>
               </>
             ) : (
