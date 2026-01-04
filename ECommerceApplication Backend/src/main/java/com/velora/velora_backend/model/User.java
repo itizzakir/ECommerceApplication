@@ -28,9 +28,12 @@ public class User {
 
   @NotBlank
   @Size(max = 120)
+  @com.fasterxml.jackson.annotation.JsonIgnore
   private String password;
 
   private String role;
+
+  private String status = "Active";
 
   public User(String email, String password, String role) {
     this.email = email;

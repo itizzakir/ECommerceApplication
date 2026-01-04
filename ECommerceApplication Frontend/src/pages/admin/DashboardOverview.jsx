@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './DashboardOverview.css';
+import { useAuth } from '../../context/AuthContext';
+import { getAllUsers } from '../../services/userService';
+import { getAllProducts } from '../../services/productService';
 import {
     summaryCardsData,
     analyticsData,
     bestSellingProductsData,
     recentOrdersData,
-    productManagementData,
     activityLogData
 } from './data';
 
@@ -28,12 +30,57 @@ const StatusBadge = ({ status }) => {
 
 
 const DashboardOverview = () => {
+    const [summaryCards, setSummaryCards] = useState(summaryCardsData);
+    const [productStats, setProductStats] = useState({ totalProducts: 0, activeProducts: 0, outOfStock: 0 });
+    const { user } = useAuth();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user?.token) {
+                try {
+                    const [users, products] = await Promise.all([
+                        getAllUsers(user.token),
+                        getAllProducts()
+                    ]);
+
+                    // Update User Count
+                    setSummaryCards(prev => {
+                        const newCards = [...prev];
+                        const userCardIndex = newCards.findIndex(c => c.title === 'Total Users');
+                        if (userCardIndex !== -1) {
+                            newCards[userCardIndex] = { 
+                                ...newCards[userCardIndex], 
+                                value: users.length.toString() 
+                            };
+                        }
+                        return newCards;
+                    });
+
+                    // Update Product Stats
+                    const total = products.length;
+                    const active = products.filter(p => p.stock > 0).length;
+                    const outOfStock = products.filter(p => p.stock === 0).length;
+                    
+                    setProductStats({
+                        totalProducts: total,
+                        activeProducts: active,
+                        outOfStock: outOfStock
+                    });
+
+                } catch (error) {
+                    console.error("Error fetching dashboard data:", error);
+                }
+            }
+        };
+        fetchData();
+    }, [user]);
+
     return (
         <div className="dashboard-overview">
 
             {/* ====== Summary Cards ====== */}
             <section className="dashboard-grid summary-cards">
-                {summaryCardsData.map((card, index) => (
+                {summaryCards.map((card, index) => (
                     <div key={index} className="card summary-card">
                         <div className="card-icon-wrapper">
                             <Icon name={card.icon} />
@@ -112,9 +159,9 @@ const DashboardOverview = () => {
                 <section className="card product-management">
                     <h3 className="card-header">Product Management</h3>
                     <div className="product-stats">
-                        <p><span>Total Products:</span> <strong>{productManagementData.totalProducts}</strong></p>
-                        <p><span>Active:</span> <strong>{productManagementData.activeProducts}</strong></p>
-                        <p><span>Out of Stock:</span> <strong>{productManagementData.outOfStock}</strong></p>
+                        <p><span>Total Products:</span> <strong>{productStats.totalProducts}</strong></p>
+                        <p><span>Active:</span> <strong>{productStats.activeProducts}</strong></p>
+                        <p><span>Out of Stock:</span> <strong>{productStats.outOfStock}</strong></p>
                     </div>
                     <div className="product-actions">
                         <button className="btn btn-primary">Add Product</button>

@@ -71,12 +71,6 @@ export const recentOrdersData = [
     },
 ];
 
-export const productManagementData = {
-    totalProducts: 250,
-    activeProducts: 235,
-    outOfStock: 15,
-};
-
 export const activityLogData = [
     {
         action: 'New user registered: [Sarah Miller]',
