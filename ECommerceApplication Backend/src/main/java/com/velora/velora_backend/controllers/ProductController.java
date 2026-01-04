@@ -1,11 +1,11 @@
 package com.velora.velora_backend.controllers;
 
 import com.velora.velora_backend.model.Product;
-import com.velora.velora_backend.repository.CategoryRepository;
 import com.velora.velora_backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import lombok.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +19,7 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+
     
     @Autowired
     private com.velora.velora_backend.repository.ActivityLogRepository activityLogRepository;
@@ -34,24 +33,28 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+    public ResponseEntity<Product> getProductById(@PathVariable @NonNull Long id) {
         Optional<Product> product = productRepository.findById(id);
         return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/admin/products")
     @PreAuthorize("hasRole('ADMIN')")
-    public Product createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        if (product == null) {
+            return ResponseEntity.badRequest().build();
+        }
         productRepository.save(product);
         
         activityLogRepository.save(new com.velora.velora_backend.model.ActivityLog("Product Added", product.getTitle()));
         
-        return product;
+        return ResponseEntity.ok(product);
     }
 
     @PutMapping("/admin/products/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
+    @SuppressWarnings("null")
+    public ResponseEntity<Product> updateProduct(@PathVariable @NonNull Long id, @RequestBody Product productDetails) {
         Optional<Product> productData = productRepository.findById(id);
 
         if (productData.isPresent()) {
@@ -61,11 +64,19 @@ public class ProductController {
             product.setPrice(productDetails.getPrice());
             product.setDiscount(productDetails.getDiscount());
             product.setStock(productDetails.getStock());
-            product.setCategory(productDetails.getCategory());
-            product.setBrand(productDetails.getBrand());
+            if (productDetails.getCategory() != null) {
+                product.setCategory(productDetails.getCategory());
+            }
+            if (productDetails.getBrand() != null) {
+                product.setBrand(productDetails.getBrand());
+            }
             product.setImg(productDetails.getImg());
-            product.setRating(productDetails.getRating());
-            product.setRatingCount(productDetails.getRatingCount());
+            if (productDetails.getRating() != null) {
+                product.setRating(productDetails.getRating());
+            }
+            if (productDetails.getRatingCount() != null) {
+                product.setRatingCount(java.util.Objects.requireNonNull(productDetails.getRatingCount()));
+            }
             return ResponseEntity.ok(productRepository.save(product));
         } else {
             return ResponseEntity.notFound().build();

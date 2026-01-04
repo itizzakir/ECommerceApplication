@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.lang.NonNull;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
@@ -25,13 +27,16 @@ public class CategoryController {
 
     @PostMapping("/admin/categories")
     @PreAuthorize("hasRole('ADMIN')")
-    public Category createCategory(@RequestBody Category category) {
-        return categoryRepository.save(category);
+    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
+        if (category == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(categoryRepository.save(category));
     }
 
     @PutMapping("/admin/categories/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category categoryDetails) {
+    public ResponseEntity<Category> updateCategory(@PathVariable @NonNull Long id, @RequestBody Category categoryDetails) {
         Optional<Category> categoryData = categoryRepository.findById(id);
 
         if (categoryData.isPresent()) {
@@ -46,7 +51,7 @@ public class CategoryController {
 
     @DeleteMapping("/admin/categories/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> deleteCategory(@PathVariable Long id) {
+    public ResponseEntity<?> deleteCategory(@PathVariable @NonNull Long id) {
         if (categoryRepository.existsById(id)) {
             categoryRepository.deleteById(id);
             return ResponseEntity.ok().build();

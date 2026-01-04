@@ -1,5 +1,9 @@
 package com.velora.velora_backend.security;
 
+import com.velora.velora_backend.security.jwt.AuthEntryPointJwt;
+import com.velora.velora_backend.security.jwt.AuthTokenFilter;
+import com.velora.velora_backend.security.services.UserDetailsServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +21,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import com.velora.velora_backend.security.jwt.AuthEntryPointJwt;
-import com.velora.velora_backend.security.jwt.AuthTokenFilter;
-import com.velora.velora_backend.security.services.UserDetailsServiceImpl;
 
 import java.util.Arrays;
 
@@ -47,6 +47,8 @@ public class WebSecurityConfig {
    
       return authProvider;
   }
+
+
 
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -90,6 +92,8 @@ public class WebSecurityConfig {
               .anyRequest().authenticated()
         );
     
+
+
     http.authenticationProvider(authenticationProvider());
 
     http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -43,7 +43,11 @@ public class CartController {
     @PostMapping("/add")
     public ResponseEntity<?> addToCart(@RequestBody AddToCartRequest request) {
         User user = getAuthenticatedUser();
-        Product product = productRepository.findById(request.getProductId())
+        Long productId = request.getProductId();
+        if (productId == null) {
+            return ResponseEntity.badRequest().body("Product ID cannot be null");
+        }
+        Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 
         CartItem cartItem = cartItemRepository.findByUserAndProduct(user, product)
@@ -56,28 +60,25 @@ public class CartController {
     }
 
     @PutMapping("/{id}")
+    @SuppressWarnings("null")
     public ResponseEntity<?> updateCartItem(@PathVariable Long id, @RequestBody UpdateCartRequest request) {
+        User user = getAuthenticatedUser();
         CartItem cartItem = cartItemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cart item not found"));
-
-        // Ensure user owns this item
-        User user = getAuthenticatedUser();
-        if (!cartItem.getUser().getId().equals(user.getId())) {
-             return ResponseEntity.status(403).body("Unauthorized");
+        if (!java.util.Objects.equals(java.util.Objects.requireNonNull(cartItem.getUser().getId()), java.util.Objects.requireNonNull(user.getId()))) {
+            return ResponseEntity.status(403).body("Unauthorized");
         }
-
-        cartItem.setQuantity(request.getQuantity());
         cartItemRepository.save(cartItem);
         return ResponseEntity.ok("Cart updated");
     }
 
     @DeleteMapping("/{id}")
+    @SuppressWarnings("null")
     public ResponseEntity<?> removeFromCart(@PathVariable Long id) {
         CartItem cartItem = cartItemRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cart item not found"));
-        
         User user = getAuthenticatedUser();
-        if (!cartItem.getUser().getId().equals(user.getId())) {
+        if (!java.util.Objects.equals(java.util.Objects.requireNonNull(cartItem.getUser().getId()), java.util.Objects.requireNonNull(user.getId()))) {
              return ResponseEntity.status(403).body("Unauthorized");
         }
 

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import lombok.NonNull;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -41,7 +42,7 @@ public class WishlistController {
     }
 
     @PostMapping("/add/{productId}")
-    public ResponseEntity<?> addToWishlist(@PathVariable Long productId) {
+    public ResponseEntity<?> addToWishlist(@PathVariable @NonNull Long productId) {
         User user = getAuthenticatedUser();
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
@@ -57,12 +58,13 @@ public class WishlistController {
     }
 
     @DeleteMapping("/{id}")
+    @SuppressWarnings("null")
     public ResponseEntity<?> removeFromWishlist(@PathVariable Long id) {
         WishlistItem item = wishlistRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Wishlist item not found"));
 
         User user = getAuthenticatedUser();
-        if (!item.getUser().getId().equals(user.getId())) {
+        if (!java.util.Objects.equals(java.util.Objects.requireNonNull(item.getUser().getId()), java.util.Objects.requireNonNull(user.getId()))) {
              return ResponseEntity.status(403).body("Unauthorized");
         }
 

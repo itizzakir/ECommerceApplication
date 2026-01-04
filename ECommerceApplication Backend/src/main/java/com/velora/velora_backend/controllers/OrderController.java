@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -104,6 +105,7 @@ public class OrderController {
 
     @PutMapping("/admin/{id}/status")
     @PreAuthorize("hasRole('ADMIN')")
+    @SuppressWarnings("null")
     public ResponseEntity<?> updateOrderStatus(@PathVariable Long id, @RequestBody UpdateStatusRequest request) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Order not found"));
@@ -111,7 +113,7 @@ public class OrderController {
         order.setStatus(request.getStatus());
         orderRepository.save(order);
         
-        activityLogRepository.save(new com.velora.velora_backend.model.ActivityLog("Order Status Updated", "Order #" + order.getId() + " to " + request.getStatus()));
+        activityLogRepository.save(new com.velora.velora_backend.model.ActivityLog("Order Status Updated", "Order #" + Objects.requireNonNull(order.getId()) + " to " + request.getStatus()));
         
         return ResponseEntity.ok("Order status updated");
     }

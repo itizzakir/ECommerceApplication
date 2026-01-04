@@ -30,15 +30,24 @@ public class DataInitializer implements CommandLineRunner {
         if (productRepository.count() == 0) {
             try {
                 ObjectMapper mapper = new ObjectMapper();
-                InputStream inputStream = new ClassPathResource("products.json").getInputStream();
-                List<Product> products = mapper.readValue(inputStream, new TypeReference<List<Product>>(){});
+                List<Product> products = new java.util.ArrayList<>();
+                try (InputStream inputStream = new ClassPathResource("products.json").getInputStream()) {
+                    List<Product> loadedProducts = mapper.readValue(inputStream, new TypeReference<List<Product>>() {});
+                    if (loadedProducts != null) {
+                        products.addAll(loadedProducts);
+                    }
+                }
                 
                 // Reset IDs to allow database to generate them
                 for (Product product : products) {
                     product.setId(null);
                 }
 
-                productRepository.saveAll(products);
+                if (!products.isEmpty()) {
+                    productRepository.saveAll(products);
+                } else {
+                    System.out.println("No products loaded from products.json.");
+                }
                 System.out.println("Products seeded successfully!");
 
                 // Seed Categories

@@ -5,6 +5,7 @@ import com.velora.velora_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import lombok.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+    public ResponseEntity<?> updateUser(@PathVariable @NonNull Long id, @RequestBody User userDetails) {
         return userRepository.findById(id).map(user -> {
             user.setRole(userDetails.getRole());
             user.setStatus(userDetails.getStatus());

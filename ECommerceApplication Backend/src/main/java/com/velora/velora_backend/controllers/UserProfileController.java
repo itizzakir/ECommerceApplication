@@ -25,12 +25,14 @@ public class UserProfileController {
     @GetMapping("/profile")
     public ResponseEntity<?> getUserProfile() {
         User user = getAuthenticatedUser();
+
         return ResponseEntity.ok(user);
     }
 
     @PutMapping("/profile")
     public ResponseEntity<?> updateUserProfile(@RequestBody UpdateProfileRequest request) {
         User user = getAuthenticatedUser();
+        java.util.Objects.requireNonNull(user);
         
         if (request.getFullName() != null) user.setFullName(request.getFullName());
         if (request.getPhoneNumber() != null) user.setPhoneNumber(request.getPhoneNumber());
