@@ -1,22 +1,21 @@
 import React, { useState, useMemo } from 'react';
 import ProductGrid from '../components/home/ProductGrid';
-import { products as allProducts } from '../data/products';
 import './Allproduct.css';
 
-const Allproduct = () => {
+const Allproduct = ({ products = [] }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filterCategory, setFilterCategory] = useState('all');
   const [sortOrder, setSortOrder] = useState('default');
   const productsPerPage = 8;
 
-  const categories = useMemo(() => ['all', ...new Set(allProducts.map(p => p.category))], []);
+  const categories = useMemo(() => ['all', ...new Set(products.map(p => p.category))], [products]);
 
   const filteredProducts = useMemo(() => {
-    return allProducts.filter(product => {
+    return products.filter(product => {
       if (filterCategory === 'all') return true;
       return product.category === filterCategory;
     });
-  }, [filterCategory]);
+  }, [filterCategory, products]);
 
   const sortedProducts = useMemo(() => {
     const sorted = [...filteredProducts];

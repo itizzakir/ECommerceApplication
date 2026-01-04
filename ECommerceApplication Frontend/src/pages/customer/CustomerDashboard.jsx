@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './CustomerDashboard.css';
 import { customers } from '../../data/customers.js';
-import { products } from '../../data/products.js';
+import { getAllProducts } from '../../services/productService';
 import { fetchOrderHistory } from '../../services/orderService';
 
 
@@ -82,6 +82,7 @@ const CustomerDashboard = () => {
     const [recentOrders, setRecentOrders] = useState([]);
     const [loadingOrders, setLoadingOrders] = useState(true);
     const [ordersError, setOrdersError] = useState(null);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const storedCustomer = localStorage.getItem('customer');
@@ -95,20 +96,25 @@ const CustomerDashboard = () => {
     }, []);
 
     useEffect(() => {
-        const getRecentOrders = async () => {
+        const loadData = async () => {
             try {
+                // Fetch Orders
                 const allOrders = await fetchOrderHistory();
-                // Sort by date and take the last 2 orders
                 const sortedOrders = allOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
                 setRecentOrders(sortedOrders.slice(0, 2));
+                setLoadingOrders(false);
+
+                // Fetch Products
+                const allProducts = await getAllProducts();
+                setProducts(allProducts);
             } catch (err) {
-                setOrdersError('Failed to fetch recent orders.');
                 console.error(err);
-            } finally {
+                // Handle errors gracefully, maybe just log them for now as dashboard is partial
+                if(!recentOrders.length) setOrdersError('Failed to load dashboard data.');
                 setLoadingOrders(false);
             }
         };
-        getRecentOrders();
+        loadData();
     }, []);
 
 

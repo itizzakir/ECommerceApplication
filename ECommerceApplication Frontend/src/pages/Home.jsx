@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroCarousel from '../components/home/HeroCarousel';
 import CategoryGrid from '../components/home/CategoryGrid';
 import ProductGrid from '../components/home/ProductGrid';
-import { products } from '../data/products';
 import Allproduct from './Allproduct';
+import { getAllProducts } from '../services/productService';
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  useEffect(() => {
+    getAllProducts()
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching products:", err);
+        setLoading(false);
+      });
+  }, []);
 
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  if (loading) return <div style={{textAlign: 'center', padding: '50px'}}>Loading products...</div>;
 
   return (
     <main>

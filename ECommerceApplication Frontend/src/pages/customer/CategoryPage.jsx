@@ -1,18 +1,33 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ProductGrid from '../../components/home/ProductGrid';
-import { products } from '../../data/products';
+import { getAllProducts } from '../../services/productService';
 import './CategoryPage.css';
 
 const CategoryPage = () => {
   const { categoryName } = useParams();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('default');
+
+  useEffect(() => {
+      setLoading(true);
+      getAllProducts()
+        .then(data => {
+          setProducts(data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("Failed to fetch products", err);
+          setLoading(false);
+        });
+    }, []);
 
   const filteredProducts = useMemo(() => {
     return products.filter(
       (p) => p.category.toLowerCase() === categoryName.toLowerCase()
     );
-  }, [categoryName]);
+  }, [categoryName, products]);
 
   const sortedProducts = useMemo(() => {
     const sorted = [...filteredProducts];

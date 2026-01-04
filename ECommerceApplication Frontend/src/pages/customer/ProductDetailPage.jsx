@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { products } from '../../data/products';
+import { getProductById, getAllProducts } from '../../services/productService';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useNotification } from '../../context/NotificationContext';
@@ -10,19 +10,44 @@ import './ProductDetailPage.css';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
-  const product = products.find(p => p.id === parseInt(id));
+  const [product, setProduct] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
   const { addToCart } = useCart();
   const { addToWishlist, wishlistItems } = useWishlist();
   const { showNotification } = useNotification();
 
-  const relatedProducts = useMemo(() => {
-    if (!product) return [];
-    return products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
-  }, [product]);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const [productData, productsData] = await Promise.all([
+          getProductById(id),
+          getAllProducts()
+        ]);
+        setProduct(productData);
+        setAllProducts(productsData);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching product details:", err);
+        setError("Failed to load product");
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [id]);
 
-  if (!product) {
+  const relatedProducts = useMemo(() => {
+    if (!product || allProducts.length === 0) return [];
+    return allProducts.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+  }, [product, allProducts]);
+
+  if (loading) return <div style={{ textAlign: 'center', padding: '50px' }}>Loading product details...</div>;
+
+  if (error || !product) {
     return (
         <div className="not-found-page">
             <h2>Product Not Found</h2>
