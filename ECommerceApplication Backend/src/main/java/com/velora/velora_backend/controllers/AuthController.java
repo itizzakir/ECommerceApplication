@@ -76,12 +76,12 @@ public class AuthController {
           .body(new MessageResponse("Error: Email is already in use!"));
     }
 
-    String role = "Customer";
+    String role = "ROLE_CUSTOMER";
     if (signUpRequest.getRole() != null) {
         if (signUpRequest.getRole().equalsIgnoreCase("admin")) {
-            role = "Admin";
+            role = "ROLE_ADMIN";
         } else {
-            role = "Customer";
+            role = "ROLE_CUSTOMER";
         }
     }
 
