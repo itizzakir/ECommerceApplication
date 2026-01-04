@@ -17,6 +17,7 @@ import UserManagementPage from '../pages/admin/UserManagementPage';
 import ReviewManagementPage from '../pages/admin/ReviewManagementPage';
 import PaymentManagementPage from '../pages/admin/PaymentManagementPage';
 import CategoryPage from '../pages/customer/CategoryPage';
+import Allproduct from '../pages/Allproduct'; // Import Allproduct component
 
 // Layouts and Route Protection
 import CustomerLayout from '../layouts/CustomerLayout';
@@ -37,6 +38,7 @@ const AppRouter = () => {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/customer-dashboard" element={<CustomerDashboard />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />
+          <Route path="/all-products" element={<Allproduct />} /> {/* Add route for Allproduct */}
         </Route>
 
         {/* Admin routes */}

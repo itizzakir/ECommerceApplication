@@ -26,7 +26,10 @@ public class ProductController {
     private com.velora.velora_backend.repository.ActivityLogRepository activityLogRepository;
 
     @GetMapping("/products")
-    public List<Product> getAllProducts() {
+    public List<Product> getAllProducts(@RequestParam(required = false) String name) {
+        if (name != null && !name.isEmpty()) {
+            return productRepository.findByTitleContainingIgnoreCase(name);
+        }
         return productRepository.findAll();
     }
 

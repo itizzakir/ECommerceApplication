@@ -1,7 +1,8 @@
 const API_URL = "http://localhost:8080/api";
 
-export const getAllProducts = async () => {
-  const response = await fetch(`${API_URL}/products`);
+export const getAllProducts = async (name = '') => {
+  const url = name ? `${API_URL}/products?name=${name}` : `${API_URL}/products`;
+  const response = await fetch(url);
   if (!response.ok) throw new Error("Failed to fetch products");
   return response.json();
 };

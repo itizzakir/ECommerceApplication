@@ -1,12 +1,38 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import ProductGrid from '../components/home/ProductGrid';
+import { getAllProducts } from '../services/productService';
 import './Allproduct.css';
 
-const Allproduct = ({ products = [] }) => {
+const Allproduct = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterCategory, setFilterCategory] = useState('all');
   const [sortOrder, setSortOrder] = useState('default');
   const productsPerPage = 8;
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const queryParams = new URLSearchParams(location.search);
+        const name = queryParams.get('name');
+        const fetchedProducts = await getAllProducts(name || '');
+        setProducts(fetchedProducts);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, [location.search]);
+
 
   const categories = useMemo(() => ['all', ...new Set(products.map(p => p.category))], [products]);
 
@@ -50,6 +76,9 @@ const Allproduct = ({ products = [] }) => {
     setSortOrder(e.target.value);
     setCurrentPage(1);
   }
+
+  if (loading) return <div className="all-products-page">Loading products...</div>;
+  if (error) return <div className="all-products-page">Error: {error}</div>;
 
   return (
     <div className="all-products-page">

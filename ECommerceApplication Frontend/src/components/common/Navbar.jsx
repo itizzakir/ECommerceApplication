@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import './Navbar.css';
@@ -10,9 +10,17 @@ const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState('login'); // 'login' or 'signup'
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const { user, logout } = useAuth();
   const { cartItems } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const currentSearchTerm = queryParams.get('name') || '';
+    setSearchTerm(currentSearchTerm);
+  }, [location.search]);
 
   console.log(user);
 
@@ -32,6 +40,16 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSearchChange = (e) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    if (newSearchTerm) {
+      navigate(`/all-products?name=${newSearchTerm}`);
+    } else {
+      navigate('/all-products');
+    }
   };
 
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -67,7 +85,12 @@ const Navbar = () => {
           <div className="nav-right">
             <div className="search-box">
               <span>🔍</span>
-              <input type="text" placeholder="Search for products..." />
+              <input
+                type="text"
+                placeholder="Search for products..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
             </div>
 
             {user ? (
