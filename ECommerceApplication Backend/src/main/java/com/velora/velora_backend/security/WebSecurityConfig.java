@@ -83,6 +83,10 @@ public class WebSecurityConfig {
               .requestMatchers("/api/categories/**").permitAll()
               .requestMatchers("/api/cart/**").authenticated()
               .requestMatchers("/api/wishlist/**").authenticated()
+              .requestMatchers("/api/user/**").authenticated()
+              .requestMatchers("/api/orders/**").authenticated()
+              .requestMatchers("/api/admin/payments/**").authenticated()
+              .requestMatchers("/api/admin/activity-logs/**").authenticated()
               .anyRequest().authenticated()
         );
     

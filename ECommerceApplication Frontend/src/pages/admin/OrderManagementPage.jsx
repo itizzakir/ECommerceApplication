@@ -1,20 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OrderManagementPage.css';
+import { useAuth } from '../../context/AuthContext';
+import { getAllOrders, updateOrderStatus } from '../../services/orderService';
+import { useNotification } from '../../context/NotificationContext';
 
-const StatusBadge = ({ text, type }) => {
-    // Combine base class with a type-specific class
-    const className = `status-badge status-${text.toLowerCase()}`;
+const StatusBadge = ({ text }) => {
+    // Map backend statuses to CSS classes if needed, or use lowercase
+    const className = `status-badge status-${text ? text.toLowerCase() : 'pending'}`;
     return <span className={className}>{text}</span>;
 };
 
-
 const OrderManagementPage = () => {
-  const [orders, setOrders] = useState([
-    { id: 'ORD001', customer: 'John Doe', amount: '$150.00', paymentStatus: 'Paid', orderStatus: 'Shipped' },
-    { id: 'ORD002', customer: 'Jane Smith', amount: '$200.50', paymentStatus: 'Paid', orderStatus: 'Processing' },
-    { id: 'ORD003', customer: 'Sam Wilson', amount: '$75.25', paymentStatus: 'Pending', orderStatus: 'Pending' },
-    { id: 'ORD004', customer: 'Alice Brown', amount: '$300.00', paymentStatus: 'Paid', orderStatus: 'Delivered' },
-  ]);
+  const { user } = useAuth();
+  const { showNotification } = useNotification();
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchOrders();
+  }, [user]);
+
+  const fetchOrders = async () => {
+      if (user?.token) {
+          try {
+              const data = await getAllOrders(user.token);
+              setOrders(data);
+          } catch (error) {
+              console.error("Failed to fetch orders", error);
+          } finally {
+              setLoading(false);
+          }
+      }
+  };
+
+  const handleStatusChange = async (orderId, newStatus) => {
+      try {
+          await updateOrderStatus(orderId, newStatus, user.token);
+          showNotification(`Order #${orderId} status updated to ${newStatus}`, 'success');
+          fetchOrders(); // Refresh list
+      } catch (error) {
+          showNotification("Failed to update status", 'error');
+      }
+  };
+
+  if (loading) return <div>Loading orders...</div>;
 
   return (
     <div className="order-management-page">
@@ -25,29 +54,44 @@ const OrderManagementPage = () => {
             <tr>
               <th>Order ID</th>
               <th>Customer</th>
-              <th>Amount</th>
-              <th>Payment Status</th>
-              <th>Order Status</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Address</th>
+              <th>Status</th>
               <th style={{ textAlign: 'right' }}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {orders.map(order => (
               <tr key={order.id}>
-                <td className="order-id">{order.id}</td>
-                <td>{order.customer}</td>
-                <td>{order.amount}</td>
+                <td className="order-id">#{order.id}</td>
+                <td>{order.user?.email || 'Unknown'}</td>
+                <td>{new Date(order.orderDate).toLocaleDateString()}</td>
+                <td>₹{order.totalAmount.toFixed(2)}</td>
+                <td>{order.shippingAddress}</td>
                 <td>
-                  <StatusBadge text={order.paymentStatus} type="payment" />
-                </td>
-                <td>
-                  <StatusBadge text={order.orderStatus} type="order" />
+                  <StatusBadge text={order.status} />
                 </td>
                 <td style={{ textAlign: 'right' }}>
-                  <button className="action-btn">View</button>
+                  <select 
+                    value={order.status} 
+                    onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                    style={{padding: '5px', borderRadius: '4px', border: '1px solid #ddd'}}
+                  >
+                      <option value="Pending">Pending</option>
+                      <option value="Processing">Processing</option>
+                      <option value="Shipped">Shipped</option>
+                      <option value="Delivered">Delivered</option>
+                      <option value="Cancelled">Cancelled</option>
+                  </select>
                 </td>
               </tr>
             ))}
+            {orders.length === 0 && (
+                <tr>
+                    <td colSpan="7" style={{textAlign: 'center', padding: '20px'}}>No orders found.</td>
+                </tr>
+            )}
           </tbody>
         </table>
       </div>

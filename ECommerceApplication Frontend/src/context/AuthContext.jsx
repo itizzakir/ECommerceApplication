@@ -44,21 +44,22 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const signup = async (email, password, role) => {
+  const signup = async (signupData) => {
     try {
+      // signupData should contain: email, password, role, fullName, phoneNumber, address
       const response = await fetch('http://localhost:8080/api/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password, role }),
+        body: JSON.stringify(signupData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         // Automatically login after successful signup
-        return await login(email, password);
+        return await login(signupData.email, signupData.password);
       } else {
         throw new Error(data.message || "Signup failed");
       }
@@ -68,8 +69,37 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateUser = async (updatedData) => {
+      if (!user || !user.token) return;
+
+      try {
+          const response = await fetch('http://localhost:8080/api/user/profile', {
+              method: 'PUT',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${user.token}`
+              },
+              body: JSON.stringify(updatedData)
+          });
+          
+          if (!response.ok) throw new Error("Failed to update profile");
+          
+          const updatedUser = await response.json();
+          // Merge updated fields with existing user data (like token)
+          const newUserState = { ...user, ...updatedUser }; 
+          
+          setUser(newUserState);
+          localStorage.setItem('user', JSON.stringify(newUserState));
+          return newUserState;
+
+      } catch (error) {
+          console.error("Update profile error:", error);
+          throw error;
+      }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, signup }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, signup, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

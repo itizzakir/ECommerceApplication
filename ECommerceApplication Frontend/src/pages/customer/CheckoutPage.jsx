@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
+import { createOrder } from '../../services/orderService';
 import './CheckoutPage.css';
 
 const CheckoutPage = () => {
   const { cartItems, clearCart } = useCart();
+  const { user } = useAuth();
   const { showNotification } = useNotification();
   const navigate = useNavigate();
 
@@ -21,6 +24,7 @@ const CheckoutPage = () => {
   });
   
   const [errors, setErrors] = useState({});
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     if (cartItems.length === 0) {
@@ -40,7 +44,6 @@ const CheckoutPage = () => {
       if (!/^\d{3}$/.test(formData.cvc)) newErrors.cvc = 'CVC must be 3 digits';
     } else if (formData.paymentMethod === 'upi') {
       if (!formData.upiId) newErrors.upiId = 'UPI ID is required';
-      // Basic UPI ID validation (can be more robust if needed)
       if (!/^[\w.-]+@[\w.-]+$/.test(formData.upiId)) newErrors.upiId = 'UPI ID is not valid (e.g., example@bank)';
     }
     
@@ -55,17 +58,39 @@ const CheckoutPage = () => {
 
   const handlePaymentMethodChange = (method) => {
     setFormData(prev => ({ ...prev, paymentMethod: method }));
-    setErrors({}); // Clear errors when payment method changes
+    setErrors({}); 
   };
 
-  const handlePlaceOrder = (e) => {
+  const handlePlaceOrder = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      showNotification('Order placed successfully! Thank you for shopping with us.', 'success');
-      setTimeout(() => {
-        clearCart();
-        navigate('/');
-      }, 2000);
+      setIsProcessing(true);
+      try {
+        if (!user || !user.token) {
+           showNotification('You must be logged in to place an order.', 'error');
+           setIsProcessing(false);
+           return;
+        }
+
+        // Call backend API
+        await createOrder({
+            address: formData.address,
+            paymentMethod: formData.paymentMethod === 'card' ? 'Credit Card' : 'UPI' 
+        }, user.token);
+
+        showNotification('Payment successful! Your order has been placed.', 'success');
+        
+        // Wait briefly for UX then redirect
+        setTimeout(() => {
+            clearCart(); // Local cart clear (if not already handled by context sync)
+            navigate('/customer-dashboard'); // Go to dashboard to see new order
+        }, 1500);
+
+      } catch (error) {
+        console.error(error);
+        showNotification(error.message || 'Failed to place order. Please try again.', 'error');
+        setIsProcessing(false);
+      }
     } else {
         showNotification('Please fix the errors in the form.', 'error');
     }
@@ -75,8 +100,6 @@ const CheckoutPage = () => {
   const shippingCost = 50;
   const total = cartTotal + shippingCost;
   
-  const isFormValid = validateForm;
-
   return (
     <div className="checkout-page">
       <div className="checkout-page__header">
@@ -155,7 +178,9 @@ const CheckoutPage = () => {
               </div>
             )}
 
-            <button type="submit" className="place-order-btn">Place Order</button>
+            <button type="submit" className="place-order-btn" disabled={isProcessing}>
+                {isProcessing ? 'Processing...' : 'Place Order'}
+            </button>
           </form>
         </div>
         <div className="checkout-summary">

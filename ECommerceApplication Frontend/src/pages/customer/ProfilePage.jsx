@@ -1,92 +1,122 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
 import './ProfilePage.css';
 
 const ProfilePage = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, logout } = useAuth();
   const { showNotification } = useNotification();
-
-  const [formData, setFormData] = useState({
-    name: user ? user.name : '',
-    currentPassword: '',
-    newPassword: '',
-  });
   
-  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({
+    fullName: '',
+    phoneNumber: '',
+    address: '',
+    email: '' // Read-only
+  });
+  const [isEditing, setIsEditing] = useState(false);
 
-  if (!user) {
-    return (
-      <div className="access-denied">
-        <h2>Access Denied</h2>
-        <p>Please log in to view your profile.</p>
-        <Link to="/" className="hero-btn">Go to Homepage</Link>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (user) {
+        setFormData({
+            fullName: user.fullName || '',
+            phoneNumber: user.phoneNumber || '',
+            address: user.address || '',
+            email: user.email || ''
+        });
+    }
+  }, [user]);
 
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name) newErrors.name = 'Full Name is required';
-    if (formData.newPassword && !formData.currentPassword) newErrors.currentPassword = 'Current Password is required to set a new one';
-    if (formData.newPassword && formData.newPassword.length < 8) newErrors.newPassword = 'New Password must be at least 8 characters long';
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    if(validateForm()){
-        // In a real app, you'd also send a request to your backend to update the user data
-        updateUser({ ...user, name: formData.name });
-        showNotification('Profile updated successfully!', 'success');
-        setFormData(prev => ({ ...prev, currentPassword: '', newPassword: ''}));
+    try {
+      await updateUser({
+          fullName: formData.fullName,
+          phoneNumber: formData.phoneNumber,
+          address: formData.address
+      });
+      showNotification('Profile updated successfully!', 'success');
+      setIsEditing(false);
+    } catch (error) {
+      showNotification('Failed to update profile.', 'error');
     }
   };
 
+  if (!user) return <div className="profile-page">Please log in to view your profile.</div>;
 
   return (
     <div className="profile-page">
-      <div className="profile-page__header">
-        <h2>Welcome, {user.name}!</h2>
-        <p>Manage your personal information and view your order history.</p>
-      </div>
-      <div className="profile-form-container">
-        <form onSubmit={handleUpdate} className="profile-form" noValidate>
-          <h3>Personal Information</h3>
-          <div className="form-group">
-            <label htmlFor="name">Full Name</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
-            {errors.name && <p className="error-text">{errors.name}</p>}
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input type="email" id="email" value={user.email} disabled />
-          </div>
-          
-          <h3 style={{marginTop: '40px'}}>Change Password</h3>
-          <div className="form-group">
-            <label htmlFor="currentPassword">Current Password</label>
-            <input type="password" id="currentPassword" name="currentPassword" placeholder="••••••••" value={formData.currentPassword} onChange={handleInputChange}/>
-            {errors.currentPassword && <p className="error-text">{errors.currentPassword}</p>}
-          </div>
-          <div className="form-group">
-            <label htmlFor="newPassword">New Password</label>
-            <input type="password" id="newPassword" name="newPassword" placeholder="••••••••" value={formData.newPassword} onChange={handleInputChange}/>
-            {errors.newPassword && <p className="error-text">{errors.newPassword}</p>}
-          </div>
-          <button type="submit" className="update-profile-btn">Update Profile</button>
-        </form>
-      </div>
-      <div className="profile-page__actions">
-        <Link to="/order-history" className="view-orders-btn">View Order History</Link>
+      <div className="profile-card">
+        <div className="profile-header">
+            <div className="profile-avatar">
+                {user.fullName ? user.fullName.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}
+            </div>
+            <h2>{user.fullName || 'User Profile'}</h2>
+            <p className="profile-email">{user.email}</p>
+        </div>
+
+        {isEditing ? (
+            <form onSubmit={handleUpdate} className="profile-form">
+                <div className="form-group">
+                    <label>Full Name</label>
+                    <input 
+                        type="text" 
+                        name="fullName" 
+                        value={formData.fullName} 
+                        onChange={handleChange} 
+                        placeholder="John Doe"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Phone Number</label>
+                    <input 
+                        type="tel" 
+                        name="phoneNumber" 
+                        value={formData.phoneNumber} 
+                        onChange={handleChange} 
+                        placeholder="+91 98765 43210"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Address</label>
+                    <textarea 
+                        name="address" 
+                        value={formData.address} 
+                        onChange={handleChange} 
+                        placeholder="123 Main St, City, Country"
+                        rows="3"
+                    />
+                </div>
+                <div className="form-actions">
+                    <button type="button" className="btn-cancel" onClick={() => setIsEditing(false)}>Cancel</button>
+                    <button type="submit" className="btn-save">Save Changes</button>
+                </div>
+            </form>
+        ) : (
+            <div className="profile-details">
+                <div className="detail-row">
+                    <span className="detail-label">Full Name:</span>
+                    <span className="detail-value">{user.fullName || 'Not set'}</span>
+                </div>
+                <div className="detail-row">
+                    <span className="detail-label">Phone:</span>
+                    <span className="detail-value">{user.phoneNumber || 'Not set'}</span>
+                </div>
+                <div className="detail-row">
+                    <span className="detail-label">Address:</span>
+                    <span className="detail-value">{user.address || 'Not set'}</span>
+                </div>
+                
+                <div className="profile-actions">
+                    <button className="btn-edit" onClick={() => setIsEditing(true)}>Edit Profile</button>
+                    <button className="btn-logout" onClick={logout}>Logout</button>
+                </div>
+            </div>
+        )}
       </div>
     </div>
   );

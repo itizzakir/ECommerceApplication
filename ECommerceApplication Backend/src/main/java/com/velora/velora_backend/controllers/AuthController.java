@@ -39,6 +39,9 @@ public class AuthController {
 
   @Autowired
   JwtUtils jwtUtils;
+  
+  @Autowired
+  com.velora.velora_backend.repository.ActivityLogRepository activityLogRepository;
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -65,7 +68,10 @@ public class AuthController {
     return ResponseEntity.ok(new JwtResponse(jwt, 
                          userDetails.getId(), 
                          userDetails.getUsername(), 
-                         role));
+                         role,
+                         userDetails.getFullName(),
+                         userDetails.getPhoneNumber(),
+                         userDetails.getAddress()));
   }
 
   @PostMapping("/signup")
@@ -89,8 +95,14 @@ public class AuthController {
     User user = new User(signUpRequest.getEmail(),
                encoder.encode(signUpRequest.getPassword()),
                role);
+               
+    user.setFullName(signUpRequest.getFullName());
+    user.setPhoneNumber(signUpRequest.getPhoneNumber());
+    user.setAddress(signUpRequest.getAddress());
 
     userRepository.save(user);
+    
+    activityLogRepository.save(new com.velora.velora_backend.model.ActivityLog("New User Registered", user.getEmail()));
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }

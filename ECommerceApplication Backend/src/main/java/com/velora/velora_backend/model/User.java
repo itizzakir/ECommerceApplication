@@ -34,6 +34,12 @@ public class User {
   private String role;
 
   private String status = "Active";
+  
+  private String fullName;
+  
+  private String phoneNumber;
+  
+  private String address;
 
   public User(String email, String password, String role) {
     this.email = email;

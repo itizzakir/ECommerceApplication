@@ -1,6 +1,7 @@
 package com.velora.velora_backend.controllers;
 
 import com.velora.velora_backend.model.Product;
+import com.velora.velora_backend.repository.CategoryRepository;
 import com.velora.velora_backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,13 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private com.velora.velora_backend.repository.ActivityLogRepository activityLogRepository;
 
     @GetMapping("/products")
     public List<Product> getAllProducts() {
@@ -32,7 +39,11 @@ public class ProductController {
     @PostMapping("/admin/products")
     @PreAuthorize("hasRole('ADMIN')")
     public Product createProduct(@RequestBody Product product) {
-        return productRepository.save(product);
+        productRepository.save(product);
+        
+        activityLogRepository.save(new com.velora.velora_backend.model.ActivityLog("Product Added", product.getTitle()));
+        
+        return product;
     }
 
     @PutMapping("/admin/products/{id}")

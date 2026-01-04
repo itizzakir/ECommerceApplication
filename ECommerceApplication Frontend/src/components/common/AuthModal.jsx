@@ -8,6 +8,9 @@ const AuthModal = ({ type, closeModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('Customer'); // Default role
+  const [fullName, setFullName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
   const [error, setError] = useState('');
   const { login, signup } = useAuth();
   const navigate = useNavigate();
@@ -21,7 +24,14 @@ const AuthModal = ({ type, closeModal }) => {
       if (type === 'login') {
         data = await login(email, password);
       } else {
-        data = await signup(email, password, role);
+        data = await signup({
+            email,
+            password,
+            role,
+            fullName,
+            phoneNumber,
+            address
+        });
       }
 
       // Redirect based on role
@@ -52,6 +62,18 @@ const AuthModal = ({ type, closeModal }) => {
         {error && <p className="error-msg" style={{color: 'red', textAlign: 'center', marginBottom: '10px'}}>{error}</p>}
 
         <form onSubmit={handleSubmit}>
+          {type === 'signup' && (
+            <div className="inp-grp">
+                <label>Full Name</label>
+                <input 
+                    type="text" 
+                    placeholder="John Doe" 
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required 
+                />
+            </div>
+          )}
           <div className="inp-grp">
             <label>Email Address</label>
             <input 
@@ -73,13 +95,35 @@ const AuthModal = ({ type, closeModal }) => {
             />
           </div>
           {type === 'signup' && (
-            <div className="inp-grp">
-              <label>Role</label>
-              <select value={role} onChange={(e) => setRole(e.target.value)} required>
-                <option value="Customer">Customer</option>
-                <option value="Admin">Admin</option>
-              </select>
-            </div>
+            <>
+                <div className="inp-grp">
+                    <label>Phone Number</label>
+                    <input 
+                        type="tel" 
+                        placeholder="+91 98765 43210" 
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        required 
+                    />
+                </div>
+                <div className="inp-grp">
+                    <label>Address</label>
+                    <input 
+                        type="text" 
+                        placeholder="123 Main St, City" 
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        required 
+                    />
+                </div>
+                <div className="inp-grp">
+                    <label>Role</label>
+                    <select value={role} onChange={(e) => setRole(e.target.value)} required>
+                        <option value="Customer">Customer</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+            </>
           )}
            {/* Even for login, we might want role if the API required it, but usually login just needs email/pass. 
                The original code had role selector for login too. I'll hide it for login unless the user wants to specify it, 

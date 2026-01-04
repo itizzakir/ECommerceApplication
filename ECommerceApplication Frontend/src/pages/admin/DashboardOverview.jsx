@@ -3,12 +3,12 @@ import './DashboardOverview.css';
 import { useAuth } from '../../context/AuthContext';
 import { getAllUsers } from '../../services/userService';
 import { getAllProducts } from '../../services/productService';
+import { getAllOrders } from '../../services/orderService';
+import { getActivityLogs } from '../../services/activityLogService';
 import {
     summaryCardsData,
     analyticsData,
-    bestSellingProductsData,
-    recentOrdersData,
-    activityLogData
+    bestSellingProductsData
 } from './data';
 
 // A simple icon map
@@ -25,22 +25,26 @@ const Icon = ({ name }) => {
 };
 
 const StatusBadge = ({ status }) => {
-    return <span className={`status-badge status-${status.toLowerCase()}`}>{status}</span>;
+    return <span className={`status-badge status-${status ? status.toLowerCase() : 'pending'}`}>{status}</span>;
 };
 
 
 const DashboardOverview = () => {
     const [summaryCards, setSummaryCards] = useState(summaryCardsData);
     const [productStats, setProductStats] = useState({ totalProducts: 0, activeProducts: 0, outOfStock: 0 });
+    const [recentOrders, setRecentOrders] = useState([]);
+    const [logs, setLogs] = useState([]);
     const { user } = useAuth();
 
     useEffect(() => {
         const fetchData = async () => {
             if (user?.token) {
                 try {
-                    const [users, products] = await Promise.all([
+                    const [users, products, orders, fetchedLogs] = await Promise.all([
                         getAllUsers(user.token),
-                        getAllProducts()
+                        getAllProducts(),
+                        getAllOrders(user.token),
+                        getActivityLogs(user.token)
                     ]);
 
                     // Update User Count
@@ -53,6 +57,26 @@ const DashboardOverview = () => {
                                 value: users.length.toString() 
                             };
                         }
+                        
+                        // Update Orders Count
+                        const orderCardIndex = newCards.findIndex(c => c.title === 'Total Orders');
+                        if (orderCardIndex !== -1) {
+                            newCards[orderCardIndex] = {
+                                ...newCards[orderCardIndex],
+                                value: orders.length.toString()
+                            };
+                        }
+
+                        // Update Revenue (Simple sum of all orders)
+                        const revenueCardIndex = newCards.findIndex(c => c.title === 'Total Revenue');
+                        if (revenueCardIndex !== -1) {
+                             const totalRevenue = orders.reduce((sum, order) => sum + (order.totalAmount || 0), 0);
+                             newCards[revenueCardIndex] = {
+                                 ...newCards[revenueCardIndex],
+                                 value: `₹${totalRevenue.toFixed(2)}`
+                             };
+                        }
+
                         return newCards;
                     });
 
@@ -66,6 +90,12 @@ const DashboardOverview = () => {
                         activeProducts: active,
                         outOfStock: outOfStock
                     });
+
+                    // Update Recent Orders (Top 5)
+                    setRecentOrders(orders.slice(0, 5));
+
+                    // Update Activity Logs
+                    setLogs(fetchedLogs);
 
                 } catch (error) {
                     console.error("Error fetching dashboard data:", error);
@@ -142,14 +172,18 @@ const DashboardOverview = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {recentOrdersData.map((order, index) => (
-                            <tr key={index}>
-                                <td>{order.orderId}</td>
-                                <td>{order.customerName}</td>
-                                <td>{order.amount}</td>
-                                <td><StatusBadge status={order.status} /></td>
-                            </tr>
-                        ))}
+                        {recentOrders.length > 0 ? (
+                            recentOrders.map((order, index) => (
+                                <tr key={index}>
+                                    <td>#{order.id}</td>
+                                    <td>{order.user?.email || 'Unknown'}</td>
+                                    <td>₹{order.totalAmount?.toFixed(2)}</td>
+                                    <td><StatusBadge status={order.status} /></td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr><td colSpan="4" style={{textAlign: 'center', padding: '20px'}}>No recent orders.</td></tr>
+                        )}
                     </tbody>
                 </table>
             </section>
@@ -173,12 +207,18 @@ const DashboardOverview = () => {
                 <section className="card activity-log">
                     <h3 className="card-header">Activity Log</h3>
                     <ul className="activity-list">
-                        {activityLogData.map((activity, index) => (
-                            <li key={index} className="activity-item">
-                                <p className="activity-action">{activity.action}</p>
-                                <p className="activity-timestamp">{activity.timestamp}</p>
-                            </li>
-                        ))}
+                        {logs.length > 0 ? (
+                            logs.map((activity, index) => (
+                                <li key={index} className="activity-item">
+                                    <p className="activity-action">
+                                        {activity.action}: <span style={{fontWeight: 500}}>[{activity.details}]</span>
+                                    </p>
+                                    <p className="activity-timestamp">{new Date(activity.timestamp).toLocaleString()}</p>
+                                </li>
+                            ))
+                        ) : (
+                            <p style={{padding: '20px', textAlign: 'center', color: '#666'}}>No recent activity.</p>
+                        )}
                     </ul>
                 </section>
             </div>

@@ -68,7 +68,7 @@ const OrderHistoryPage = () => {
               </div>
               <div className="order-card__info">
                 <span>Total</span>
-                <p>₹{order.total.toFixed(2)}</p>
+                <p>₹{order.totalAmount.toFixed(2)}</p>
               </div>
               <div className="order-card__info">
                 <span>Status</span>

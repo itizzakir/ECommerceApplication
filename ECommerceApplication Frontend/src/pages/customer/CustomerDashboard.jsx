@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './CustomerDashboard.css';
-import { customers } from '../../data/customers.js';
 import { getAllProducts } from '../../services/productService';
 import { fetchOrderHistory } from '../../services/orderService';
-
+import { useAuth } from '../../context/AuthContext';
+import { useWishlist } from '../../context/WishlistContext';
+import { useNotification } from '../../context/NotificationContext';
 
 // --- SELF-CONTAINED SVG ICONS ---
 const Icon = ({ path, size = 24, className = '' }) => (
@@ -20,6 +21,7 @@ const ICONS = {
     Wallet: <path d="M21 12V7H5a2 2 0 01-2-2V3h14a2 2 0 012 2v2M3 5v14a2 2 0 002 2h16a2 2 0 002-2v-4" />,
     Truck: <><path d="M14 17.5V6.5a1 1 0 00-1-1H3.5a1 1 0 00-1 1v11" /><path d="M13 17.5h5.5a1 1 0 001-1V12a1 1 0 00-1-1h-6" /><circle cx="5.5" cy="17.5" r="2.5" /><circle cx="15.5" cy="17.5" r="2.5" /></>,
     LogOut: <><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></>,
+    User: <><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></>
 };
 
 // --- CHILD COMPONENTS ---
@@ -43,8 +45,8 @@ const OrderCard = ({ order }) => (
                 {order.status}
             </span>
         </div>
-        <p className="order-card__total">₹{order.total.toFixed(2)}</p>
-        <p className="order-card__date">{order.date}</p>
+        <p className="order-card__total">₹{order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}</p>
+        <p className="order-card__date">{order.orderDate ? new Date(order.orderDate).toLocaleDateString() : ''}</p>
     </div>
 );
 
@@ -65,12 +67,12 @@ const ProductCard = ({ product, onAddToWishlist }) => (
 
 const WishlistCard = ({ item, onRemove }) => (
     <div className="wishlist-card">
-         <div className="product-card__image-wrapper">
-            <img src={item.image} alt={item.name} />
+         <div className="wishlist-card__image-wrapper" style={{width: '40px', height: '40px', borderRadius: '4px', overflow: 'hidden'}}>
+            <img src={item.img} alt={item.title} style={{width: '100%', height: '100%', objectFit: 'cover'}}/>
         </div>
         <div className="wishlist-card__info">
-            <p className="wishlist-card__name">{item.name}</p>
-            <p className="wishlist-card__price">₹{item.price.toFixed(2)}</p>
+            <p className="wishlist-card__name" style={{margin: 0, fontWeight: 500}}>{item.title}</p>
+            <p className="wishlist-card__price" style={{margin: 0, fontSize: '12px', color: '#666'}}>₹{item.price}</p>
         </div>
         <button className="wishlist-card__remove" onClick={() => onRemove(item.id)}>&times;</button>
     </div>
@@ -78,29 +80,37 @@ const WishlistCard = ({ item, onRemove }) => (
 
 // --- MAIN DASHBOARD COMPONENT ---
 const CustomerDashboard = () => {
-    const [customer, setCustomer] = useState(null);
+    const { user, updateUser, logout } = useAuth();
+    const { wishlistItems, addToWishlist, removeFromWishlist } = useWishlist();
+    const { showNotification } = useNotification();
+
     const [recentOrders, setRecentOrders] = useState([]);
     const [loadingOrders, setLoadingOrders] = useState(true);
     const [ordersError, setOrdersError] = useState(null);
     const [products, setProducts] = useState([]);
 
+    // Profile Edit State
+    const [isEditingProfile, setIsEditingProfile] = useState(false);
+    const [profileForm, setProfileForm] = useState({ fullName: '', phoneNumber: '', address: '' });
+
     useEffect(() => {
-        const storedCustomer = localStorage.getItem('customer');
-        if (storedCustomer) {
-            setCustomer(JSON.parse(storedCustomer));
-        } else {
-            const defaultCustomer = customers[0];
-            localStorage.setItem('customer', JSON.stringify(defaultCustomer));
-            setCustomer(defaultCustomer);
+        if (user) {
+            setProfileForm({
+                fullName: user.fullName || '',
+                phoneNumber: user.phoneNumber || '',
+                address: user.address || ''
+            });
         }
-    }, []);
+    }, [user]);
 
     useEffect(() => {
         const loadData = async () => {
             try {
-                // Fetch Orders
-                const allOrders = await fetchOrderHistory();
-                const sortedOrders = allOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+                // Fetch Orders (Mock or Real)
+                // If fetchOrderHistory isn't updated for Auth, this might return mock data or fail.
+                // Assuming it works or returns defaults.
+                const allOrders = await fetchOrderHistory(); 
+                const sortedOrders = allOrders ? allOrders.sort((a, b) => new Date(b.date) - new Date(a.date)) : [];
                 setRecentOrders(sortedOrders.slice(0, 2));
                 setLoadingOrders(false);
 
@@ -109,7 +119,6 @@ const CustomerDashboard = () => {
                 setProducts(allProducts);
             } catch (err) {
                 console.error(err);
-                // Handle errors gracefully, maybe just log them for now as dashboard is partial
                 if(!recentOrders.length) setOrdersError('Failed to load dashboard data.');
                 setLoadingOrders(false);
             }
@@ -117,28 +126,19 @@ const CustomerDashboard = () => {
         loadData();
     }, []);
 
-
-    const updateCustomer = (updatedCustomer) => {
-        setCustomer(updatedCustomer);
-        localStorage.setItem('customer', JSON.stringify(updatedCustomer));
-    };
-
-    const handleAddToWishlist = (product) => {
-        if (customer && !customer.wishlist.find(item => item.id === product.id)) {
-            const newWishlist = [...customer.wishlist, { id: product.id, name: product.title, price: product.price, image: product.img }];
-            updateCustomer({ ...customer, wishlist: newWishlist });
+    const handleProfileUpdate = async (e) => {
+        e.preventDefault();
+        try {
+            await updateUser(profileForm);
+            showNotification("Profile updated successfully!", "success");
+            setIsEditingProfile(false);
+        } catch (error) {
+            showNotification("Failed to update profile.", "error");
         }
     };
 
-    const handleRemoveFromWishlist = (productId) => {
-        if (customer) {
-            const newWishlist = customer.wishlist.filter(item => item.id !== productId);
-            updateCustomer({ ...customer, wishlist: newWishlist });
-        }
-    };
-    
-    if (!customer) {
-        return <div>Loading...</div>;
+    if (!user) {
+        return <div style={{padding: '40px', textAlign: 'center'}}>Please log in to view your dashboard.</div>;
     }
 
     const pendingOrdersCount = recentOrders.filter(order => order.status !== 'Delivered').length;
@@ -146,14 +146,17 @@ const CustomerDashboard = () => {
     return (
         <div className="dashboard">
             <main className="dashboard__main">
-                <h2 className="dashboard__title">My Dashboard</h2>
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px'}}>
+                    <h2 className="dashboard__title" style={{marginBottom: 0}}>My Dashboard</h2>
+                    <span style={{color: '#666'}}>Welcome back, <strong>{user.fullName || user.email.split('@')[0]}</strong></span>
+                </div>
 
                 <section className="dashboard__stats-grid">
                     <Link to="/order-history" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <StatCard icon={<Icon path={ICONS.Package} />} label="Pending Orders" value={pendingOrdersCount} iconBg="#FFF4E5" />
                     </Link>
                     <Link to="/wishlist" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <StatCard icon={<Icon path={ICONS.Heart} className="icon--heart-filled" />} label="Wishlist Items" value={customer.wishlist.length} iconBg="#FFEBEE" />
+                        <StatCard icon={<Icon path={ICONS.Heart} className="icon--heart-filled" />} label="Wishlist Items" value={wishlistItems.length} iconBg="#FFEBEE" />
                     </Link>
                     <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <StatCard icon={<Icon path={ICONS.Star} className="icon--star-filled" />} label="Reward Points" value="1,250" iconBg="#FFF8E1" />
@@ -182,19 +185,53 @@ const CustomerDashboard = () => {
                         <section>
                             <h3>Discover New Items</h3>
                             <div className="dashboard__products-grid">
-                                {products.slice(0, 2).map(product => <ProductCard key={product.id} product={product} onAddToWishlist={handleAddToWishlist} />)}
+                                {products.slice(0, 3).map(product => (
+                                    <ProductCard 
+                                        key={product.id} 
+                                        product={product} 
+                                        onAddToWishlist={() => addToWishlist(product)} 
+                                    />
+                                ))}
                             </div>
                         </section>
                     </div>
 
                     <aside className="dashboard__sidebar">
+                        {/* PROFILE WIDGET */}
+                        <div className="sidebar-widget profile-widget">
+                             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px'}}>
+                                <h3>My Profile</h3>
+                                <button 
+                                    onClick={() => setIsEditingProfile(true)}
+                                    style={{width: 'auto', padding: '5px 10px', fontSize: '12px', background: 'transparent', color: 'var(--primary)', border: '1px solid var(--primary)'}}
+                                >
+                                    Edit
+                                </button>
+                             </div>
+                             <div className="profile-info">
+                                <p><strong>Name:</strong> {user.fullName || 'Not set'}</p>
+                                <p><strong>Email:</strong> {user.email}</p>
+                                <p><strong>Phone:</strong> {user.phoneNumber || 'Not set'}</p>
+                                <p><strong>Address:</strong> {user.address || 'Not set'}</p>
+                             </div>
+                        </div>
+
                         <div className="sidebar-widget">
                              <h3>My Wishlist</h3>
                             <div className="sidebar-widget__content--wishlist">
-                                {customer.wishlist.length > 0 ? (
-                                    customer.wishlist.map(item => <WishlistCard key={item.id} item={item} onRemove={handleRemoveFromWishlist} />)
+                                {wishlistItems.length > 0 ? (
+                                    wishlistItems.slice(0, 3).map(item => (
+                                        <WishlistCard 
+                                            key={item.id} 
+                                            item={item} 
+                                            onRemove={removeFromWishlist} 
+                                        />
+                                    ))
                                 ) : (
                                     <p>Your wishlist is empty.</p>
+                                )}
+                                {wishlistItems.length > 3 && (
+                                    <Link to="/wishlist" style={{fontSize: '13px', color: 'var(--primary)', textAlign: 'center', display: 'block', marginTop: '10px'}}>View All</Link>
                                 )}
                             </div>
                         </div>
@@ -206,6 +243,48 @@ const CustomerDashboard = () => {
                     </aside>
                 </div>
             </main>
+
+            {/* EDIT PROFILE MODAL */}
+            {isEditingProfile && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h3>Edit Profile</h3>
+                        <form onSubmit={handleProfileUpdate}>
+                            <div className="form-group">
+                                <label>Full Name</label>
+                                <input 
+                                    type="text" 
+                                    value={profileForm.fullName}
+                                    onChange={e => setProfileForm({...profileForm, fullName: e.target.value})}
+                                    placeholder="Enter full name"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Phone Number</label>
+                                <input 
+                                    type="tel" 
+                                    value={profileForm.phoneNumber}
+                                    onChange={e => setProfileForm({...profileForm, phoneNumber: e.target.value})}
+                                    placeholder="Enter phone number"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Address</label>
+                                <textarea 
+                                    value={profileForm.address}
+                                    onChange={e => setProfileForm({...profileForm, address: e.target.value})}
+                                    placeholder="Enter full address"
+                                    rows="3"
+                                />
+                            </div>
+                            <div className="modal-actions">
+                                <button type="button" className="btn-cancel" onClick={() => setIsEditingProfile(false)}>Cancel</button>
+                                <button type="submit" className="btn-save">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
