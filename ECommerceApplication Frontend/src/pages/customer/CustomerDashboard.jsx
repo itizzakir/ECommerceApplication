@@ -67,8 +67,8 @@ const ProductCard = ({ product, onAddToWishlist }) => (
 
 const WishlistCard = ({ item, onRemove }) => (
     <div className="wishlist-card">
-         <div className="wishlist-card__image-wrapper" style={{width: '40px', height: '40px', borderRadius: '4px', overflow: 'hidden'}}>
-            <img src={item.img} alt={item.title} style={{width: '100%', height: '100%', objectFit: 'cover'}}/>
+         <div className="wishlist-card__image-wrapper" style={{width: '50px', height: '60px', borderRadius: '4px', overflow: 'hidden', flexShrink: 0}}>
+            <img src={item.img} alt={item.title} style={{width: '100%', height: '100%', objectFit: 'contain'}}/>
         </div>
         <div className="wishlist-card__info">
             <p className="wishlist-card__name" style={{margin: 0, fontWeight: 500}}>{item.title}</p>
@@ -220,7 +220,7 @@ const CustomerDashboard = () => {
                              <h3>My Wishlist</h3>
                             <div className="sidebar-widget__content--wishlist">
                                 {wishlistItems.length > 0 ? (
-                                    wishlistItems.slice(0, 3).map(item => (
+                                    wishlistItems.slice(-1).map(item => (
                                         <WishlistCard 
                                             key={item.id} 
                                             item={item} 
@@ -230,8 +230,8 @@ const CustomerDashboard = () => {
                                 ) : (
                                     <p>Your wishlist is empty.</p>
                                 )}
-                                {wishlistItems.length > 3 && (
-                                    <Link to="/wishlist" style={{fontSize: '13px', color: 'var(--primary)', textAlign: 'center', display: 'block', marginTop: '10px'}}>View All</Link>
+                                {wishlistItems.length > 1 && (
+                                    <Link to="/wishlist" style={{fontSize: '13px', color: 'var(--primary)', textAlign: 'center', display: 'block', marginTop: '10px', textDecoration: 'underline'}}>Show More</Link>
                                 )}
                             </div>
                         </div>
