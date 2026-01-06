@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './DashboardOverview.css';
 import { useAuth } from '../../context/AuthContext';
 import { getAllUsers } from '../../services/userService';
@@ -30,10 +31,13 @@ const StatusBadge = ({ status }) => {
 
 
 const DashboardOverview = () => {
+    const navigate = useNavigate();
     const [summaryCards, setSummaryCards] = useState(summaryCardsData);
     const [productStats, setProductStats] = useState({ totalProducts: 0, activeProducts: 0, outOfStock: 0 });
     const [recentOrders, setRecentOrders] = useState([]);
     const [logs, setLogs] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const logsPerPage = 5;
     const { user } = useAuth();
 
     useEffect(() => {
@@ -104,6 +108,14 @@ const DashboardOverview = () => {
         };
         fetchData();
     }, [user]);
+
+    // Pagination Logic
+    const indexOfLastLog = currentPage * logsPerPage;
+    const indexOfFirstLog = indexOfLastLog - logsPerPage;
+    const currentLogs = logs.slice(indexOfFirstLog, indexOfLastLog);
+    const totalPages = Math.ceil(logs.length / logsPerPage);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
         <div className="dashboard-overview">
@@ -198,8 +210,8 @@ const DashboardOverview = () => {
                         <p><span>Out of Stock:</span> <strong>{productStats.outOfStock}</strong></p>
                     </div>
                     <div className="product-actions">
-                        <button className="btn btn-primary">Add Product</button>
-                        <button className="btn btn-secondary">Manage Categories</button>
+                        <button className="btn btn-primary" onClick={() => navigate('/admin/products')}>Add Product</button>
+                        <button className="btn btn-secondary" onClick={() => navigate('/admin/categories')}>Manage Categories</button>
                     </div>
                 </section>
 
@@ -207,8 +219,8 @@ const DashboardOverview = () => {
                 <section className="card activity-log">
                     <h3 className="card-header">Activity Log</h3>
                     <ul className="activity-list">
-                        {logs.length > 0 ? (
-                            logs.map((activity, index) => (
+                        {currentLogs.length > 0 ? (
+                            currentLogs.map((activity, index) => (
                                 <li key={index} className="activity-item">
                                     <p className="activity-action">
                                         {activity.action}: <span style={{fontWeight: 500}}>[{activity.details}]</span>
@@ -220,6 +232,26 @@ const DashboardOverview = () => {
                             <p style={{padding: '20px', textAlign: 'center', color: '#666'}}>No recent activity.</p>
                         )}
                     </ul>
+                    {/* Pagination Controls */}
+                    {logs.length > logsPerPage && (
+                        <div className="pagination-controls">
+                            <button 
+                                className="btn-pagination" 
+                                onClick={() => paginate(currentPage - 1)} 
+                                disabled={currentPage === 1}
+                            >
+                                &laquo; Prev
+                            </button>
+                            <span className="pagination-info">Page {currentPage} of {totalPages}</span>
+                            <button 
+                                className="btn-pagination" 
+                                onClick={() => paginate(currentPage + 1)} 
+                                disabled={currentPage === totalPages}
+                            >
+                                Next &raquo;
+                            </button>
+                        </div>
+                    )}
                 </section>
             </div>
 

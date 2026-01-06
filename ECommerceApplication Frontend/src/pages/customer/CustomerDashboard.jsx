@@ -70,12 +70,12 @@ const ProductCard = ({ product, onAddToWishlist }) => (
 
 const WishlistCard = ({ item, onRemove }) => (
     <div className="wishlist-card">
-         <div className="wishlist-card__image-wrapper" style={{width: '50px', height: '60px', borderRadius: '4px', overflow: 'hidden', flexShrink: 0}}>
-            <img src={item.img} alt={item.title} style={{width: '100%', height: '100%', objectFit: 'contain'}}/>
+         <div className="wishlist-card__image-wrapper">
+            <img src={item.img} alt={item.title} className="wishlist-card__image"/>
         </div>
         <div className="wishlist-card__info">
-            <p className="wishlist-card__name" style={{margin: 0, fontWeight: 500}}>{item.title}</p>
-            <p className="wishlist-card__price" style={{margin: 0, fontSize: '12px', color: '#666'}}>₹{item.price}</p>
+            <p className="wishlist-card__name">{item.title}</p>
+            <p className="wishlist-card__price">₹{item.price}</p>
         </div>
         <button className="wishlist-card__remove" onClick={() => onRemove(item.id)}>&times;</button>
     </div>

@@ -253,6 +253,45 @@
     color: var(--text-secondary);
 }
 
+/* Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-pagination {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.btn-pagination:hover:not(:disabled) {
+    background-color: var(--color-accent-light);
+    color: var(--color-accent);
+    border-color: var(--color-accent-light);
+}
+
+.btn-pagination:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--bg-main);
+}
+
+.pagination-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
     .summary-cards {
