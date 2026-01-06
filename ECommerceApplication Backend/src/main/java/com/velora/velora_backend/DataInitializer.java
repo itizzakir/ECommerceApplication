@@ -70,5 +70,12 @@ public class DataInitializer implements CommandLineRunner {
                 e.printStackTrace();
             }
         }
+        
+        // Update specific product image
+        productRepository.findById(41L).ifPresent(product -> {
+            product.setImg("https://media.istockphoto.com/id/615271872/photo/silver-chain-on-white-background.jpg?s=612x612&w=0&k=20&c=KmdfT3jcwBmzNXbgyvckWYQqpABTdeikwhhPxHWFiEg=");
+            productRepository.save(product);
+            System.out.println("Updated image for product 41");
+        });
     }
 }
