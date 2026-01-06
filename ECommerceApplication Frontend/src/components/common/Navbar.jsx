@@ -73,12 +73,12 @@ const Navbar = () => {
           </div>
 
           <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-            <li className="nav-item active"><Link to="/category/women">Women</Link></li>
-            <li className="nav-item"><Link to="/category/men">Men</Link></li>
-            <li className="nav-item"><Link to="/category/cosmetics">Cosmetics</Link></li>
-            <li className="nav-item"><Link to="/">New Drops</Link></li>
+            <li className="nav-item active"><Link to="/category/women" className="transition-colors duration-200 ease-in-out hover:text-gray-700">Women</Link></li>
+            <li className="nav-item"><Link to="/category/men" className="transition-colors duration-200 ease-in-out hover:text-gray-700">Men</Link></li>
+            <li className="nav-item"><Link to="/category/cosmetics" className="transition-colors duration-200 ease-in-out hover:text-gray-700">Cosmetics</Link></li>
+            <li className="nav-item"><Link to="/category/accessories" className="transition-colors duration-200 ease-in-out hover:text-gray-700">Accessories</Link></li>
             {user && user.role !== 'Admin' && (
-              <li className="nav-item"><Link to="/customer-dashboard">Customer Dashboard</Link></li>
+              <li className="nav-item"><Link to="/customer-dashboard" className="transition-colors duration-200 ease-in-out hover:text-gray-700">Customer Dashboard</Link></li>
             )}
           </ul>
 
@@ -100,8 +100,8 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <button onClick={() => openModal('login')} className="auth-btn">Login</button>
-                <button onClick={() => openModal('signup')} className="auth-btn" style={{background: 'var(--dark)', color: 'white', border: 'none'}}>
+                <button onClick={() => openModal('login')} className="auth-btn transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gray-100">Login</button>
+                <button onClick={() => openModal('signup')} className="auth-btn bg-black text-white border-none transition-all duration-300 ease-in-out hover:scale-105 hover:bg-gray-800">
                   Sign Up
                 </button>
               </>

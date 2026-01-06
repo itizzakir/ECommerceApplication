@@ -42,7 +42,7 @@ const WishlistPage = () => {
       <div className="wishlist-grid">
         {wishlistItems.map(item => (
           <div key={item.id} className="wishlist-card">
-            <Link to={`/product/${item.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
+            <Link to={`/product/${item.id}`}>
               <div className="wishlist-card__image-wrapper">
                 <img src={item.img} alt={item.title} />
               </div>

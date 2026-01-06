@@ -28,7 +28,7 @@ const ProductGrid = ({ products }) => {
   return (
     <div className="product-grid">
       {products.map(item => (
-        <Link to={`/product/${item.id}`} key={item.id} className="product-card">
+        <Link to={`/product/${item.id}`} key={item.id} className="product-card transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl">
           <div className="p-img-box">
             {item.tag && <span className="p-badge">{item.tag}</span>}
             <button
@@ -51,7 +51,7 @@ const ProductGrid = ({ products }) => {
                 <s>₹ {item.price + 500}</s>
             </div>
             <button 
-                className="add-to-cart-btn" 
+                className="add-to-cart-btn transition-all duration-300 ease-in-out hover:bg-gray-700 hover:shadow-lg" 
                 onClick={(e) => handleAddToCart(e, item)}
             >
                 Add to Cart
