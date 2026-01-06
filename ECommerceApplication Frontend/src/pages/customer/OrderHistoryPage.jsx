@@ -58,13 +58,19 @@ const OrderHistoryPage = () => {
         <div className="order-list">
           {orders.map(order => (
             <div key={order.id} className="order-card">
+              <img 
+                src={order.orderItems?.[0]?.product?.img || 'https://placehold.co/100'} 
+                alt="Order Item" 
+                className="order-card__image"
+                onError={(e) => {e.target.src = 'https://placehold.co/100'}}
+              />
               <div className="order-card__info">
                 <span>Order ID</span>
                 <p className="order-card__id">#{order.id}</p>
               </div>
               <div className="order-card__info">
                 <span>Date</span>
-                <p>{order.date}</p>
+                <p>{order.orderDate ? new Date(order.orderDate).toLocaleDateString() : ''}</p>
               </div>
               <div className="order-card__info">
                 <span>Total</span>

@@ -32,11 +32,20 @@
     border-radius: 12px;
     padding: 25px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr) auto;
+    grid-template-columns: 60px repeat(4, 1fr) auto;
     align-items: center;
     gap: 20px;
     transition: box-shadow 0.2s;
 }
+
+.order-card__image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
 .order-card:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }

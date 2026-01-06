@@ -38,7 +38,7 @@ const StatCard = ({ icon, label, value, iconBg }) => (
 );
 
 const OrderCard = ({ order }) => (
-    <div className="order-card">
+    <Link to={`/order/${order.id}`} className="order-card" style={{textDecoration: 'none', color: 'inherit'}}>
         <div className="order-card__header">
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 <span>#{order.id}</span>
@@ -50,7 +50,7 @@ const OrderCard = ({ order }) => (
         </div>
         <p className="order-card__total">₹{order.totalAmount ? order.totalAmount.toFixed(2) : '0.00'}</p>
         <p className="order-card__date">{order.orderDate ? new Date(order.orderDate).toLocaleDateString() : ''}</p>
-    </div>
+    </Link>
 );
 
 const ProductCard = ({ product, onAddToWishlist }) => (
@@ -118,7 +118,7 @@ const CustomerDashboard = () => {
                 // If fetchOrderHistory isn't updated for Auth, this might return mock data or fail.
                 // Assuming it works or returns defaults.
                 const allOrders = await fetchOrderHistory(); 
-                const sortedOrders = allOrders ? allOrders.sort((a, b) => new Date(b.date) - new Date(a.date)) : [];
+                const sortedOrders = allOrders ? allOrders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate)) : [];
                 setRecentOrders(sortedOrders.slice(0, 2));
                 setLoadingOrders(false);
 
