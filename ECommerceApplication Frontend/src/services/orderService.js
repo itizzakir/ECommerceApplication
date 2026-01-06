@@ -38,6 +38,24 @@ export const fetchOrderHistory = async (token) => {
     return response.json();
 };
 
+export const getOrderById = async (orderId, token) => {
+    // Fallback for token if not provided
+    if (!token) {
+        const userStr = localStorage.getItem('user');
+        if (userStr) {
+            token = JSON.parse(userStr).token;
+        }
+    }
+
+    const response = await fetch(`${API_URL}/${orderId}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    if (!response.ok) throw new Error("Failed to fetch order details");
+    return response.json();
+};
+
 export const getAllOrders = async (token) => {
     const response = await fetch(`${API_URL}/admin`, {
         headers: {
@@ -59,4 +77,12 @@ export const updateOrderStatus = async (orderId, status, token) => {
     });
     if (!response.ok) throw new Error("Failed to update status");
     return response;
+};
+
+export const trackOrder = async (trackingId) => {
+    const response = await fetch(`${API_URL}/track/${trackingId}`);
+    if (!response.ok) {
+        throw new Error("Order not found or tracking failed");
+    }
+    return response.json();
 };

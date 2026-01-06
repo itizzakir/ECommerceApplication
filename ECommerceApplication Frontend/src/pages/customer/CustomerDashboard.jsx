@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './CustomerDashboard.css';
 import { getAllProducts } from '../../services/productService';
-import { fetchOrderHistory } from '../../services/orderService';
+import { fetchOrderHistory, trackOrder } from '../../services/orderService';
 import { useAuth } from '../../context/AuthContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useNotification } from '../../context/NotificationContext';
@@ -40,7 +40,10 @@ const StatCard = ({ icon, label, value, iconBg }) => (
 const OrderCard = ({ order }) => (
     <div className="order-card">
         <div className="order-card__header">
-            <span>#{order.id}</span>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+                <span>#{order.id}</span>
+                {order.trackingId && <span style={{fontSize: '11px', color: '#888', fontWeight: 'normal'}}>Track: {order.trackingId.substring(0, 8)}...</span>}
+            </div>
             <span className={`order-card__status ${order.status === 'Delivered' ? 'status--delivered' : order.status === 'Shipped' ? 'status--shipped' : 'status--processing'}`}>
                 {order.status}
             </span>
@@ -89,6 +92,11 @@ const CustomerDashboard = () => {
     const [ordersError, setOrdersError] = useState(null);
     const [products, setProducts] = useState([]);
 
+    // Tracking State
+    const [trackingInput, setTrackingInput] = useState('');
+    const [trackingResult, setTrackingResult] = useState(null);
+    const [trackingError, setTrackingError] = useState('');
+
     // Profile Edit State
     const [isEditingProfile, setIsEditingProfile] = useState(false);
     const [profileForm, setProfileForm] = useState({ fullName: '', phoneNumber: '', address: '' });
@@ -134,6 +142,18 @@ const CustomerDashboard = () => {
             setIsEditingProfile(false);
         } catch (error) {
             showNotification("Failed to update profile.", "error");
+        }
+    };
+
+    const handleTrackOrder = async () => {
+        if (!trackingInput.trim()) return;
+        setTrackingResult(null);
+        setTrackingError('');
+        try {
+            const order = await trackOrder(trackingInput);
+            setTrackingResult(order);
+        } catch (error) {
+            setTrackingError('Order not found with this ID.');
         }
     };
 
@@ -237,8 +257,24 @@ const CustomerDashboard = () => {
                         </div>
                          <div className="sidebar-widget">
                             <h3>Track Order</h3>
-                            <p>Enter your order ID for status updates.</p>
-                            <button>Track</button>
+                            <p>Enter your Tracking ID for status updates.</p>
+                            <div style={{display: 'flex', gap: '5px'}}>
+                                <input 
+                                    type="text" 
+                                    placeholder="Tracking ID" 
+                                    value={trackingInput}
+                                    onChange={(e) => setTrackingInput(e.target.value)}
+                                    style={{flex: 1, padding: '8px', borderRadius: '4px', border: '1px solid #ddd'}}
+                                />
+                                <button onClick={handleTrackOrder} style={{width: 'auto'}}>Track</button>
+                            </div>
+                            {trackingResult && (
+                                <div style={{marginTop: '15px', padding: '10px', background: '#f9f9f9', borderRadius: '4px', border: '1px solid #eee'}}>
+                                    <p style={{margin: '5px 0'}}><strong>Status:</strong> <span style={{color: 'var(--primary)', fontWeight: 'bold'}}>{trackingResult.status}</span></p>
+                                    <p style={{margin: '5px 0'}}><strong>Total:</strong> ₹{trackingResult.totalAmount}</p>
+                                </div>
+                            )}
+                            {trackingError && <p style={{color: 'red', marginTop: '10px', fontSize: '13px'}}>{trackingError}</p>}
                         </div>
                     </aside>
                 </div>

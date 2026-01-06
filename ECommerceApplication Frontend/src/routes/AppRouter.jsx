@@ -6,8 +6,10 @@ import CartPage from '../pages/customer/CartPage';
 import WishlistPage from '../pages/customer/WishlistPage';
 import CheckoutPage from '../pages/customer/CheckoutPage';
 import OrderHistoryPage from '../pages/customer/OrderHistoryPage';
+import OrderDetailsPage from '../pages/customer/OrderDetailsPage';
 import ProfilePage from '../pages/customer/ProfilePage';
 import CustomerDashboard from '../pages/customer/CustomerDashboard';
+
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import DashboardOverview from '../pages/admin/DashboardOverview';
 import ProductManagementPage from '../pages/admin/ProductManagementPage';
@@ -35,6 +37,7 @@ const AppRouter = () => {
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-history" element={<OrderHistoryPage />} />
+          <Route path="/order/:id" element={<OrderDetailsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/customer-dashboard" element={<CustomerDashboard />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />

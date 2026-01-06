@@ -56,6 +56,7 @@ public class OrderController {
         order.setStatus("Pending"); // Initial status
         order.setShippingAddress(request.getAddress());
         order.setPaymentMethod(request.getPaymentMethod());
+        order.setTrackingId(java.util.UUID.randomUUID().toString());
 
         double total = 0;
         for (CartItem cartItem : cartItems) {
@@ -88,13 +89,33 @@ public class OrderController {
         // Clear cart after order
         cartItemRepository.deleteAll(cartItems);
 
-        return ResponseEntity.ok("Order placed successfully!");
+        return ResponseEntity.ok(java.util.Map.of("message", "Order placed successfully!", "trackingId", order.getTrackingId()));
+    }
+
+    @GetMapping("/track/{trackingId}")
+    public ResponseEntity<?> trackOrder(@PathVariable String trackingId) {
+        Order order = orderRepository.findByTrackingId(trackingId)
+                .orElseThrow(() -> new RuntimeException("Order not found with tracking ID: " + trackingId));
+        return ResponseEntity.ok(order);
     }
 
     @GetMapping("/my-orders")
     public List<Order> getMyOrders() {
         User user = getAuthenticatedUser();
         return orderRepository.findByUserOrderByOrderDateDesc(user);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getOrderById(@PathVariable Long id) {
+        User user = getAuthenticatedUser();
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+        
+        if (!order.getUser().getId().equals(user.getId())) {
+            return ResponseEntity.status(403).body("Access denied");
+        }
+        
+        return ResponseEntity.ok(order);
     }
 
     @GetMapping("/admin")

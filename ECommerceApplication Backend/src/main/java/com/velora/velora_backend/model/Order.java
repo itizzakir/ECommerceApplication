@@ -24,6 +24,8 @@ public class Order {
 
     private LocalDateTime orderDate;
 
+    private String trackingId;
+
     private String status; // PENDING, PAID, SHIPPED, DELIVERED, CANCELLED
 
     private Double totalAmount;

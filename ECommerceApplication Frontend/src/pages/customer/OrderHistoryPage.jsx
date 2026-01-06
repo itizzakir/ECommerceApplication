@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './OrderHistoryPage.css';
 import { fetchOrderHistory } from '../../services/orderService'; // Import the service
@@ -17,7 +17,7 @@ const OrderHistoryPage = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getOrders = async () => {
@@ -75,7 +75,7 @@ const OrderHistoryPage = () => {
                 <p><span className="order-card__status" style={getStatusStyle(order.status)}>{order.status}</span></p>
               </div>
               <div className="order-card__actions">
-                <button className="order-card__details-btn" onClick={() => alert('Order details functionality is not implemented yet.')}>View Details</button>
+                <button className="order-card__details-btn" onClick={() => navigate(`/order/${order.id}`)}>View Details</button>
               </div>
             </div>
           ))}
