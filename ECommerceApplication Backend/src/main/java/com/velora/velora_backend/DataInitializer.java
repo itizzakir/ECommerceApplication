@@ -77,5 +77,12 @@ public class DataInitializer implements CommandLineRunner {
             productRepository.save(product);
             System.out.println("Updated image for product 41");
         });
+
+        // Update product 9 image
+        productRepository.findById(9L).ifPresent(product -> {
+            product.setImg("https://media.istockphoto.com/id/500160116/photo/traditional-and-ethnic-indian-blouse-for-women-to-be-worn.jpg?s=612x612&w=0&k=20&c=b94p676XW-n6sH4-dBXMGNG-12nL1K0Ff-2VRezE6sE=");
+            productRepository.save(product);
+            System.out.println("Updated image for product 9");
+        });
     }
 }
