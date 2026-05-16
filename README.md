@@ -11,179 +11,251 @@
 
 ---
 
-## 🌟 Overview
+# 🌐 Live Demo
 
-**Velora** is a robust e-commerce application designed to bridge the gap between complex backend logic and a fluid frontend user interface. It features a secure, microservices-ready **Spring Boot** backend and a dynamic **React** frontend powered by **Vite**. The platform supports comprehensive role-based access control (RBAC) for Admins and Customers, real-time data management, and a highly responsive design.
-
----
-
-## 🚀 Key Features
-
-### 👤 Customer Experience
-*   **🛒 Smart Cart System**: Persistent shopping cart with real-time price calculation and stock validation.
-*   **❤️ Wishlist Management**: Save favorite items for later.
-*   **📦 Order Tracking**: Detailed order history and status tracking (Pending → Shipped → Delivered).
-*   **🔍 Advanced Search & Filtering**: Browse products by category, price range, and ratings.
-*   **💳 Secure Checkout**: Integrated payment processing flow (Placeholder/Stripe ready).
-*   **👤 User Profile**: Manage personal details, addresses, and account settings.
-
-### 🛡️ Admin Dashboard
-*   **📊 Analytics Overview**: Visual dashboard for sales performance, user growth, and order stats.
-*   **📦 Product Management**: Full CRUD capabilities for inventory, including image handling and stock adjustments.
-*   **📂 Category Management**: Organize products into hierarchical categories.
-*   **👥 User Management**: View and manage customer accounts and roles.
-*   **📝 Order Fulfillment**: Process incoming orders and update their statuses.
-*   **⭐ Review Moderation**: Manage product reviews and ratings.
+🚀 **Frontend Live Demo:**  
+👉 https://e-commerce-application-demo-live.vercel.app/
 
 ---
 
-## 🏗️ Technical Architecture
+# 🌟 Overview
 
-The application follows a **Layered RESTful Architecture** ensuring separation of concerns:
+**Velora** is a robust e-commerce application designed to bridge the gap between complex backend logic and a fluid frontend user interface. It features a secure, scalable **Spring Boot** backend and a dynamic **React** frontend powered by **Vite**. The platform supports role-based access control (RBAC), real-time data handling, and a responsive UI experience.
 
-1.  **Frontend (Client)**: React Single Page Application (SPA) consuming REST APIs.
-2.  **Backend (Server)**: Spring Boot Application exposing REST endpoints.
-3.  **Database (Persistence)**: MySQL relational database accessed via Hibernate/JPA.
-4.  **Security**: Stateless JWT (JSON Web Token) authentication.
+---
 
-### 📂 Folder Structure
+# 🚀 Features
+
+## 👤 Customer Features
+
+- 🛒 Add to Cart & Cart Management
+- ❤️ Wishlist Functionality
+- 📦 Order Tracking System
+- 🔍 Product Search & Filtering
+- 💳 Secure Checkout Flow
+- 👤 User Profile Management
+- ⭐ Product Ratings & Reviews
+
+---
+
+## 🛡️ Admin Features
+
+- 📊 Dashboard Analytics
+- 📦 Product CRUD Management
+- 📂 Category Management
+- 👥 User Management
+- 📝 Order Processing
+- ⭐ Review Moderation
+
+---
+
+# 🏗️ Architecture
+
+The application follows a layered architecture:
+
 ```text
-ECommerceApplication/
-├── 📂 ECommerceApplication Backend/    # Spring Boot Server
-│   ├── src/main/java/com/velora/
-│   │   ├── 🎮 controllers/             # API Endpoints
-│   │   ├── 📦 model/                   # JPA Entities
-│   │   ├── 💾 repository/              # Data Access Layer
-│   │   ├── ⚙️ service/                 # Business Logic
-│   │   └── 🔒 security/                # JWT & Auth Config
-│   └── src/main/resources/             # Config & Static Data
-│
-└── 📂 ECommerceApplication Frontend/   # React Client
-    ├── src/
-    │   ├── 🧩 components/              # Reusable UI Components
-    │   ├── ⚡ context/                 # State Management (Auth, Cart)
-    │   ├── 📄 pages/                   # Application Views
-    │   │   ├── 🛡️ admin/               # Admin Dashboard Pages
-    │   │   └── 👤 customer/            # Customer Shop Pages
-    │   └── 🛣️ routes/                  # App Navigation
-    └── public/                         # Static Assets
+Frontend (React + Vite)
+        ↓
+REST API (Spring Boot)
+        ↓
+MySQL Database
 ```
 
 ---
 
-## 🛠️ Technology Stack
+# 📂 Project Structure
 
-### Backend (Server)
-| Technology | Description |
-| :--- | :--- |
-| **Java 17** | Core language for robust backend logic. |
-| **Spring Boot 3.5.9** | Framework for rapid application development. |
-| **Spring Security** | Authentication & Authorization via JWT. |
-| **Spring Data JPA** | Hibernate-based ORM for database interactions. |
-| **MySQL** | Relational database management system. |
-| **Lombok** | Boilerplate code reduction. |
-| **Maven** | Dependency management and build automation. |
-
-### Frontend (Client)
-| Technology | Description |
-| :--- | :--- |
-| **React 19.2.0** | Library for building user interfaces. |
-| **Vite 7.2.4** | Next-generation frontend tooling (super fast!). |
-| **Tailwind CSS 4.1** | Utility-first CSS framework for custom designs. |
-| **React Router 6.23** | Standard routing library for React. |
-| **Lucide React** | Beautiful, consistent icons. |
-| **Axios/Fetch** | HTTP client for API communication. |
-
----
-
-## 🔌 API Documentation (Snapshot)
-
-The backend provides a rich set of RESTful endpoints.
-
-| Method | Endpoint | Description | Access |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/signin` | Authenticate user & return JWT | Public |
-| `POST` | `/api/auth/signup` | Register a new user account | Public |
-| `GET` | `/api/products` | Retrieve all products (with pagination) | Public |
-| `GET` | `/api/products/{id}` | Get specific product details | Public |
-| `POST` | `/api/cart/add` | Add item to user's cart | User |
-| `POST` | `/api/orders/place` | Submit a new order | User |
-| `GET` | `/api/admin/stats` | Get dashboard analytics | Admin |
-| `POST` | `/api/admin/products` | Create a new product | Admin |
+```text
+ECommerceApplication/
+├── 📂 ECommerceApplication Backend/
+│   ├── src/main/java/com/velora/
+│   │   ├── controllers/
+│   │   ├── model/
+│   │   ├── repository/
+│   │   ├── service/
+│   │   └── security/
+│   └── src/main/resources/
+│
+└── 📂 ECommerceApplication Frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── context/
+    │   ├── pages/
+    │   │   ├── admin/
+    │   │   └── customer/
+    │   └── routes/
+    └── public/
+```
 
 ---
 
-## 🏃‍♂️ Getting Started
+# 🛠️ Tech Stack
 
-Follow these steps to set up the project locally.
+## Backend
 
-### Prerequisites
-*   **Java JDK 17** or higher
-*   **Node.js v18** or higher
-*   **MySQL Server** running on default port `3306`
+| Technology | Purpose |
+|---|---|
+| Java 17 | Backend Language |
+| Spring Boot | Backend Framework |
+| Spring Security | Authentication |
+| JWT | Authorization |
+| Spring Data JPA | ORM |
+| MySQL | Database |
+| Maven | Dependency Management |
 
-### 1. Database Configuration
-Create a database named `velora_db` in your MySQL server.
+---
+
+## Frontend
+
+| Technology | Purpose |
+|---|---|
+| React 19 | UI Development |
+| Vite | Build Tool |
+| Tailwind CSS | Styling |
+| React Router | Routing |
+| Axios | API Calls |
+| Lucide React | Icons |
+
+---
+
+# 🔌 REST API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/auth/signup` | Register User |
+| POST | `/api/auth/signin` | Login User |
+| GET | `/api/products` | Get All Products |
+| GET | `/api/products/{id}` | Get Product Details |
+| POST | `/api/cart/add` | Add Item to Cart |
+| POST | `/api/orders/place` | Place Order |
+| GET | `/api/admin/stats` | Admin Dashboard Stats |
+
+---
+
+# ⚙️ Installation Guide
+
+## 📌 Prerequisites
+
+- Java JDK 17+
+- Node.js 18+
+- MySQL Server
+
+---
+
+# 1️⃣ Database Setup
+
 ```sql
 CREATE DATABASE velora_db;
 ```
-*Note: The application is configured to automatically create tables (`ddl-auto=update`).*
-
-### 2. Backend Setup
-1.  Navigate to the backend directory:
-    ```bash
-    cd "ECommerceApplication Backend"
-    ```
-2.  Update database credentials in `src/main/resources/application.properties` if necessary:
-    ```properties
-    spring.datasource.username=YOUR_DB_USERNAME
-    spring.datasource.password=YOUR_DB_PASSWORD
-    ```
-3.  Run the application:
-    ```bash
-    ./mvnw spring-boot:run
-    ```
-
-### 3. Frontend Setup
-1.  Open a new terminal and navigate to the frontend directory:
-    ```bash
-    cd "ECommerceApplication Frontend"
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the development server:
-    ```bash
-    npm run dev
-    ```
-4.  Open your browser and verify the app is running at `http://localhost:5173`.
 
 ---
 
-## 📸 Screenshots
+# 2️⃣ Backend Setup
 
-| Customer Home | Product Details |
-| :---: | :---: |
-| *(Add Screenshot)* | *(Add Screenshot)* |
+```bash
+cd "ECommerceApplication Backend"
+```
 
-| Admin Dashboard | Shopping Cart |
-| :---: | :---: |
-| *(Add Screenshot)* | *(Add Screenshot)* |
+Update database credentials inside:
+
+```properties
+src/main/resources/application.properties
+```
+
+Run backend:
+
+```bash
+./mvnw spring-boot:run
+```
+
+Backend runs on:
+
+```bash
+http://localhost:8080
+```
 
 ---
 
-## 🤝 Contributing
+# 3️⃣ Frontend Setup
 
-Contributions are welcome! Please follow these steps:
-1.  Fork the repository.
-2.  Create a feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+```bash
+cd "ECommerceApplication Frontend"
+npm install
+npm run dev
+```
+
+Frontend runs on:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 📸 Screenshots
+
+| Home Page | Product Page |
+|---|---|
+| Add Screenshot | Add Screenshot |
+
+| Admin Dashboard | Cart |
+|---|---|
+| Add Screenshot | Add Screenshot |
+
+---
+
+# 🌍 Deployment
+
+## Frontend Deployment
+
+Deploy easily on:
+
+- Vercel
+- Netlify
+
+### Live Demo
+
+👉 https://e-commerce-application-demo-live.vercel.app/
+
+---
+
+# 🔐 Authentication
+
+- JWT Authentication
+- Protected Routes
+- Role-Based Access
+- Secure APIs
+
+---
+
+# 📈 Future Improvements
+
+- Stripe Payment Integration
+- Email Notifications
+- Product Recommendation AI
+- Multi-Vendor Marketplace
+- Dark Mode Support
+
+---
+
+# 🤝 Contributing
+
+1. Fork Repository
+2. Create Feature Branch
+3. Commit Changes
+4. Push Changes
+5. Create Pull Request
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
 
 ---
 
 <div align="center">
-  <sub>Built with ❤️ by the Velora Team</sub>
+
+## ❤️ Built with Passion by Velora Team
+
 </div>
